@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 18363.1316; Version 1909; 64bit' Language: 'en' Physical Memory: 16229 MB
+OS: 'Windows 10 Home; OS build 18363.1379; Version 1909; 64bit' Language: 'en' Physical Memory: 16229 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRH
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-65176
+52714
 Successfully changed project path to: C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
 C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 38.25 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 32.41 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
 [Subsystems] Discovering subsystems at path E:/Game Programs/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
@@ -35,209 +35,169 @@ Initialize mono
 Mono path[0] = 'E:/Game Programs/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Game Programs/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Game Programs/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56024
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56832
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Game Programs/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000938 seconds.
+Registered in 0.000967 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 31.87 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 32.67 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.944 seconds
+- Completed reload, in  0.969 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000807 seconds.
+Registered in 0.000793 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 33.69 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 33.05 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.866 seconds
+- Completed reload, in  0.834 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 0.30 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1792 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 84.9 MB.
 System memory in use after: 85.0 MB.
 
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2238.
-Total: 1.935600 ms (FindLiveObjects: 0.200900 ms CreateObjectMapping: 0.091300 ms MarkObjects: 1.585600 ms  DeleteObjects: 0.057000 ms)
+Total: 1.786100 ms (FindLiveObjects: 0.236900 ms CreateObjectMapping: 0.098000 ms MarkObjects: 1.394100 ms  DeleteObjects: 0.056100 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Donut Guy.psd
-  artifactKey: Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psd using Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ae585063cb683e336b5ec3d3e8631c5') in 0.217188 seconds
-  Import took 0.220152 seconds .
+  path: Assets/Characters/GRHHubworld_CottonCandy.prefab
+  artifactKey: Guid(23435fab6652a5445a2abaf3e9a8b5b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_CottonCandy.prefab using Guid(23435fab6652a5445a2abaf3e9a8b5b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f771ddc2fbe0c7202450ae9383b7756') in 0.175637 seconds
+  Import took 0.178439 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 153.769848 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e43bc86bebfbb6ddab0e4586dd3e31e8') in 0.016869 seconds
-  Import took 0.019769 seconds .
+  Time since last request: 23.619059 seconds.
+  path: Assets/Characters/Cotton Candy Rigged.prefab
+  artifactKey: Guid(23435fab6652a5445a2abaf3e9a8b5b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/Cotton Candy Rigged.prefab using Guid(23435fab6652a5445a2abaf3e9a8b5b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '027dd23c00f5c656fa63283167043f9c') in 0.016152 seconds
+  Import took 0.018962 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 47.809213 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f776fcb9cd6d839f893d6dda4a1163a1') in 0.011297 seconds
-  Import took 0.014442 seconds .
+  Time since last request: 8.601812 seconds.
+  path: Assets/Characters/GRHHubworld_SirCorndog.prefab
+  artifactKey: Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_SirCorndog.prefab using Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b465de8082cd17ba16cbec644716a5e4') in 0.017346 seconds
+  Import took 0.020443 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.003924 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f776fcb9cd6d839f893d6dda4a1163a1') in 0.011121 seconds
-  Import took 0.014177 seconds .
+  Time since last request: 0.001262 seconds.
+  path: Assets/Characters/GRHHubworld_SirCorndog.prefab
+  artifactKey: Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_SirCorndog.prefab using Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b465de8082cd17ba16cbec644716a5e4') in 0.009754 seconds
+  Import took 0.013086 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 280.893860 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed4723e5039d5a4e69cf5bbdf288f728') in 0.016529 seconds
-  Import took 0.019879 seconds .
+  Time since last request: 14.475472 seconds.
+  path: Assets/Characters/Sir Corndog Rigged.prefab
+  artifactKey: Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/Sir Corndog Rigged.prefab using Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4675d9c5e46a62b1b2cdc068c2223827') in 0.014307 seconds
+  Import took 0.017145 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 23.606647 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54476d216362c73367809046c5b792e0') in 0.011474 seconds
-  Import took 0.014813 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.005811 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54476d216362c73367809046c5b792e0') in 0.011319 seconds
-  Import took 0.014473 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 41.860899 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b2a32e6e2546981471cb801290d5572') in 0.014642 seconds
-  Import took 0.017838 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 88.397372 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c17587ae68d3d903d2d1272e657ad4a') in 0.020681 seconds
-  Import took 0.023524 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001479 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c17587ae68d3d903d2d1272e657ad4a') in 0.016461 seconds
-  Import took 0.019042 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 226.209905 seconds.
-  path: Assets/Donut Guy 1.psd
-  artifactKey: Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy 1.psd using Guid(a5f1ff9443d3a3146841aa26e64227f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b821475a1fdff1d211d6611144aa93c0') in 0.020977 seconds
-  Import took 0.023984 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 866.728712 seconds.
-  path: Assets/Donut Guy.psd
-  artifactKey: Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psd using Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa21e11427dad992e693ba9912388b2f') in 0.018768 seconds
-  Import took 0.022333 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.020766 seconds.
-  path: Assets/Donut Guy.psd
-  artifactKey: Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psd using Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ebbdacf42d4a4c95429ae5bf0569828') in 0.011257 seconds
-  Import took 0.013907 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.011645 seconds.
-  path: Assets/Donut Guy.psd
-  artifactKey: Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psd using Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ebbdacf42d4a4c95429ae5bf0569828') in 0.012760 seconds
-  Import took 0.015493 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 172.947118 seconds.
-  path: Assets/Donut Guy.psd
-  artifactKey: Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psd using Guid(437c8934213579f428cc9738f5ee2e57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71c9e475fa6f47c18e4907390cbe0d9d') in 0.020512 seconds
-  Import took 0.023578 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 322.952932 seconds.
-  path: Assets/Donut Guy.psb
+  Time since last request: 88.259823 seconds.
+  path: Assets/Characters/GRHHubworld_DonutGuy.psb
   artifactKey: Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psb using Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4de6b0c8fe918bcca20107b547c96a1b') in 0.216017 seconds
-  Import took 0.227257 seconds .
+Start importing Assets/Characters/GRHHubworld_DonutGuy.psb using Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6eb6d4720979d66c7c78702791f46156') in 0.070573 seconds
+  Import took 0.073604 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 279.615172 seconds.
-  path: Assets/Donut Guy.psb
-  artifactKey: Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psb using Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a29bba536abb2b6e5aa7c253529aed81') in 0.047074 seconds
-  Import took 0.049999 seconds .
+  Time since last request: 21.252496 seconds.
+  path: Assets/Characters/GRHHubworld_DonutGuy_Rigged.prefab
+  artifactKey: Guid(231bf9c0781a77942ad34de6e7be6f90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_DonutGuy_Rigged.prefab using Guid(231bf9c0781a77942ad34de6e7be6f90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34d8c08c0717288ef26e26ad9e1578d3') in 0.013650 seconds
+  Import took 0.016408 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 114.917438 seconds.
-  path: Assets/Donut Guy.psb
-  artifactKey: Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psb using Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d38ec698a5c53d25007f7fc1ab50ab6') in 0.034996 seconds
-  Import took 0.038322 seconds .
+  Time since last request: 15.302553 seconds.
+  path: Assets/Characters/GRHHubworld_CottonCandy_Rigged.prefab
+  artifactKey: Guid(23435fab6652a5445a2abaf3e9a8b5b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_CottonCandy_Rigged.prefab using Guid(23435fab6652a5445a2abaf3e9a8b5b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '569df7d70c8a76f456c548f67579e691') in 0.014463 seconds
+  Import took 0.017421 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 195.750204 seconds.
-  path: Assets/Donut Guy.psb
-  artifactKey: Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psb using Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a84389129191f50d672c7f75adcd1462') in 0.035312 seconds
-  Import took 0.038063 seconds .
+  Time since last request: 12.904530 seconds.
+  path: Assets/Characters/GRHHubworld_SirCorndog_Rigged.prefab
+  artifactKey: Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_SirCorndog_Rigged.prefab using Guid(28e8fbff3eb17cd4c9edb8c1ad1deb0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a72e0fb44a846ab18c67e2195dbe9a3') in 0.014797 seconds
+  Import took 0.017561 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 855.933486 seconds.
-  path: Assets/Donut Guy.psb
-  artifactKey: Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psb using Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a0c4e2b5723377df706cf383052f2a9') in 0.053354 seconds
-  Import took 0.057268 seconds .
+  Time since last request: 16.717332 seconds.
+  path: Assets/Characters/GRHHubworld_Popcorn.psb
+  artifactKey: Guid(bb2158ca66b4f9244b64e09bf446623e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_Popcorn.psb using Guid(bb2158ca66b4f9244b64e09bf446623e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cf3fd9422ae1d191692d55c1b9db0a0') in 0.048005 seconds
+  Import took 0.050695 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1039.001428 seconds.
-  path: Assets/Donut Guy.psb
-  artifactKey: Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Donut Guy.psb using Guid(a154779b39a9b08478a7786e3b015bac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '496941fad2c956923d1212738cc0e5c2') in 0.038627 seconds
-  Import took 0.041915 seconds .
+  Time since last request: 14.753457 seconds.
+  path: Assets/Characters/GRHHubworld_PopcornGuy_Rigged.prefab
+  artifactKey: Guid(161719b827801354c832466b7e4e2c3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_PopcornGuy_Rigged.prefab using Guid(161719b827801354c832466b7e4e2c3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '224ba31b0fb1b3e386e0d47a65cf8702') in 0.014431 seconds
+  Import took 0.017188 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.287227 seconds.
+  path: Assets/Characters/GRHHubworld_PopcornGuy.psb
+  artifactKey: Guid(bb2158ca66b4f9244b64e09bf446623e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_PopcornGuy.psb using Guid(bb2158ca66b4f9244b64e09bf446623e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a800ae0be7c9ebda28d4cb67fe3b2a12') in 0.043414 seconds
+  Import took 0.046179 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 528.743836 seconds.
+  path: Assets/Characters/GRHHubworld_HotDog.psb
+  artifactKey: Guid(63db900b1f38bfb4eac7ac480cd7c8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_HotDog.psb using Guid(63db900b1f38bfb4eac7ac480cd7c8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8000cb5ba5c4d64c9f55ea5ef5ac11c') in 0.045540 seconds
+  Import took 0.049055 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1109.850587 seconds.
+  path: Assets/Characters/GRHHubworld_HotDog.psb
+  artifactKey: Guid(63db900b1f38bfb4eac7ac480cd7c8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_HotDog.psb using Guid(63db900b1f38bfb4eac7ac480cd7c8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27b89b75adcb403fadcc1365924ee2dc') in 0.038729 seconds
+  Import took 0.043064 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 496.455539 seconds.
+  path: Assets/Characters/GRHHubworld_HotDog.prefab
+  artifactKey: Guid(d42ebd48f5185e8409af99c2ccac3b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_HotDog.prefab using Guid(d42ebd48f5185e8409af99c2ccac3b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0b107835b7cdab33b99ee904f3edf7b') in 0.015750 seconds
+  Import took 0.019507 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.764055 seconds.
+  path: Assets/Characters/GRHHubworld_HotDog_Rigged.prefab
+  artifactKey: Guid(d42ebd48f5185e8409af99c2ccac3b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Characters/GRHHubworld_HotDog_Rigged.prefab using Guid(d42ebd48f5185e8409af99c2ccac3b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f26086037267e99ab0cdcc2c3158a7a2') in 0.016096 seconds
+  Import took 0.019111 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
