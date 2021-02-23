@@ -42,3 +42,4 @@ sysinfo.txt
 Assets/StreamingAssets/crashlytics-build.properties
 *.log
 GRHUnityProject/Logs/AssetImportWorker0.log
+GRHUnityProject/ProjectSettings/EditorBuildSettings.asset
