@@ -1,0 +1,155 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.804; Version 2009; 64bit' Language: 'en' Physical Memory: 16301 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/conno/Desktop/Capstone/GHR-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50819
+Successfully changed project path to: C:/Users/conno/Desktop/Capstone/GHR-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
+C:/Users/conno/Desktop/Capstone/GHR-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 36.26 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.2f1 (068178b99f32)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/conno/Desktop/Capstone/GHR-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2080 (ID=0x1e87)
+    Vendor:   
+    VRAM:     8010 MB
+    Driver:   27.21.14.6140
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56612
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003034 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 36.29 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.902 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001187 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 39.71 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.873 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2163 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 101.2 MB.
+System memory in use after: 101.3 MB.
+
+Unloading 93 unused Assets to reduce memory usage. Loaded Objects now: 2601.
+Total: 2.828800 ms (FindLiveObjects: 0.223100 ms CreateObjectMapping: 0.073900 ms MarkObjects: 2.355600 ms  DeleteObjects: 0.175200 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Sprites/GRHBalloonMG_BalloonCluster.psd
+  artifactKey: Guid(e95c38cd37ca08744935239dea5c277d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonCluster.psd using Guid(e95c38cd37ca08744935239dea5c277d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f886b58c3b3f2518a170b7dd7c53f8eb') in 0.124923 seconds
+  Import took 0.128129 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Sprites/GRHBalloonMG_PumpHandle.psd
+  artifactKey: Guid(8c20366407ee81f40bb45c7fe9f25c8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_PumpHandle.psd using Guid(8c20366407ee81f40bb45c7fe9f25c8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '366d84380d263a9ada7637bac151036e') in 0.040919 seconds
+  Import took 0.044111 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000222 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloating.psd
+  artifactKey: Guid(e28a3ded997bc514bb08b50457e1bd2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloating.psd using Guid(e28a3ded997bc514bb08b50457e1bd2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86fd5d4540c57bfd0356d3135bc09cd7') in 0.042959 seconds
+  Import took 0.045651 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/Sprites/GRHBalloonMG_DeathHand.psd
+  artifactKey: Guid(a846d14f701029443a9af8d50f8c4e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_DeathHand.psd using Guid(a846d14f701029443a9af8d50f8c4e37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6d71f6ba1856329c8168dbb9945e919') in 0.029441 seconds
+  Import took 0.031993 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/Sprites/GRHBalloonMG_Pump.psd
+  artifactKey: Guid(d464155a5f8686c408094fd2cca4b6be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_Pump.psd using Guid(d464155a5f8686c408094fd2cca4b6be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '505698a940f9bb96687d7b88e07e40e1') in 0.015436 seconds
+  Import took 0.018100 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '594c7ad87449b8e158c7d0c7e2da158e') in 0.023154 seconds
+  Import took 0.026052 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.516287 seconds.
+  path: Assets/Prefabs/GRHBalloonMG_BalloonCluster.prefab
+  artifactKey: Guid(a90b217486b54754ab1b6c6e41704e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/GRHBalloonMG_BalloonCluster.prefab using Guid(a90b217486b54754ab1b6c6e41704e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '788963769ce217630ff6450b65ee7969') in 0.041099 seconds
+  Import took 0.044537 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/Prefabs/GRHBalloonMG_BalloonPump.prefab
+  artifactKey: Guid(e83a90e8fd4913740b71ada9f8b546ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/GRHBalloonMG_BalloonPump.prefab using Guid(e83a90e8fd4913740b71ada9f8b546ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd74d70337846d9c7ddd66c5e48ba0762') in 0.052856 seconds
+  Import took 0.055667 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Prefabs/GRHBalloonMG_DeathHand_0.prefab
+  artifactKey: Guid(5f04d179a123a2546a00acb9627454c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/GRHBalloonMG_DeathHand_0.prefab using Guid(5f04d179a123a2546a00acb9627454c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e914d71e971d5cf08f2377e61b5c5fc3') in 0.035907 seconds
+  Import took 0.038623 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/Prefabs/GRHBalloonMG_BalloonFloatingSpriteSheet_0.prefab
+  artifactKey: Guid(dcb2fc0ee5470f3468d316d2e0c72e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/GRHBalloonMG_BalloonFloatingSpriteSheet_0.prefab using Guid(dcb2fc0ee5470f3468d316d2e0c72e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b24fa72151e97b84533c97d982e9961e') in 0.052751 seconds
+  Import took 0.055485 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
