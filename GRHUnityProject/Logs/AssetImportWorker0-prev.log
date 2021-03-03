@@ -1,0 +1,257 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19041.804; Version 2004; 64bit' Language: 'en' Physical Memory: 24513 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/School/CAPSTONE/GRH-Minigames-Capstone/GRHUnityProject
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+64887
+Successfully changed project path to: D:/School/CAPSTONE/GRH-Minigames-Capstone/GRHUnityProject
+D:/School/CAPSTONE/GRH-Minigames-Capstone/GRHUnityProject
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 68.52 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.2f1 (068178b99f32)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/School/CAPSTONE/GRH-Minigames-Capstone/GRHUnityProject/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Radeon (TM) RX 480 Graphics (ID=0x67df)
+    Vendor:   
+    VRAM:     8171 MB
+    Driver:   27.20.12029.1000
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56776
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/LuminSupport/UnityEditor.Lumin.Extensions.dll
+Registered in 0.009258 seconds.
+Native extension for Lumin target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 68.91 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.083 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002274 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for Lumin target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 82.84 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.204 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 0.70 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1794 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.4 MB.
+System memory in use after: 84.5 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2242.
+Total: 3.810200 ms (FindLiveObjects: 0.386200 ms CreateObjectMapping: 0.095200 ms MarkObjects: 3.146900 ms  DeleteObjects: 0.180000 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '747e909ca24fc643ad2b7ead42258d4e') in 0.169602 seconds
+  Import took 0.185298 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 137.466207 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd
+  artifactKey: Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd using Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '045302bd27b6ab55d908f25e0f1ac8c5') in 0.102392 seconds
+  Import took 0.118283 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.164598 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd
+  artifactKey: Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd using Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d1211052df13b0406d5d87a29fa5e8a') in 0.033325 seconds
+  Import took 0.050870 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.018779 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd
+  artifactKey: Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd using Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d1211052df13b0406d5d87a29fa5e8a') in 0.029247 seconds
+  Import took 0.036310 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 44.201549 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd
+  artifactKey: Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet 1.psd using Guid(4bcc31dedd3af604f9501d8691e94aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7a00f1490d5f08233c4a26fbf8d1745') in 0.093158 seconds
+  Import took 0.105239 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 251.134773 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1f0510a0a054b3e131577161a3d2e79') in 0.052006 seconds
+  Import took 0.072704 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.038546 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee0f84373c9e6198ec1b25cb4150eaa9') in 0.040359 seconds
+  Import took 0.059449 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.135915 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee0f84373c9e6198ec1b25cb4150eaa9') in 0.034061 seconds
+  Import took 0.046850 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.862124 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1915673e615460eba8e046abe5fcba4') in 0.091590 seconds
+  Import took 0.102704 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 122.586774 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b0c58b6efe2cdae0a1d9fff0d5e949d') in 0.062549 seconds
+  Import took 0.081761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.289648 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04cc9bacd1da9afec805f854b615fd2b') in 0.031642 seconds
+  Import took 0.037811 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029674 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04cc9bacd1da9afec805f854b615fd2b') in 0.026424 seconds
+  Import took 0.033920 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 277.474050 seconds.
+  path: Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd
+  artifactKey: Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_BalloonFloatingSpriteSheet.psd using Guid(937657898fb5b1f4cbabe7b6c6a84e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4498bd6cb7d7e5a89fd83a512d777749') in 0.099025 seconds
+  Import took 0.105793 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 327.486789 seconds.
+  path: Assets/Prefabs/GRHBalloonMG_BalloonFloatingSpriteSheet_0.prefab
+  artifactKey: Guid(dcb2fc0ee5470f3468d316d2e0c72e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/GRHBalloonMG_BalloonFloatingSpriteSheet_0.prefab using Guid(dcb2fc0ee5470f3468d316d2e0c72e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The Animator Controller (GRHBalloonMG_BalloonFloatingSpriteSheet_0 2) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 332]
+
+The Animator Controller (GRHBalloonMG_BalloonFloatingSpriteSheet_0 2) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:InitInstantiatedPreviewRecursive (UnityEngine.GameObject)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 332]
+
+ -> (artifact id: '267d14ebf5b23a32ce9a4d54dfe3bb51') in 0.119205 seconds
+  Import took 0.140964 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002228 seconds.
+  path: Assets/Prefabs/GRHBalloonMG_BalloonFloatingSpriteSheet_0.prefab
+  artifactKey: Guid(dcb2fc0ee5470f3468d316d2e0c72e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/GRHBalloonMG_BalloonFloatingSpriteSheet_0.prefab using Guid(dcb2fc0ee5470f3468d316d2e0c72e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The Animator Controller (GRHBalloonMG_BalloonFloatingSpriteSheet_0 2) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 332]
+
+The Animator Controller (GRHBalloonMG_BalloonFloatingSpriteSheet_0 2) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:InitInstantiatedPreviewRecursive (UnityEngine.GameObject)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 332]
+
+ -> (artifact id: '267d14ebf5b23a32ce9a4d54dfe3bb51') in 0.028701 seconds
+  Import took 0.040830 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
