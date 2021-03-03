@@ -1,33 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
 
 public class GRHHubWorld_SceneManager : MonoBehaviour
 {
-    // Loads ballon game scene
+    // Initial framework - Adam
+
+    [SerializeField] private GameObject difficultySettingPanel;
+
+    public GRHBalloonMG_GameDifficulty gameDifficulty;
+
+    private string gameSelected;
+
+    private void Awake()
+    {
+        difficultySettingPanel.SetActive(false);
+    }
+
+    // Button to start balloon game
     public void StartBallonGame()
     {
-        SceneManager.LoadScene("BallonGame");
-        Debug.Log("BallonGame");
+        difficultySettingPanel.SetActive(true);
+        gameSelected = "GRHBalloonMG_Scene";
     }
 
-    // Loads counting game scene
+    // Button to start counting game
     public void StartCountingGame()
     {
-        SceneManager.LoadScene("CountingGame");
-        Debug.Log("CountingGame");
+        difficultySettingPanel.SetActive(true);
+        gameSelected = "GRHCountingMG_Scene";
     }
 
-    // Loads space game scene
+    // Button to start space game
     public void StartSpaceGame()
     {
-        SceneManager.LoadScene("SpaceGame");
-        Debug.Log("SpaceGame");
+        difficultySettingPanel.SetActive(true);
+        gameSelected = "GRHSpaceMG_Scene";
     }
 
-    // Remove all but "Application.Quit();" before building as it will crash
+    // "X" button to close the difficulty panel
+    public void CloseDifficultyPanel()
+    {
+        difficultySettingPanel.SetActive(false);
+    }
+
+    // Selects game difficulty parses and makes it ToUpper so no mistakes can be made (EASY, MEDIUM, HARD)
+    public void SelectDifficultySetting(string gameDifficulty)
+    {
+        try
+        {
+            this.gameDifficulty = (GRHBalloonMG_GameDifficulty)Enum.Parse(typeof(GRHBalloonMG_GameDifficulty), gameDifficulty.ToUpper());
+        }
+        catch (Exception)
+        {
+            Debug.LogErrorFormat("Parse: Can't convert {0} to enum, please check spell.", gameDifficulty);
+        }
+        SceneManager.LoadScene(gameSelected);
+
+        // Debugs the name of the scene loading and the difficulty (Easy, Medium or Hard)
+        Debug.Log("Scene: " + SceneManager.GetSceneByName(gameSelected).name + "\n" + "Difficulty: " + gameDifficulty);
+    }
+
+    // Remove all but "Application.Quit();" before building as it will crash if left in during build
     public void QuitApplication()
     {
         // Closes game if in editor mode
