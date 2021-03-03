@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GRHBalloonMG_GameManager : MonoBehaviour
+//The balloon pop game manager extends from the base game manager class.
+public class GRHBalloonMG_GameManager : GRH_GameManager
 {
     //Initial framework - Joseph
     enum BalloonPopGameStates { Introduction, PlayerTurn, AI1Turn, AI2Turn, AI3Turn, GameEnd };
@@ -13,23 +14,46 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
     //0 - Player / 1 - AI 1 / 2 - AI 2 / 3 - AI 3
     bool[] activePlayers = new bool[4];
 
+    int maxBalloonPumps, currentBalloonPumps;
+
     //Game scene initialization.
     void Start()
     {
-        //Object initialization can be called here to prevent object racing.
+        //Get the main camera.
+        mainCamera = Camera.main;
+
+        //Object initialization is called here to prevent object racing. We check if we have objects so we don't blow up if an object isn't there.
+        if (mainCamera.GetComponent<GRHCameraController>())
+        {
+            mainCamera.GetComponent<GRHCameraController>().Initialize();
+        }
+
         //Set all players to active.
         for (int i = 0; i < 4; i++)
         {
             activePlayers[i] = true;
         }
 
-        //After initialization, set the game state to the introduction.
+        //Get the max balloon pumps from the difficulty selection script here. Using a temp value for now.
+        maxBalloonPumps = 10;
+
+        currentBalloonPumps = 0;
+
+        //After initialization, set the game state to the introduction, and start the main camera movements, if we have a main camera controller.
         currentGameState = BalloonPopGameStates.Introduction;
+        if (mainCamera.GetComponent<GRHCameraController>())
+        {
+            mainCamera.GetComponent<GRHCameraController>().BeginInitialMovements();
+        }
+
+        //Hide the player UI.
+        HidePlayerUI();
     }
 
     //Game advancement method.
-    void AdvanceGame()
+    protected override void AdvanceGame()
     {
+        Debug.Log("Advancing game.");
         switch (currentGameState)
         {
             //The introduction state will run from the game fading in, until the camera has finished setting the scene and we're ready to go.
@@ -42,13 +66,14 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
 
             //The player turn branch.
             case BalloonPopGameStates.PlayerTurn:
-                
+                //We're advancing the game from the player turn, so no matter what, we're hiding the player UI.
+                HidePlayerUI();
 
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
                 {
-                    //Game has finished. Enter game end state.
-                    currentGameState = BalloonPopGameStates.GameEnd;
+                    //Game has finished. End the game.
+                    EndGame();
                 }
                 else
                 {
@@ -64,13 +89,19 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
                 {
-                    //Game has finished. Enter game end state.
-                    currentGameState = BalloonPopGameStates.GameEnd;
+                    //Game has finished. End the game.
+                    EndGame();
                 }
                 else
                 {
                     //Game has not finished. Determine the next state, and enter it.
                     currentGameState = DetermineNextActivePlayer(1);
+
+                    //If the game moves to the player's turn, we need to show the player UI.
+                    if (currentGameState == BalloonPopGameStates.PlayerTurn)
+                    {
+                        ShowPlayerUI();
+                    }
                 }
                 break;
 
@@ -81,13 +112,19 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
                 {
-                    //Game has finished. Enter game end state.
-                    currentGameState = BalloonPopGameStates.GameEnd;
+                    //Game has finished. End the game.
+                    EndGame();
                 }
                 else
                 {
                     //Game has not finished. Determine the next state, and enter it.
                     currentGameState = DetermineNextActivePlayer(2);
+
+                    //If the game moves to the player's turn, we need to show the player UI.
+                    if (currentGameState == BalloonPopGameStates.PlayerTurn)
+                    {
+                        ShowPlayerUI();
+                    }
                 }
                 break;
 
@@ -98,13 +135,19 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
                 {
-                    //Game has finished. Enter game end state.
-                    currentGameState = BalloonPopGameStates.GameEnd;
+                    //Game has finished. End the game.
+                    EndGame();
                 }
                 else
                 {
                     //Game has not finished. Determine the next state, and enter it.
                     currentGameState = DetermineNextActivePlayer(3);
+
+                    //If the game moves to the player's turn, we need to show the player UI.
+                    if (currentGameState == BalloonPopGameStates.PlayerTurn)
+                    {
+                        ShowPlayerUI();
+                    }
                 }
                 break;
 
@@ -146,7 +189,7 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
     //Determine who the next active player is, and return the associated state.
     BalloonPopGameStates DetermineNextActivePlayer(int currentPlayerPosition)
     {
-        //Create the return value. Currently using a placeholder value to prevent compiler errors.
+        //Create the return value. Assigns a value to prevent compiler errors.
         BalloonPopGameStates nextActivePlayer = BalloonPopGameStates.PlayerTurn;
 
         //To handle looping around, we'll use a bool to determine if we need to loop around at all.
@@ -190,18 +233,22 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
         {
             case 0:
                 nextActivePlayer = BalloonPopGameStates.PlayerTurn;
+                Debug.Log("Player turn.");
                 break;
 
             case 1:
                 nextActivePlayer = BalloonPopGameStates.AI1Turn;
+                Debug.Log("AI 1 turn.");
                 break;
 
             case 2:
                 nextActivePlayer = BalloonPopGameStates.AI2Turn;
+                Debug.Log("AI 2 turn.");
                 break;
 
             case 3:
                 nextActivePlayer = BalloonPopGameStates.AI3Turn;
+                Debug.Log("AI 3 turn.");
                 break;
 
             default:
@@ -220,18 +267,22 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
         switch(currentGameState)
         {
             case BalloonPopGameStates.PlayerTurn:
+                Debug.Log("Knocking out Player.");
                 activePlayers[0] = false;
                 break;
 
             case BalloonPopGameStates.AI1Turn:
+                Debug.Log("Knocking out AI 1.");
                 activePlayers[1] = false;
                 break;
 
             case BalloonPopGameStates.AI2Turn:
+                Debug.Log("Knocking out AI 2.");
                 activePlayers[2] = false;
                 break;
 
             case BalloonPopGameStates.AI3Turn:
+                Debug.Log("Knocking out AI 3.");
                 activePlayers[3] = false;
                 break;
 
@@ -239,5 +290,33 @@ public class GRHBalloonMG_GameManager : MonoBehaviour
                 Debug.Log("KnockOutCurrentPlayer attempting to knock out a non-existent player.");
                 break;
         }
+    }
+
+    //Add a number of pumps to the balloon. Method is public to allow UI buttons to use it.
+    public void PumpBalloon(int numberOfPumps)
+    {
+        //Add the pumps.
+        currentBalloonPumps += numberOfPumps;
+
+        //Are we at or above the maximum number of pumps?
+        if (currentBalloonPumps >= maxBalloonPumps)
+        {
+            //We are. Knock out the current player.
+            KnockOutCurrentPlayer();
+            currentBalloonPumps = 0;
+        }
+
+        //The animation controller should handle when to advance the game, so we can have animations play out before moving to the next player.
+        //Therefore, advance game won't be called from here.
+        Debug.Log(currentBalloonPumps);
+        AdvanceGame();
+    }
+
+    //Method to display end of game visuals/animations.
+    void EndGame()
+    {
+        Debug.Log("Game is ending.");
+        currentGameState = BalloonPopGameStates.GameEnd;
+        AdvanceGame();
     }
 }
