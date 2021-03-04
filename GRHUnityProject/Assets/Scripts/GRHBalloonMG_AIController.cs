@@ -13,6 +13,7 @@ public class GRHBalloonMG_AIController : MonoBehaviour
     {
         Easy,
         Medium,
+        Hard
     }
 
     AIDifficulty aiDifficulty; //Determines the AI's decisions when guessing how many pumps are left and how many pumps to do.
@@ -20,7 +21,20 @@ public class GRHBalloonMG_AIController : MonoBehaviour
     void Start()
     {
         //Initialize AI's difficulty from selected Settings
-
+        switch (aiDifficulty)
+        {
+            case AIDifficulty.Easy:
+                difficultyVariable = 0;
+                break;
+            case AIDifficulty.Medium:
+                difficultyVariable = 2;
+                break;
+            case AIDifficulty.Hard:
+                difficultyVariable = 1;
+                break;
+            default:
+                break;
+        }
     }
 
     //Generates a guess for the AI for how many pumps are left until the balloon pops prior to pumping the balloon.
@@ -30,6 +44,10 @@ public class GRHBalloonMG_AIController : MonoBehaviour
         {
             balloonGuess = Random.Range(balloonPumpsLeft - difficultyVariable, balloonPumpsLeft + difficultyVariable);
         }
+        else
+        {
+            balloonGuess = Random.Range(balloonPumpsLeft, balloonPumpsLeft + difficultyVariable);
+        }
     }
 
     //Generates the AI's pump amount for the balloon.
@@ -37,35 +55,22 @@ public class GRHBalloonMG_AIController : MonoBehaviour
     {
         int pumpAmount = 0; //The amount of pumps the AI will do for the balloon.
 
-        switch (aiDifficulty)
+        if (aiDifficulty == AIDifficulty.Easy) //Easy AI Pump generation
         {
-
-            //Easy AI Pump generation
-            case AIDifficulty.Easy:
-
-                //The AI will randomly choose an amount to pump
+            //The AI will randomly choose an amount to pump
+            pumpAmount = Random.Range(1, 3);
+        }
+        else //Medium and hard AI Pump generation
+        {
+            if (balloonGuess > 4)
+            {
                 pumpAmount = Random.Range(1, 3);
-                break;
-
-            //Medium AI Pump generation
-            case AIDifficulty.Medium:
-
-                //Check to see if the AI believes they can cause an opponent to lose on their turn
-                if (balloonGuess > 4)
-                {
-                    pumpAmount = Random.Range(1, 3);
-                }
-                else
-                {
-                    //The AI believes they can cause an opponent to lose on their turn
-                    pumpAmount = balloonGuess - 1;
-                }
-                break;
-
-            //No AI Difficulty found when this method was called.
-            default:
-                Debug.LogError("Pump generation for AI was unsuccessful: Could not find AI difficulty.");
-                break;
+            }
+            else
+            {
+                //The AI believes they can cause an opponent to lose on their turn
+                pumpAmount = balloonGuess - 1;
+            }
         }
 
         return pumpAmount;
