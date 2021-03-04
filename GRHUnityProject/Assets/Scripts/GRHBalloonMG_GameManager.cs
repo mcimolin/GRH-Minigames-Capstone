@@ -16,11 +16,16 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
     int maxBalloonPumps, currentBalloonPumps;
 
+    GRHBalloonMG_AIController aiController; //Controls th AI's decisions (Added by Bryce)
+
     //Game scene initialization.
     void Start()
     {
         //Get the main camera.
         mainCamera = Camera.main;
+
+        //Set the AI Controller (Added by Bryce)
+        aiController = GetComponent<GRHBalloonMG_AIController>();
 
         //Object initialization is called here to prevent object racing. We check if we have objects so we don't blow up if an object isn't there.
         if (mainCamera.GetComponent<GRHCameraController>())
@@ -85,6 +90,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             //AI #1 turn branch.
             case BalloonPopGameStates.AI1Turn:
 
+                //Access AI's pump amount and set it (Added by Bryce)
+                aiController.GenerateBalloonGuess(maxBalloonPumps - currentBalloonPumps);
+                PumpBalloon(aiController.GeneratePumpAmount());
 
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
@@ -107,7 +115,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //AI #2 turn branch.
             case BalloonPopGameStates.AI2Turn:
-
+                aiController.GenerateBalloonGuess(maxBalloonPumps - currentBalloonPumps);
+                PumpBalloon(aiController.GeneratePumpAmount());
 
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
@@ -130,7 +139,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //AI #3 turn branch.
             case BalloonPopGameStates.AI3Turn:
-
+                aiController.GenerateBalloonGuess(maxBalloonPumps - currentBalloonPumps);
+                PumpBalloon(aiController.GeneratePumpAmount());
 
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
