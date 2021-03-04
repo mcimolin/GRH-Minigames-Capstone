@@ -7,13 +7,13 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     // Initial framework - Adam
 
     [SerializeField] private GameObject difficultySettingPanel;
-
-    public GRHBalloonMG_GameDifficulty gameDifficulty;
-
     private string gameSelected;
+
+    GRHGameSettings gameSettings;
 
     private void Awake()
     {
+        gameSettings = GameObject.FindObjectOfType<GRHGameSettings>();
         difficultySettingPanel.SetActive(false);
     }
 
@@ -44,21 +44,26 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         difficultySettingPanel.SetActive(false);
     }
 
-    // Selects game difficulty parses and makes it ToUpper so no mistakes can be made (EASY, MEDIUM, HARD)
+    // Selects game difficulty (EASY, MEDIUM, HARD)
     public void SelectDifficultySetting(string gameDifficulty)
     {
-        try
-        {
-            this.gameDifficulty = (GRHBalloonMG_GameDifficulty)Enum.Parse(typeof(GRHBalloonMG_GameDifficulty), gameDifficulty.ToUpper());
-        }
-        catch (Exception)
-        {
-            Debug.LogErrorFormat("Parse: Can't convert {0} to enum, please check spell.", gameDifficulty);
-        }
+        gameSettings.gameDifficulty = gameDifficulty;
         SceneManager.LoadScene(gameSelected);
 
-        // Debugs the name of the scene loading and the difficulty (Easy, Medium or Hard)
-        Debug.Log("Scene: " + SceneManager.GetSceneByName(gameSelected).name + "\n" + "Difficulty: " + gameDifficulty);
+        Debug.Log("Game Loaded: " + gameSelected);
+        Debug.Log("Difficulty: " + gameDifficulty);
+    }
+
+    public void TogglePumpCount()
+    {
+        if (!gameSettings.showPumpCount)
+        {
+            gameSettings.showPumpCount = true;
+        }
+        else
+        {
+            gameSettings.showPumpCount = false;
+        }
     }
 
     // Remove all but "Application.Quit();" before building as it will crash if left in during build
