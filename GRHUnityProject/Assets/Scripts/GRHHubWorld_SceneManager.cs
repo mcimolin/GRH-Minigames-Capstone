@@ -1,5 +1,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class GRHHubWorld_SceneManager : MonoBehaviour
@@ -7,6 +8,11 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     // Initial framework - Adam
 
     [SerializeField] private GameObject difficultySettingPanel;
+
+    [SerializeField] private Button easyButton;
+    [SerializeField] private Button mediumButton;
+    [SerializeField] private Button hardButton;
+
     private string gameSelected;
 
     GRHGameSettings gameSettings;
@@ -15,6 +21,10 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     {
         gameSettings = GameObject.FindObjectOfType<GRHGameSettings>();
         difficultySettingPanel.SetActive(false);
+
+        easyButton.enabled = false;
+        mediumButton.enabled = false;
+        hardButton.enabled = false;
     }
 
     // Button to start balloon game
@@ -52,6 +62,8 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
 
         Debug.Log("Game Loaded: " + gameSelected);
         Debug.Log("Difficulty: " + gameDifficulty);
+        Debug.Log("Player Character: " + gameSettings.selectedCharacter);
+        Debug.Log("Show pump count: " + gameSettings.showPumpCount);
     }
 
     public void TogglePumpCount()
@@ -64,6 +76,41 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         {
             gameSettings.showPumpCount = false;
         }
+    }
+
+    public void ToggleCharacterSelect(int selectedCharacter)
+    {
+        switch (selectedCharacter)
+        {
+            // Popcorn #1
+            case 1:
+                gameSettings.selectedCharacter = 1;
+                break;
+            // Corndog #2
+            case 2:
+                gameSettings.selectedCharacter = 2;
+                break;
+            // Hotdog #3
+            case 3:
+                gameSettings.selectedCharacter = 3;
+                break;
+            // Donut #4
+            case 4:
+                gameSettings.selectedCharacter = 4;
+                break;
+            // Cotton Candy #5
+            case 5:
+                gameSettings.selectedCharacter = 5;
+                break;
+            // Use Popcorn by default
+            default:
+                gameSettings.selectedCharacter = 1;
+                break;
+        }
+
+        easyButton.enabled = true;
+        mediumButton.enabled = true;
+        hardButton.enabled = true;
     }
 
     // Remove all but "Application.Quit();" before building as it will crash if left in during build
