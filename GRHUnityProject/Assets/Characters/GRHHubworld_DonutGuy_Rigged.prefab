@@ -291,9 +291,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: -1591132247
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 932264381010996188, guid: a154779b39a9b08478a7786e3b015bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   - {fileID: 2184235434454259353}
   - {fileID: 5791667521820561850}
   m_Bounds:
-    m_Center: {x: -0.002415061, y: 0.00008010864, z: 0}
+    m_Center: {x: -0.0024151802, y: 0.00008010864, z: 0}
     m_Extent: {x: 1.442585, y: 1.4409602, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -457,9 +457,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 8
+  m_SortingLayerID: -1591132247
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6337892475113767614, guid: a154779b39a9b08478a7786e3b015bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -489,8 +489,8 @@ MonoBehaviour:
   - {fileID: 544584726639622067}
   - {fileID: 5745452336393101146}
   m_Bounds:
-    m_Center: {x: -0.0017051101, y: -0.0007151887, z: 0}
-    m_Extent: {x: 0.5232949, y: 0.080984995, z: 0}
+    m_Center: {x: -0.0017052293, y: -0.00071525574, z: 0}
+    m_Extent: {x: 0.52329475, y: 0.08098501, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &2548346807915016350
@@ -699,6 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5171448183801403287}
   - component: {fileID: 3877934477183169260}
+  - component: {fileID: 9025019124599629006}
   m_Layer: 0
   m_Name: GRHHubworld_DonutGuy_Rigged
   m_TagString: Untagged
@@ -761,6 +762,25 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!95 &9025019124599629006
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751567256550159572}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3890250437974827414
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,9 +883,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingLayerID: -1591132247
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7619805394068100314, guid: a154779b39a9b08478a7786e3b015bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -895,7 +915,7 @@ MonoBehaviour:
   - {fileID: 1901277370891743801}
   - {fileID: 8411923523455114673}
   m_Bounds:
-    m_Center: {x: 0.0036002398, y: 0.00000011920929, z: 0}
+    m_Center: {x: 0.0036000013, y: 0.000000029802322, z: 0}
     m_Extent: {x: 0.14138994, y: 0.41499996, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1155,9 +1175,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingLayerID: -1591132247
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8080698671352833335, guid: a154779b39a9b08478a7786e3b015bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1187,7 +1207,7 @@ MonoBehaviour:
   - {fileID: 2691713041753916138}
   - {fileID: 2972189120535079329}
   m_Bounds:
-    m_Center: {x: -0.0014597774, y: 0.00035990775, z: 0}
+    m_Center: {x: -0.0014600158, y: 0.0003599748, z: 0}
     m_Extent: {x: 0.52854, y: 0.07564999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1545,8 +1565,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1591132247
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -6418993262556100274, guid: a154779b39a9b08478a7786e3b015bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1577,8 +1597,8 @@ MonoBehaviour:
   - {fileID: 6582580972274109388}
   - {fileID: 4705999895545161391}
   m_Bounds:
-    m_Center: {x: -0.0021050423, y: -0.000000029802322, z: 0}
-    m_Extent: {x: 0.13789488, y: 0.4149999, z: 0}
+    m_Center: {x: -0.0021049231, y: -0.000000029802322, z: 0}
+    m_Extent: {x: 0.13789508, y: 0.4149999, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &7826066605181422571
