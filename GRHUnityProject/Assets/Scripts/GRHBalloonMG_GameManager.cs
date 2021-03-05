@@ -5,7 +5,7 @@ using UnityEngine;
 //The balloon pop game manager extends from the base game manager class.
 public class GRHBalloonMG_GameManager : GRH_GameManager
 {
-    //Initial framework - Joseph
+    //Initial setup - Joseph
     enum BalloonPopGameStates { Introduction, PlayerTurn, AI1Turn, AI2Turn, AI3Turn, GameEnd };
 
     BalloonPopGameStates currentGameState;
@@ -18,20 +18,25 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
     GRHBalloonMG_AIController aiController; //Controls th AI's decisions (Added by Bryce)
 
+    GRHBalloonMG_AnimationController animationController;
+
     //Game scene initialization.
     void Start()
     {
-        //Get the main camera.
+        //Get the main camera / animation controller.
         mainCamera = Camera.main;
+        animationController = FindObjectOfType<GRHBalloonMG_AnimationController>();
 
         //Set the AI Controller (Added by Bryce)
         aiController = GetComponent<GRHBalloonMG_AIController>();
 
-        //Object initialization is called here to prevent object racing. We check if we have objects so we don't blow up if an object isn't there.
+        //Object initialization is called here to prevent object racing. We check for objects that aren't necessarily required, such as the camera controller.
         if (mainCamera.GetComponent<GRHCameraController>())
         {
             mainCamera.GetComponent<GRHCameraController>().Initialize();
         }
+
+        animationController.Initialize();
 
         //Set all players to active.
         for (int i = 0; i < 4; i++)
