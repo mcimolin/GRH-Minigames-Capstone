@@ -1,258 +1,90 @@
 Using pre-set license
 Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 18363.1379; Version 1909; 64bit' Language: 'en' Physical Memory: 16229 MB
+OS: 'Windows 10 Pro; OS build 19041.804; Version 2004; 64bit' Language: 'en' Physical Memory: 16246 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
-E:\Game Programs\2020.2.2f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2020.2.2f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
+C:/Users/bryce/OneDrive/Documents/GitHub/GRH-Minigames-Capstone/GRHUnityProject
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-61019
-Successfully changed project path to: C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
-C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
+54482
+Successfully changed project path to: C:/Users/bryce/OneDrive/Documents/GitHub/GRH-Minigames-Capstone/GRHUnityProject
+C:/Users/bryce/OneDrive/Documents/GitHub/GRH-Minigames-Capstone/GRHUnityProject
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 49.92 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 44.95 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
-[Subsystems] Discovering subsystems at path E:/Game Programs/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/bryce/OneDrive/Documents/GitHub/GRH-Minigames-Capstone/GRHUnityProject/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1f11)
+    Renderer: NVIDIA GeForce GTX 960 (ID=0x1401)
     Vendor:   
-    VRAM:     5980 MB
-    Driver:   27.21.14.6172
+    VRAM:     4053 MB
+    Driver:   27.21.14.5167
 Initialize mono
-Mono path[0] = 'E:/Game Programs/2020.2.2f1/Editor/Data/Managed'
-Mono path[1] = 'E:/Game Programs/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'E:/Game Programs/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56660
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56444
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: E:/Game Programs/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000974 seconds.
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002272 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 40.97 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 53.99 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.051 seconds
+- Completed reload, in  1.114 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000994 seconds.
+Registered in 0.001118 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 41.22 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 45.01 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.290 seconds
+- Completed reload, in  1.117 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.57 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2170 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 102.3 MB.
-System memory in use after: 102.4 MB.
+Unloading 2171 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 101.5 MB.
+System memory in use after: 101.5 MB.
 
-Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 2610.
-Total: 2.486400 ms (FindLiveObjects: 0.208900 ms CreateObjectMapping: 0.098900 ms MarkObjects: 1.997600 ms  DeleteObjects: 0.180400 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Characters/GRHHubworld_CottonCandy_Standing_Rigged 1.prefab
-  artifactKey: Guid(ed2f48318108bf441bb248d675a77bb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_CottonCandy_Standing_Rigged 1.prefab using Guid(ed2f48318108bf441bb248d675a77bb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2a4623ece5e9f2f70fcf1578f0b2e73') in 0.204397 seconds
-  Import took 0.208809 seconds .
+Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 2609.
+Total: 2.491500 ms (FindLiveObjects: 0.230400 ms CreateObjectMapping: 0.182500 ms MarkObjects: 1.890700 ms  DeleteObjects: 0.187000 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 10.310163 seconds.
-  path: Assets/Characters/GRHHubworld_CottonCandy_Standing_Rigged.prefab
-  artifactKey: Guid(ed2f48318108bf441bb248d675a77bb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_CottonCandy_Standing_Rigged.prefab using Guid(ed2f48318108bf441bb248d675a77bb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24ea0338a952b04ac57180cfe29320cc') in 0.017488 seconds
-  Import took 0.022436 seconds .
+  path: Assets/Scripts/GRHHubWorld_SceneManager.cs
+  artifactKey: Guid(6e16e631506495f49927196f1b153001) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GRHHubWorld_SceneManager.cs using Guid(6e16e631506495f49927196f1b153001) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdd405824c7398fa99432bc83e4906b7') in 0.041239 seconds
+  Import took 0.044751 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.278474 seconds.
-  path: Assets/Characters/GRHHubworld_DonutGuy_Standing_Rigged 1.prefab
-  artifactKey: Guid(5752c9187e840394882346d910156ae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_DonutGuy_Standing_Rigged 1.prefab using Guid(5752c9187e840394882346d910156ae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdb0cbeb9e1178dad32b565a4eedbce6') in 0.020237 seconds
-  Import took 0.024087 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001024 seconds.
-  path: Assets/Characters/GRHHubworld_DonutGuy_Standing_Rigged 1.prefab
-  artifactKey: Guid(5752c9187e840394882346d910156ae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_DonutGuy_Standing_Rigged 1.prefab using Guid(5752c9187e840394882346d910156ae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdb0cbeb9e1178dad32b565a4eedbce6') in 0.010164 seconds
-  Import took 0.013803 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 15.859779 seconds.
-  path: Assets/Characters/GRHHubworld_DonutGuy_Standing_Rigged.prefab
-  artifactKey: Guid(5752c9187e840394882346d910156ae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_DonutGuy_Standing_Rigged.prefab using Guid(5752c9187e840394882346d910156ae9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab94dc818badfae8071d6e0e8fe08896') in 0.016065 seconds
-  Import took 0.020055 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.164447 seconds.
-  path: Assets/Characters/GRHHubworld_HotDog_Standing_Rigged 1.prefab
-  artifactKey: Guid(063d9c7ab9f294c4c94b7c7c37b8acfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_HotDog_Standing_Rigged 1.prefab using Guid(063d9c7ab9f294c4c94b7c7c37b8acfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b9e32c8102e05857352223cac9f2c9d') in 0.020378 seconds
-  Import took 0.024908 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000955 seconds.
-  path: Assets/Characters/GRHHubworld_HotDog_Standing_Rigged 1.prefab
-  artifactKey: Guid(063d9c7ab9f294c4c94b7c7c37b8acfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_HotDog_Standing_Rigged 1.prefab using Guid(063d9c7ab9f294c4c94b7c7c37b8acfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b9e32c8102e05857352223cac9f2c9d') in 0.016269 seconds
-  Import took 0.020262 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.046385 seconds.
-  path: Assets/Characters/GRHHubworld_HotDog_Standing_Rigged.prefab
-  artifactKey: Guid(063d9c7ab9f294c4c94b7c7c37b8acfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_HotDog_Standing_Rigged.prefab using Guid(063d9c7ab9f294c4c94b7c7c37b8acfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd755416d3aac23ef3226f862d691f5e9') in 0.017193 seconds
-  Import took 0.021075 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.635337 seconds.
-  path: Assets/Characters/GRHHubworld_PopcornGuy_Standing_Rigged 1.prefab
-  artifactKey: Guid(045d46ceebc74ea4f91d327088a95b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_PopcornGuy_Standing_Rigged 1.prefab using Guid(045d46ceebc74ea4f91d327088a95b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51f354939a9ddbbd3402aeaba73d95bc') in 0.019164 seconds
-  Import took 0.023156 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.001136 seconds.
-  path: Assets/Characters/GRHHubworld_PopcornGuy_Standing_Rigged 1.prefab
-  artifactKey: Guid(045d46ceebc74ea4f91d327088a95b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_PopcornGuy_Standing_Rigged 1.prefab using Guid(045d46ceebc74ea4f91d327088a95b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51f354939a9ddbbd3402aeaba73d95bc') in 0.010003 seconds
-  Import took 0.014440 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.588838 seconds.
-  path: Assets/Characters/GRHHubworld_PopcornGuy_Standing_Rigged.prefab
-  artifactKey: Guid(045d46ceebc74ea4f91d327088a95b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_PopcornGuy_Standing_Rigged.prefab using Guid(045d46ceebc74ea4f91d327088a95b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a9d68052c220b9a3ea13d613c7b6227') in 0.016268 seconds
-  Import took 0.020381 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.773300 seconds.
-  path: Assets/Characters/GRHHubworld_SirCorndog_Rigged 1.prefab
-  artifactKey: Guid(a680e9271297c44438bcbfb869db434c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_SirCorndog_Rigged 1.prefab using Guid(a680e9271297c44438bcbfb869db434c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '714cd59f97b5fc47e3ab417ea0be0a5e') in 0.019890 seconds
-  Import took 0.024598 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002759 seconds.
-  path: Assets/Characters/GRHHubworld_SirCorndog_Rigged 1.prefab
-  artifactKey: Guid(a680e9271297c44438bcbfb869db434c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_SirCorndog_Rigged 1.prefab using Guid(a680e9271297c44438bcbfb869db434c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '714cd59f97b5fc47e3ab417ea0be0a5e') in 0.014129 seconds
-  Import took 0.018783 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 44.169751 seconds.
-  path: Assets/Characters/GRHHubworld_SirCorndog_Standing_Rigged.prefab
-  artifactKey: Guid(a680e9271297c44438bcbfb869db434c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/GRHHubworld_SirCorndog_Standing_Rigged.prefab using Guid(a680e9271297c44438bcbfb869db434c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c6f44c9daba31dfcc84a13a85ffb4ed') in 0.016253 seconds
-  Import took 0.020803 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001293 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.877 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2128 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 102.8 MB.
-System memory in use after: 102.9 MB.
-
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2620.
-Total: 3.104400 ms (FindLiveObjects: 0.298200 ms CreateObjectMapping: 0.116800 ms MarkObjects: 2.600200 ms  DeleteObjects: 0.087900 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 280.033959 seconds.
-  path: Assets/Prefabs/GRHHubWorld_BigBalloon.prefab
-  artifactKey: Guid(18fc5b8a0e7ca8a4384f2715de227167) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/GRHHubWorld_BigBalloon.prefab using Guid(18fc5b8a0e7ca8a4384f2715de227167) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8666a7ee02793033b985ab8df38274cd') in 0.120856 seconds
-  Import took 0.134688 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.000983 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.41 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
-
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.839 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2128 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 103.7 MB.
-System memory in use after: 103.7 MB.
-
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2624.
-Total: 2.140300 ms (FindLiveObjects: 0.179100 ms CreateObjectMapping: 0.070900 ms MarkObjects: 1.817600 ms  DeleteObjects: 0.072000 ms)
+  Time since last request: 0.000311 seconds.
+  path: Assets/Scripts/GRHBalloonMG_AnimationController.cs
+  artifactKey: Guid(7fc4baed53fb8d849951ddadf9459c3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GRHBalloonMG_AnimationController.cs using Guid(7fc4baed53fb8d849951ddadf9459c3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83d4c30dd121d2673262ca959831bb11') in 0.006273 seconds
+  Import took 0.013398 seconds .
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //The balloon pop game manager extends from the base game manager class.
 public class GRHBalloonMG_GameManager : GRH_GameManager
@@ -16,7 +17,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
     int maxBalloonPumps, currentBalloonPumps;
 
-    GRHBalloonMG_AIController aiController; //Controls th AI's decisions (Added by Bryce)
+    GRHBalloonMG_AIController aiController; //Controls th AI's decisions [Added by Bryce]
+
+    [SerializeField] Text balloonPumpsLeftText; // The Display on the balloon of how many pumps are left [Added by Bryce]
 
     GRHBalloonMG_AnimationController animationController;
 
@@ -27,7 +30,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         mainCamera = Camera.main;
         animationController = FindObjectOfType<GRHBalloonMG_AnimationController>();
 
-        //Set the AI Controller (Added by Bryce)
+        //Set the AI Controller [Added by Bryce]
         aiController = GetComponent<GRHBalloonMG_AIController>();
 
         //Object initialization is called here to prevent object racing. We check for objects that aren't necessarily required, such as the camera controller.
@@ -95,9 +98,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             //AI #1 turn branch.
             case BalloonPopGameStates.AI1Turn:
 
-                //Access AI's pump amount and set it (Added by Bryce)
-                aiController.GenerateBalloonGuess(maxBalloonPumps - currentBalloonPumps);
-                PumpBalloon(aiController.GeneratePumpAmount());
+                //Access AI's pump amount and set it [Added by Bryce]
+                PumpBalloon(aiController.GeneratePumpAmount(maxBalloonPumps - currentBalloonPumps));
 
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
@@ -120,8 +122,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //AI #2 turn branch.
             case BalloonPopGameStates.AI2Turn:
-                aiController.GenerateBalloonGuess(maxBalloonPumps - currentBalloonPumps);
-                PumpBalloon(aiController.GeneratePumpAmount());
+
+                //Access AI's pump amount and set it [Added by Bryce]
+                PumpBalloon(aiController.GeneratePumpAmount(maxBalloonPumps - currentBalloonPumps));
 
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
@@ -144,8 +147,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //AI #3 turn branch.
             case BalloonPopGameStates.AI3Turn:
-                aiController.GenerateBalloonGuess(maxBalloonPumps - currentBalloonPumps);
-                PumpBalloon(aiController.GeneratePumpAmount());
+
+                //Access AI's pump amount and set it [Added by Bryce]
+                PumpBalloon(aiController.GeneratePumpAmount(maxBalloonPumps - currentBalloonPumps));
 
                 //Check at the end of the turn to see if the game has ended.
                 if (HasGameFinished())
