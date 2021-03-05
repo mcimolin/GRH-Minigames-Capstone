@@ -10,7 +10,6 @@ public class GRHGameSettings : MonoBehaviour
     // EASY, MEDIUM, HARD
     public string gameDifficulty;
 
-    // Tells if game shows pump count or not
     // Tells if game shows pump count or not (Balloon Minigame)
     public bool showPumpCount;
 
