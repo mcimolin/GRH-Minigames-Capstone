@@ -61,10 +61,8 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
             movementTime = 2f;
         }
 
-        //TEMP - Perform a starting movement to make sure things work.
-        //currentState = AnimationState.Idle;
-        MoveSingleCharacterToLocation(AnimationObject.Player, AnimationLocation.Pump);
-        //MoveDoubleCharacterToLocations(AnimationObject.Player, AnimationLocation.Pump, AnimationObject.AI3, AnimationLocation.PlayerLocation);
+        //Default to the idle state.
+        currentState = AnimationState.Idle;
     }
 
     void Update()
@@ -435,5 +433,17 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
         //Set the controller to do a duo movement.
         movementStartTime = Time.time;
         currentState = AnimationState.DuoMovement1;
+    }
+
+    //Return the time it takes for a single character movement, for game pace purposes.
+    internal float GetTimeForSingleMovement()
+    {
+        return movementTime * 3f;
+    }
+
+    //Return the time it takes for a double character movement, for game pace purposes.
+    internal float GetTimeForDoubleMovement()
+    {
+        return movementTime * 5f;
     }
 }
