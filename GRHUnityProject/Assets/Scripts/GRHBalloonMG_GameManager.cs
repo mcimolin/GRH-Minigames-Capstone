@@ -47,10 +47,18 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             activePlayers[i] = true;
         }
 
-        //Get the max balloon pumps from the difficulty selection script here. Using a temp value for now.
-        maxBalloonPumps = 10;
+        //Get the max balloon pumps from the difficulty settings script.
+        maxBalloonPumps = FindObjectOfType<GRHGameSettings>().pumpCount;
 
         currentBalloonPumps = 0;
+
+        //Update balloon pumps text.
+        balloonPumpsLeftText.text = "Remaining pumps: " + (maxBalloonPumps - currentBalloonPumps);
+
+        if (!FindObjectOfType<GRHGameSettings>().showPumpCount)
+        {
+            balloonPumpsLeftText.enabled = false;
+        }
 
         //After initialization, set the game state to the introduction, and start the main camera movements, if we have a main camera controller.
         currentGameState = BalloonPopGameStates.Introduction;
@@ -258,6 +266,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             KnockOutCurrentPlayer();
             currentBalloonPumps = 0;
         }
+
+        balloonPumpsLeftText.text = "Remaining pumps: " + (maxBalloonPumps - currentBalloonPumps);
 
         //When done pumping, the turn ends. We'll call EndTurn, and that will handle the next steps.
         StartCoroutine(EndTurn());
