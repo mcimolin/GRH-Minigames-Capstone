@@ -71,103 +71,29 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             //The introduction state will run from the game fading in, until the camera has finished setting the scene and we're ready to go.
             case BalloonPopGameStates.Introduction:
-
-
-                //Introduction has finished. Enter player turn state.
-                currentGameState = BalloonPopGameStates.PlayerTurn;
+                //Introduction has finished. Begin the first turn.
+                StartCoroutine(BeginFirstTurn());
                 break;
 
             //The player turn branch.
             case BalloonPopGameStates.PlayerTurn:
                 //We're advancing the game from the player turn, so no matter what, we're hiding the player UI.
                 HidePlayerUI();
-
-                //Check at the end of the turn to see if the game has ended.
-                if (HasGameFinished())
-                {
-                    //Game has finished. End the game.
-                    EndGame();
-                }
-                else
-                {
-                    //Game has not finished. Determine the next state, and enter it.
-                    currentGameState = DetermineNextActivePlayer(0);
-                }
                 break;
 
             //AI #1 turn branch.
             case BalloonPopGameStates.AI1Turn:
-
-                //Access AI's pump amount and set it [Added by Bryce]
                 PumpBalloon(aiController.GeneratePumpAmount(maxBalloonPumps - currentBalloonPumps));
-
-                //Check at the end of the turn to see if the game has ended.
-                if (HasGameFinished())
-                {
-                    //Game has finished. End the game.
-                    EndGame();
-                }
-                else
-                {
-                    //Game has not finished. Determine the next state, and enter it.
-                    currentGameState = DetermineNextActivePlayer(1);
-
-                    //If the game moves to the player's turn, we need to show the player UI.
-                    if (currentGameState == BalloonPopGameStates.PlayerTurn)
-                    {
-                        ShowPlayerUI();
-                    }
-                }
                 break;
 
             //AI #2 turn branch.
             case BalloonPopGameStates.AI2Turn:
-
-                //Access AI's pump amount and set it [Added by Bryce]
                 PumpBalloon(aiController.GeneratePumpAmount(maxBalloonPumps - currentBalloonPumps));
-
-                //Check at the end of the turn to see if the game has ended.
-                if (HasGameFinished())
-                {
-                    //Game has finished. End the game.
-                    EndGame();
-                }
-                else
-                {
-                    //Game has not finished. Determine the next state, and enter it.
-                    currentGameState = DetermineNextActivePlayer(2);
-
-                    //If the game moves to the player's turn, we need to show the player UI.
-                    if (currentGameState == BalloonPopGameStates.PlayerTurn)
-                    {
-                        ShowPlayerUI();
-                    }
-                }
                 break;
 
             //AI #3 turn branch.
             case BalloonPopGameStates.AI3Turn:
-
-                //Access AI's pump amount and set it [Added by Bryce]
                 PumpBalloon(aiController.GeneratePumpAmount(maxBalloonPumps - currentBalloonPumps));
-
-                //Check at the end of the turn to see if the game has ended.
-                if (HasGameFinished())
-                {
-                    //Game has finished. End the game.
-                    EndGame();
-                }
-                else
-                {
-                    //Game has not finished. Determine the next state, and enter it.
-                    currentGameState = DetermineNextActivePlayer(3);
-
-                    //If the game moves to the player's turn, we need to show the player UI.
-                    if (currentGameState == BalloonPopGameStates.PlayerTurn)
-                    {
-                        ShowPlayerUI();
-                    }
-                }
                 break;
 
             //The game end state will show the end of game visuals (ie. You Lost! or You Won!), and will run until the hub is loaded afterwards.
@@ -314,8 +240,16 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //Add a number of pumps to the balloon. Method is public to allow UI buttons to use it.
     public void PumpBalloon(int numberOfPumps)
     {
+        //If this is the player pumping the balloon, hide the UI to keep them from mashing the button.
+        if (currentGameState == BalloonPopGameStates.PlayerTurn)
+        {
+            HidePlayerUI();
+        }
+
         //Add the pumps.
         currentBalloonPumps += numberOfPumps;
+
+        Debug.Log(currentBalloonPumps);
 
         //Are we at or above the maximum number of pumps?
         if (currentBalloonPumps >= maxBalloonPumps)
@@ -325,10 +259,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             currentBalloonPumps = 0;
         }
 
-        //The animation controller should handle when to advance the game, so we can have animations play out before moving to the next player.
-        //Therefore, advance game won't be called from here.
-        Debug.Log(currentBalloonPumps);
-        AdvanceGame();
+        //When done pumping, the turn ends. We'll call EndTurn, and that will handle the next steps.
+        StartCoroutine(EndTurn());
     }
 
     //Method to display end of game visuals/animations.
@@ -337,5 +269,179 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         Debug.Log("Game is ending.");
         currentGameState = BalloonPopGameStates.GameEnd;
         AdvanceGame();
+    }
+
+    //End of turn function. Determines whether the game has ended, the animation to play, and who the next player is.
+    IEnumerator EndTurn()
+    {
+        //Set up the variables for animations. We default these to prevent compiler errors from the switch statements not liking us handling every case.
+        GRHBalloonMG_AnimationController.AnimationObject target1 = GRHBalloonMG_AnimationController.AnimationObject.Player, target2 = GRHBalloonMG_AnimationController.AnimationObject.Player;
+        GRHBalloonMG_AnimationController.AnimationLocation destination1 = GRHBalloonMG_AnimationController.AnimationLocation.Pump, destination2 = GRHBalloonMG_AnimationController.AnimationLocation.Pump;
+
+        //First off, has the game ended?
+        if (HasGameFinished())
+        {
+            //It has. That means the character currently at the pump needs to be taken away as a single movement. Determine the character to be moved.
+            //We can find this by whose turn it currently is.
+            switch(currentGameState)
+            {
+                case BalloonPopGameStates.PlayerTurn:
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.Player;
+                    break;
+
+                case BalloonPopGameStates.AI1Turn:
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.AI1;
+                    break;
+
+                case BalloonPopGameStates.AI2Turn:
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.AI2;
+                    break;
+
+                case BalloonPopGameStates.AI3Turn:
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.AI3;
+                    break;
+
+                default:
+                    Debug.Log("Game manager's end turn is calling for a non-existent player.");
+                    break;
+            }
+
+            //The destination will be the same regardless of who it is.
+            destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
+
+            //Now, start the animation, and wait for the right amount of time.
+            animationController.MoveSingleCharacterToLocation(target1, destination1);
+            yield return new WaitForSeconds(animationController.GetTimeForSingleMovement());
+
+            //Now, we call EndGame.
+            EndGame();
+        } else
+        {
+            //Determine the first target and their destination.
+            switch(currentGameState)
+            {
+                case BalloonPopGameStates.PlayerTurn:
+                    //If we're in the player state, and the player was knocked out, it would be picked up in the HasGameEnded check earlier.
+                    //Therefore, if it's the player's turn, we're returning them to their position.
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.Player;
+                    destination1 = GRHBalloonMG_AnimationController.AnimationLocation.PlayerLocation;
+
+                    //Determine the next game state.
+                    currentGameState = DetermineNextActivePlayer(0);
+                    break;
+
+                case BalloonPopGameStates.AI1Turn:
+                    //First target is AI 1.
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.AI1;
+
+                    if (activePlayers[1])
+                    {
+                        //AI 1 is still active. Return them to their normal location.
+                        destination1 = GRHBalloonMG_AnimationController.AnimationLocation.AI1Location;
+                    } else
+                    {
+                        //AI 1 was knocked out. Put them off the screen.
+                        destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
+                    }
+
+                    //Determine the next game state.
+                    currentGameState = DetermineNextActivePlayer(1);
+                    break;
+
+                case BalloonPopGameStates.AI2Turn:
+                    //First target is AI 2.
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.AI2;
+
+                    if (activePlayers[2])
+                    {
+                        //AI 2 is still active. Return them to their normal location.
+                        destination1 = GRHBalloonMG_AnimationController.AnimationLocation.AI2Location;
+                    }
+                    else
+                    {
+                        //AI 2 was knocked out. Put them off the screen.
+                        destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
+                    }
+
+                    //Determine the next game state.
+                    currentGameState = DetermineNextActivePlayer(2);
+                    break;
+
+                case BalloonPopGameStates.AI3Turn:
+                    //First target is AI 3.
+                    target1 = GRHBalloonMG_AnimationController.AnimationObject.AI3;
+
+                    if (activePlayers[3])
+                    {
+                        //AI 3 is still active. Return them to their normal location.
+                        destination1 = GRHBalloonMG_AnimationController.AnimationLocation.AI3Location;
+                    }
+                    else
+                    {
+                        //AI 3 was knocked out. Put them off the screen.
+                        destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
+                    }
+
+                    //Determine the next game state.
+                    currentGameState = DetermineNextActivePlayer(3);
+                    break;
+
+                default:
+                    Debug.Log("Game manager's end turn is checking a non-existent player.");
+                    break;
+            }
+
+            //Now, using our new game state, determine the second target.
+            switch(currentGameState)
+            {
+                case BalloonPopGameStates.PlayerTurn:
+                    target2 = GRHBalloonMG_AnimationController.AnimationObject.Player;
+                    break;
+
+                case BalloonPopGameStates.AI1Turn:
+                    target2 = GRHBalloonMG_AnimationController.AnimationObject.AI1;
+                    break;
+
+                case BalloonPopGameStates.AI2Turn:
+                    target2 = GRHBalloonMG_AnimationController.AnimationObject.AI2;
+                    break;
+
+                case BalloonPopGameStates.AI3Turn:
+                    target2 = GRHBalloonMG_AnimationController.AnimationObject.AI3;
+                    break;
+
+                default:
+                    Debug.Log("Game manager's end turn is checking a non-existent player.");
+                    break;
+            }
+
+            //The second destination is always the same.
+            destination2 = GRHBalloonMG_AnimationController.AnimationLocation.Pump;
+
+            //Now, start the animation, and wait the proper amount of time.
+            animationController.MoveDoubleCharacterToLocations(target1, destination1, target2, destination2);
+            yield return new WaitForSeconds(animationController.GetTimeForDoubleMovement());
+
+            //Animation has played. If this is the player turn, show the UI. Otherwise, advance the game.
+            if (currentGameState == BalloonPopGameStates.PlayerTurn)
+            {
+                ShowPlayerUI();
+            } else
+            {
+                AdvanceGame();
+            }
+        }
+    }
+
+    //Handle initial turn.
+    IEnumerator BeginFirstTurn()
+    {
+        //Move the player to the pump.
+        animationController.MoveSingleCharacterToLocation(GRHBalloonMG_AnimationController.AnimationObject.Player, GRHBalloonMG_AnimationController.AnimationLocation.Pump);
+        yield return new WaitForSeconds(animationController.GetTimeForSingleMovement());
+
+        //Set the proper game state, and show the player UI.
+        currentGameState = BalloonPopGameStates.PlayerTurn;
+        ShowPlayerUI();
     }
 }
