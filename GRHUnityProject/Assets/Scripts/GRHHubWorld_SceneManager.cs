@@ -8,7 +8,8 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     // Initial framework - Adam
 
     [SerializeField] private GameObject difficultySettingPanel;
-
+    [SerializeField] private Dropdown characterSelector;
+    [SerializeField] private InputField pumpCount;
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
@@ -27,8 +28,14 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         hardButton.enabled = false;
     }
 
+    private void Start()
+    {
+        //Sets the defaults for balloon minigame difficulty panel
+        pumpCount.text = gameSettings.pumpCount.ToString();
+    }
+
     // Button to start balloon game
-    public void StartBallonGame()
+    public void StartBalloonGame()
     {
         difficultySettingPanel.SetActive(true);
         gameSelected = "GRHBalloonMG_Scene";
@@ -66,6 +73,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         Debug.Log("Show pump count: " + gameSettings.showPumpCount);
     }
 
+    //Sets whether the amount of pumps left are displayed on the balloon (Balloon Game)
     public void TogglePumpCount()
     {
         if (!gameSettings.showPumpCount)
@@ -78,39 +86,45 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         }
     }
 
-    public void ToggleCharacterSelect(int selectedCharacter)
+    //Sets tpump count amount for the Balloon Minigame
+    public void SetPumpCount()
     {
-        switch (selectedCharacter)
+        if (string.IsNullOrEmpty(pumpCount.text))
         {
-            // Popcorn #1
-            case 1:
-                gameSettings.selectedCharacter = 1;
-                break;
-            // Corndog #2
-            case 2:
-                gameSettings.selectedCharacter = 2;
-                break;
-            // Hotdog #3
-            case 3:
-                gameSettings.selectedCharacter = 3;
-                break;
-            // Donut #4
-            case 4:
-                gameSettings.selectedCharacter = 4;
-                break;
-            // Cotton Candy #5
-            case 5:
-                gameSettings.selectedCharacter = 5;
-                break;
-            // Use Popcorn by default
-            default:
-                gameSettings.selectedCharacter = 1;
-                break;
+            pumpCount.text = "0";
         }
 
-        easyButton.enabled = true;
-        mediumButton.enabled = true;
-        hardButton.enabled = true;
+        try
+        {
+            if (int.Parse(pumpCount.text) >= 15) // The minimum amount of pumps entered is met
+            {
+                pumpCount.textComponent.color = Color.black;
+                gameSettings.pumpCount = int.Parse(pumpCount.text);
+                easyButton.enabled = true;
+                mediumButton.enabled = true;
+                hardButton.enabled = true;
+            }
+            else // The minimum amount is not met
+            {
+                pumpCount.textComponent.color = Color.red;
+
+                easyButton.enabled = false;
+                mediumButton.enabled = false;
+                hardButton.enabled = false;
+            }
+        }
+        catch (Exception)
+        {
+            Debug.LogError("Error in parsing integer: No value to parse.");
+        }
+        
+        
+    }
+
+    // Sets the player's character preference [Added by Bryce]
+    public void CharacterSelection()
+    {
+        gameSettings.selectedCharacter = characterSelector.value;
     }
 
     // Remove all but "Application.Quit();" before building as it will crash if left in during build

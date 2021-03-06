@@ -13,6 +13,9 @@ public class GRHGameSettings : MonoBehaviour
     // Tells if game shows pump count or not (Balloon Minigame)
     public bool showPumpCount;
 
+    // The amount of pumps the balloon will start with (Balloon Minigame)
+    public int pumpCount;
+
     // Tells which character the player will play in game, default being "Popcorn" [Added by Adam]
     public int selectedCharacter;
 
@@ -35,5 +38,6 @@ public class GRHGameSettings : MonoBehaviour
     private void Start()
     {
         showPumpCount = true;
+        pumpCount = 15;
     }
 }
