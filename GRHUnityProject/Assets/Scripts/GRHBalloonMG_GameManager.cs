@@ -15,9 +15,13 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //0 - Player / 1 - AI 1 / 2 - AI 2 / 3 - AI 3
     bool[] activePlayers = new bool[4];
 
+    [SerializeField] GameObject[] charactersInScene, characterPosition; //The Characters in the scene and their grab positions
+
+    int selectedCharacter; //The character the player selected to play as
+
     int maxBalloonPumps, currentBalloonPumps;
 
-    GRHBalloonMG_AIController aiController; //Controls th AI's decisions [Added by Bryce]
+    GRHBalloonMG_AIController aiController; //Controls the AI's decisions [Added by Bryce]
 
     [SerializeField] Text balloonPumpsLeftText; // The Display on the balloon of how many pumps are left [Added by Bryce]
 
@@ -39,6 +43,17 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             mainCamera.GetComponent<GRHCameraController>().Initialize();
         }
 
+        //Sets current player character selection
+        selectedCharacter = GRHGameSettings.gameSettings.selectedCharacter;
+
+        //Sets the Player's selected character & position
+        animationController.SetCharacterAnimationPosition(GRHBalloonMG_AnimationController.AnimationObject.Player, charactersInScene[selectedCharacter].GetComponent<Animator>(), charactersInScene[selectedCharacter], characterPosition[selectedCharacter]);
+
+
+        // Set the rest of the AI's active states and positions
+        SetAIActiveState();
+
+        //Initializes Settings in the Animation Controller.
         animationController.Initialize();
 
         //Set all players to active.
@@ -57,7 +72,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         if (!FindObjectOfType<GRHGameSettings>().showPumpCount)
         {
-            balloonPumpsLeftText.enabled = false;
+           balloonPumpsLeftText.enabled = false;
         }
 
         //After initialization, set the game state to the introduction, and start the main camera movements, if we have a main camera controller.
@@ -217,7 +232,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     internal void KnockOutCurrentPlayer()
     {
         //Set active to false depending on the current state.
-        switch(currentGameState)
+        switch (currentGameState)
         {
             case BalloonPopGameStates.PlayerTurn:
                 Debug.Log("Knocking out Player.");
@@ -262,15 +277,18 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Are we at or above the maximum number of pumps?
         if (currentBalloonPumps >= maxBalloonPumps)
         {
-            //We are. Knock out the current player.
+            //We are. Knocks out the current player
             KnockOutCurrentPlayer();
+            
+            //Pops the balloon and resets current pumps.
+            StartCoroutine(DoBalloonPopAnimation());
             currentBalloonPumps = 0;
         }
 
         balloonPumpsLeftText.text = "Remaining pumps: " + (maxBalloonPumps - currentBalloonPumps);
 
         //When done pumping, the turn ends. We'll call EndTurn, and that will handle the next steps.
-        StartCoroutine(EndTurn());
+        StartCoroutine(DoPumpAnimation(numberOfPumps));
     }
 
     //Method to display end of game visuals/animations.
@@ -279,6 +297,58 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         Debug.Log("Game is ending.");
         currentGameState = BalloonPopGameStates.GameEnd;
         AdvanceGame();
+    }
+
+    //Pump Animation function. Controls the current characters animation synced with the animation of the pump handle.
+    IEnumerator DoPumpAnimation(int time)
+    {
+        //Initializes target for animation to avoid null values being past through. Defaults to the Player.
+        GRHBalloonMG_AnimationController.AnimationObject target = GRHBalloonMG_AnimationController.AnimationObject.Player;
+
+        //Sets the target to the current character who will be pumping the balloon.
+        switch (currentGameState)
+        {
+            case BalloonPopGameStates.PlayerTurn:
+                target = GRHBalloonMG_AnimationController.AnimationObject.Player;
+                break;
+            case BalloonPopGameStates.AI1Turn:
+                target = GRHBalloonMG_AnimationController.AnimationObject.AI1;
+                break;
+            case BalloonPopGameStates.AI2Turn:
+                target = GRHBalloonMG_AnimationController.AnimationObject.AI2;
+                break;
+            case BalloonPopGameStates.AI3Turn:
+                target = GRHBalloonMG_AnimationController.AnimationObject.AI3;
+                break;
+            default:
+                break;
+        }
+
+        //Begins the pump animation sequence for the target character and their state, and the pumps animation state.
+        animationController.ControlPumpAnimations(target, true, 2);
+
+        //Starts the balloon inflation animation
+        StartCoroutine(animationController.IncreaseSizeOfBalloon(maxBalloonPumps, time));
+
+        yield return new WaitForSeconds(time - 0.17f);
+
+        //Stops the pump animation sequence for the target character and their state, and the pumps animation state.
+        animationController.ControlPumpAnimations(target, false, 0);
+
+        StartCoroutine(EndTurn());
+
+    }
+
+    //Balloon pop animation function. Controls the timing of the balloon popping sequence.
+    IEnumerator DoBalloonPopAnimation()
+    {
+        //Starts the balloon pop animation sequence
+        animationController.SetBalloonState(true, 3);
+
+        yield return new WaitForSeconds(animationController.GetTimeForBalloonPop());
+
+        //Ends the balloon pop animation sequence
+        animationController.SetBalloonState(false, 0);
     }
 
     //End of turn function. Determines whether the game has ended, the animation to play, and who the next player is.
@@ -453,5 +523,33 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Set the proper game state, and show the player UI.
         currentGameState = BalloonPopGameStates.PlayerTurn;
         ShowPlayerUI();
+    }
+
+    //Sets the active AI's in the scene (Max 3 out of the 4 characters)
+    private void SetAIActiveState()
+    {
+        //The character that will be ignored
+        int ignoreCharacter = Random.Range(0, 5);
+
+        //Select random character that isn't the player's character
+        while (ignoreCharacter == selectedCharacter)
+        {
+            ignoreCharacter = Random.Range(0, 5);
+        }
+
+        //Disable the character & location that is to be ignored
+        charactersInScene[ignoreCharacter].SetActive(false);
+        characterPosition[ignoreCharacter].SetActive(false);
+
+        //Set All characters that are enabled in the scene to their respective positions
+        int AIToSet = 1;
+        for (int i = 0; i < charactersInScene.Length; i++)
+        {
+            if (i != ignoreCharacter && i != selectedCharacter)
+            {
+                animationController.SetCharacterAnimationPosition((GRHBalloonMG_AnimationController.AnimationObject)AIToSet, charactersInScene[i].GetComponent<Animator>(), charactersInScene[i], characterPosition[i]);
+                AIToSet++;
+            }
+        }
     }
 }

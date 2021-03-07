@@ -7,14 +7,10 @@ public class GRHBalloonMG_AIController : MonoBehaviour
 {
     // Initial framework - Bryce
 
-    enum AIDifficulty
-    {
-        EASY,
-        MEDIUM,
-        HARD
-    }
+    enum AIDifficulty { EASY, MEDIUM, HARD }
 
-    AIDifficulty aiDifficulty; // Determines the AI's decisions when guessing how many pumps are left and how many pumps to do.
+    // Determines the AI's decisions when guessing how many pumps are left and how many pumps to do. Defaults to Easy.
+    AIDifficulty aiDifficulty = AIDifficulty.EASY; 
 
     void Start()
     {
@@ -26,7 +22,7 @@ public class GRHBalloonMG_AIController : MonoBehaviour
         }
         catch (Exception)
         {
-            Debug.LogError($"Parse Error: failed to load AI difficulty \"{GRHGameSettings.gameSettings.gameDifficulty}\"");
+            Debug.LogError($"Parse Error: failed to load AI difficulty.");
         }
     }
 

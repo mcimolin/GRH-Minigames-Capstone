@@ -13,6 +13,22 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
     [SerializeField]
     GameObject pumpLocation = null, playerLocation = null, AI1Location = null, AI2Location = null, AI3Location = null, startingLocation = null;
 
+    //The animator for each of the characters. Defaults all to null;
+    [SerializeField]
+    Animator playerAnimator = null, AI1Animator = null, AI2Animator = null, AI3Animator = null;
+
+    //The animator on the balloon, for idle / pop toggling. Default to null.
+    [SerializeField]
+    Animator balloonAnimator = null;
+
+    //The animation clips for balloon inflation and popping. Default to null
+    [SerializeField]
+    AnimationClip balloonInflationClip = null, balloonPopClip = null;
+
+    //The animator on the pump, for idle / pump toggling. Default to null.
+    [SerializeField]
+    Animator pumpAnimator;
+
     //The animator on the hand, for open / closed toggling. Again, defaulted to null.
     [SerializeField]
     Animator handAnimator = null;
@@ -63,6 +79,9 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
 
         //Default to the idle state.
         currentState = AnimationState.Idle;
+
+        //Set the balloons clip speed to zero to pause animation on startup
+        balloonAnimator.speed = 0;
     }
 
     void Update()
@@ -243,6 +262,98 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
                 Debug.Log("Animation controller in an unrecognized state.");
                 break;
         }
+    }
+
+    //Sets the location of the character's position, their animator and the character's object.
+    internal void SetCharacterAnimationPosition(AnimationObject animCharacter, Animator animator, GameObject character, GameObject location)
+    {
+        switch (animCharacter)
+        {
+            case AnimationObject.Player:
+                playerObject = character;
+                playerAnimator = animator;
+                playerLocation = location;
+                break;
+            case AnimationObject.AI1:
+                AI1Object = character;
+                AI1Animator = animator;
+                AI1Location = location;
+                break;
+            case AnimationObject.AI2:
+                AI2Object = character;
+                AI2Animator = animator;
+                AI2Location = location;
+                break;
+            case AnimationObject.AI3:
+                AI3Object = character;
+                AI3Animator = animator;
+                AI3Location = location;
+                break;
+            default:
+                Debug.LogError("Error: No character was selected to be saved.");
+                break;
+        }
+    }
+
+    //Controls the current character's pump animation state and the pump handles animation state
+    internal void ControlPumpAnimations(AnimationObject character, bool pumpState, int characterState)
+    {
+        //Starts the animations for pump movement and characters pump animation
+        pumpAnimator.SetBool("Pump", pumpState);
+        switch (character)
+        {
+            case AnimationObject.Player:
+                playerAnimator.SetInteger("Character State", characterState);
+                break;
+            case AnimationObject.AI1:
+                AI1Animator.SetInteger("Character State", characterState);
+                break;
+            case AnimationObject.AI2:
+                AI2Animator.SetInteger("Character State", characterState);
+                break;
+            case AnimationObject.AI3:
+                AI3Animator.SetInteger("Character State", characterState);
+                break;
+            default:
+                break;
+        }
+    }
+
+    //Balloon's State: true = Popping / false = Inflating (or idle)
+    internal void SetBalloonState(bool state, float speed)
+    {
+        balloonAnimator.speed = speed;
+        Debug.Log(balloonAnimator.speed);
+
+        if (state)
+        {
+            //balloonSprite.sprite = balloonPopSprite;
+            balloonAnimator.Play("Balloon_Pop");
+        }
+        else
+        {
+            //balloonSprite.sprite = balloonInflationSprite;
+            balloonAnimator.Play("GRHBalloonMG_BigBalloon");
+        }
+
+    }
+
+    //Returns how long the pop animation plays
+    internal float GetTimeForBalloonPop()
+    {
+        return balloonPopClip.length;
+    }
+
+    //Increases the size of the balloon
+    internal IEnumerator IncreaseSizeOfBalloon(int maxPumps, int time)
+    {
+        //Set the speed of the balloon animator to match the amount of pumps required.
+        balloonAnimator.speed = balloonInflationClip.length / maxPumps;
+
+        yield return new WaitForSeconds(time);
+
+        //Sets the speed to zero to pause animation.
+        balloonAnimator.speed = 0;
     }
 
     internal void MoveSingleCharacterToLocation(AnimationObject objectTarget, AnimationLocation targetLocation)
