@@ -343,12 +343,12 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     IEnumerator DoBalloonPopAnimation()
     {
         //Starts the balloon pop animation sequence
-        animationController.SetBalloonState(true, 3);
+        animationController.SetBalloonState(true);
 
         yield return new WaitForSeconds(animationController.GetTimeForBalloonPop());
 
         //Ends the balloon pop animation sequence
-        animationController.SetBalloonState(false, 0);
+        animationController.SetBalloonState(false);
     }
 
     //End of turn function. Determines whether the game has ended, the animation to play, and who the next player is.

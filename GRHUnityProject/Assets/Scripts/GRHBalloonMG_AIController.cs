@@ -42,7 +42,7 @@ public class GRHBalloonMG_AIController : MonoBehaviour
             /* Medium AI will choose a random pump between 1 and 3 */
             case AIDifficulty.MEDIUM:
 
-                pumpAmount = UnityEngine.Random.Range(1, 3);
+                pumpAmount = UnityEngine.Random.Range(1, 4);
                 break;
 
             /*Hard AI will strategize and try to get players or other AI's out */
@@ -50,7 +50,7 @@ public class GRHBalloonMG_AIController : MonoBehaviour
 
                 if (pumpsLeft > 4) // The AI cannot cause an opponent to lose on their turn
                 {
-                    pumpAmount = UnityEngine.Random.Range(1, 3);
+                    pumpAmount = UnityEngine.Random.Range(1, 4);
                 }
                 else // The AI can cause an opponent to lose on their turn
                 {

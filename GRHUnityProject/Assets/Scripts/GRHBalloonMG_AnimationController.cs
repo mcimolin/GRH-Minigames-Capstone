@@ -17,9 +17,13 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
     [SerializeField]
     Animator playerAnimator = null, AI1Animator = null, AI2Animator = null, AI3Animator = null;
 
-    //The animator on the balloon, for idle / pop toggling. Default to null.
+    //The animators for the balloon, for idle / pop toggling. Defaults to null.
     [SerializeField]
-    Animator balloonAnimator = null;
+    Animator balloonAnimator = null, poppingBalloonAnimator = null;
+
+    //The gameobjects for the balloon states. Defaults to null.
+    [SerializeField]
+    GameObject idleBalloon = null, poppingBalloon = null;
 
     //The animation clips for balloon inflation and popping. Default to null
     [SerializeField]
@@ -320,20 +324,20 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
     }
 
     //Balloon's State: true = Popping / false = Inflating (or idle)
-    internal void SetBalloonState(bool state, float speed)
+    internal void SetBalloonState(bool state)
     {
-        balloonAnimator.speed = speed;
-        Debug.Log(balloonAnimator.speed);
-
         if (state)
         {
-            //balloonSprite.sprite = balloonPopSprite;
+            poppingBalloon.SetActive(true);
+            idleBalloon.SetActive(false);
+            poppingBalloonAnimator.Play("Balloon_Pop");
             balloonAnimator.Play("Balloon_Pop");
         }
         else
         {
-            //balloonSprite.sprite = balloonInflationSprite;
-            balloonAnimator.Play("GRHBalloonMG_BigBalloon");
+            balloonAnimator.Play("GRHBalloonMG_BigBalloon"); //Plays if not already playing
+            poppingBalloon.SetActive(false);
+            idleBalloon.SetActive(true);
         }
 
     }
