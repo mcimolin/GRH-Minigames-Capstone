@@ -68,7 +68,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         currentBalloonPumps = 0;
 
         //Update balloon pumps text.
-        balloonPumpsLeftText.text = "Remaining pumps: " + (maxBalloonPumps - currentBalloonPumps);
+        balloonPumpsLeftText.text = $"{maxBalloonPumps}";
 
         if (!FindObjectOfType<GRHGameSettings>().showPumpCount)
         {
@@ -281,11 +281,11 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             KnockOutCurrentPlayer();
             
             //Pops the balloon and resets current pumps.
-            StartCoroutine(DoBalloonPopAnimation());
+            StartCoroutine(DoBalloonPopAnimation(numberOfPumps));
             currentBalloonPumps = 0;
         }
 
-        balloonPumpsLeftText.text = "Remaining pumps: " + (maxBalloonPumps - currentBalloonPumps);
+        //balloonPumpsLeftText.text = $"{maxBalloonPumps}";
 
         //When done pumping, the turn ends. We'll call EndTurn, and that will handle the next steps.
         StartCoroutine(DoPumpAnimation(numberOfPumps));
@@ -340,8 +340,11 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     }
 
     //Balloon pop animation function. Controls the timing of the balloon popping sequence.
-    IEnumerator DoBalloonPopAnimation()
+    IEnumerator DoBalloonPopAnimation(int time)
     {
+        //Waits for the pump animation sequence to complete before popping
+        yield return new WaitForSeconds(time);
+
         //Starts the balloon pop animation sequence
         animationController.SetBalloonState(true);
 
