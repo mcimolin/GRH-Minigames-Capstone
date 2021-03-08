@@ -33,6 +33,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     string endMessage; //The end message displayed to the user ie. (you win!/you lose) [Added by Zane]
 
     GRHBalloonMG_AnimationController animationController;
+    GRHBalloonMG_SoundManager soundManager;
 
     //Game scene initialization.
     void Start()
@@ -40,8 +41,11 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Get the main camera / animation controller.
         mainCamera = Camera.main;
         animationController = FindObjectOfType<GRHBalloonMG_AnimationController>();
+        
+        //Set the sound manager.
+        soundManager = FindObjectOfType<GRHBalloonMG_SoundManager>();
 
-        //Set the AI Controller [Added by Bryce]
+        //Set the AI Controller. [Added by Bryce]
         aiController = GetComponent<GRHBalloonMG_AIController>();
 
         //Object initialization is called here to prevent object racing. We check for objects that aren't necessarily required, such as the camera controller.
@@ -83,6 +87,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
            balloonPumpsLeftText.enabled = false;
         }
+
+        //Start the music for the game.
+        soundManager.BalloonMGGameMusic();
 
         //After initialization, set the game state to the introduction, and start the main camera movements, if we have a main camera controller.
         currentGameState = BalloonPopGameStates.Introduction;
@@ -162,6 +169,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //If there's still an AI left, check if the player's still active.
         if (!gameFinished && activePlayers[0] == false)
         {
+            StartCoroutine(PlayCrunchSoundEffect());
             gameFinished = true;
         }
 
@@ -302,6 +310,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         //balloonPumpsLeftText.text = $"{maxBalloonPumps}";
 
+        //Plays the balloon pump sound effect
+        StartCoroutine(PlayPumpSoundEffect(numberOfPumps));
+
         //When done pumping, the turn ends. We'll call EndTurn, and that will handle the next steps.
         StartCoroutine(DoPumpAnimation(numberOfPumps));
     }
@@ -312,6 +323,35 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         Debug.Log("Game is ending.");
         currentGameState = BalloonPopGameStates.GameEnd;
         AdvanceGame();
+    }
+
+    IEnumerator PlayCrunchSoundEffect()
+    {
+        yield return new WaitForSeconds(2);
+        soundManager.CrunchSound();
+    }
+
+    IEnumerator PlayPumpSoundEffect(int pumps)
+    {
+        if (pumps != 0)
+        {
+            pumps -= 1;
+            soundManager.PumpSound();
+            yield return new WaitForSeconds(0.9f);
+            
+            if (pumps != 0)
+            {
+                pumps -= 1;
+                soundManager.PumpSound();
+                yield return new WaitForSeconds(0.9f);
+                
+                if (pumps != 0)
+                {
+                    soundManager.PumpSound();
+                    yield return new WaitForSeconds(0.9f);
+                }
+            }
+        }
     }
 
     //Pump Animation function. Controls the current characters animation synced with the animation of the pump handle.
@@ -363,7 +403,12 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Starts the balloon pop animation sequence
         animationController.SetBalloonState(true);
 
-        yield return new WaitForSeconds(animationController.GetTimeForBalloonPop());
+        yield return new WaitForSeconds(animationController.GetTimeForBalloonPop() - 0.25f);
+
+        //Plays the sound effect (wait times above and below to offset pop animation delay)
+        soundManager.PopSound();
+
+        yield return new WaitForSeconds(0.25f);
 
         //Ends the balloon pop animation sequence
         animationController.SetBalloonState(false);
@@ -444,6 +489,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                     {
                         //AI 1 was knocked out. Put them off the screen.
                         destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
+                        StartCoroutine(PlayCrunchSoundEffect());
                     }
 
                     //Determine the next game state.
@@ -463,6 +509,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                     {
                         //AI 2 was knocked out. Put them off the screen.
                         destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
+                        StartCoroutine(PlayCrunchSoundEffect());
                     }
 
                     //Determine the next game state.
@@ -482,6 +529,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                     {
                         //AI 3 was knocked out. Put them off the screen.
                         destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
+                        StartCoroutine(PlayCrunchSoundEffect());
                     }
 
                     //Determine the next game state.
@@ -584,6 +632,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //Sends the user back to the hub world when the game ends
     public void QuitGame()
     {
+        soundManager.balloonMG_Audio[1].Stop();
         SceneManager.LoadScene("GRHHubWorld_SceneManager");
     }
 }

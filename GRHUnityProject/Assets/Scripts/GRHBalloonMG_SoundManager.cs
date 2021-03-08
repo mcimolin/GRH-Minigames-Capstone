@@ -13,7 +13,7 @@ public class GRHBalloonMG_SoundManager : MonoBehaviour
     * 1  - BalloonMG Game Music
     * 2  - Air Pump 
     * 3  - Balloon Pop
-    * 4  - 
+    * 4  - Crunch Sound
     * 5  - 
     * 6  - 
     * 7  - 
@@ -56,5 +56,11 @@ public class GRHBalloonMG_SoundManager : MonoBehaviour
     {
         // Play "pop" sound clip
         balloonMG_Audio[3].Play();
+    }
+
+    public void CrunchSound()
+    {
+        // Play "cromnch" sound clip
+        balloonMG_Audio[4].Play();
     }
 }
