@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //The balloon pop game manager extends from the base game manager class.
@@ -24,6 +25,12 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     GRHBalloonMG_AIController aiController; //Controls the AI's decisions [Added by Bryce]
 
     [SerializeField] Text balloonPumpsLeftText; // The Display on the balloon of how many pumps are left [Added by Bryce]
+
+    [SerializeField] GameObject endScreen, endScreenText; // Panel and text feild that displays the end game message to the user [Added by Zane]
+
+    [SerializeField] GameObject pumpButton1, pumpButton2, pumpButton3; //players pump buttons [Added by Zane]
+
+    string endMessage; //The end message displayed to the user ie. (you win!/you lose) [Added by Zane]
 
     GRHBalloonMG_AnimationController animationController;
 
@@ -66,6 +73,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         maxBalloonPumps = FindObjectOfType<GRHGameSettings>().pumpCount;
 
         currentBalloonPumps = 0;
+
+        endMessage = "";
 
         //Update balloon pumps text.
         balloonPumpsLeftText.text = $"{maxBalloonPumps}";
@@ -121,7 +130,13 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //The game end state will show the end of game visuals (ie. You Lost! or You Won!), and will run until the hub is loaded afterwards.
             case BalloonPopGameStates.GameEnd:
-
+                Debug.Log("Displaying End Screen");
+                ShowPlayerUI();
+                endScreen.SetActive(true);
+                pumpButton1.SetActive(false);
+                pumpButton2.SetActive(false);
+                pumpButton3.SetActive(false);
+                endScreenText.GetComponent<Text>().text = endMessage;
                 break;
 
             //Default branch where we should never end up.
@@ -370,18 +385,22 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             {
                 case BalloonPopGameStates.PlayerTurn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.Player;
+                    endMessage = "You Lose";
                     break;
 
                 case BalloonPopGameStates.AI1Turn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.AI1;
+                    endMessage = "You Win";
                     break;
 
                 case BalloonPopGameStates.AI2Turn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.AI2;
+                    endMessage = "You Win";
                     break;
 
                 case BalloonPopGameStates.AI3Turn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.AI3;
+                    endMessage = "You Win";
                     break;
 
                 default:
@@ -554,5 +573,17 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                 AIToSet++;
             }
         }
+    }
+
+    //Loads the scene again if the player wants to play again
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("GRHBalloonMG_Scene");
+    }
+
+    //Sends the user back to the hub world when the game ends
+    public void QuitGame()
+    {
+        SceneManager.LoadScene("GRHHubWorld_SceneManager");
     }
 }

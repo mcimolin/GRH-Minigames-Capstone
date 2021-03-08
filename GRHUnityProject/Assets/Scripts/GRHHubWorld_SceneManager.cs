@@ -8,6 +8,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     // Initial framework - Adam
 
     [SerializeField] private GameObject difficultySettingPanel;
+    [SerializeField] private GameObject creditsPanel;
     [SerializeField] private Dropdown characterSelector;
     [SerializeField] private InputField pumpCount;
     [SerializeField] private Button easyButton;
@@ -18,14 +19,19 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
 
     GRHGameSettings gameSettings;
 
+    bool creditsToggle;
+
     private void Awake()
     {
         gameSettings = GameObject.FindObjectOfType<GRHGameSettings>();
         difficultySettingPanel.SetActive(false);
+        creditsPanel.SetActive(false);
 
         easyButton.enabled = false;
         mediumButton.enabled = false;
         hardButton.enabled = false;
+
+        creditsToggle = false;
     }
 
     private void Start()
@@ -59,6 +65,13 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     public void CloseDifficultyPanel()
     {
         difficultySettingPanel.SetActive(false);
+    }
+
+    //Opens and closes the credits panel
+    public void ToggleCreditsPanel()
+    {
+        creditsToggle = !creditsToggle;
+        creditsPanel.SetActive(creditsToggle);
     }
 
     // Selects game difficulty (EASY, MEDIUM, HARD)
