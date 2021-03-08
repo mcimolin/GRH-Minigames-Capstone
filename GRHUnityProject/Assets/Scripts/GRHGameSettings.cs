@@ -21,8 +21,6 @@ public class GRHGameSettings : MonoBehaviour
 
     private void Awake()
     {
-        selectedCharacter = 1;
-
         // Checks to make sure there is only one of this script loaded [Added by Bryce]
         if (gameSettings == null)
         {
@@ -39,5 +37,6 @@ public class GRHGameSettings : MonoBehaviour
     {
         showPumpCount = true;
         pumpCount = 15;
+        selectedCharacter = 0;
     }
 }

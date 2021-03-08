@@ -7,14 +7,10 @@ public class GRHBalloonMG_AIController : MonoBehaviour
 {
     // Initial framework - Bryce
 
-    enum AIDifficulty
-    {
-        EASY,
-        MEDIUM,
-        HARD
-    }
+    enum AIDifficulty { EASY, MEDIUM, HARD }
 
-    AIDifficulty aiDifficulty; // Determines the AI's decisions when guessing how many pumps are left and how many pumps to do.
+    // Determines the AI's decisions when guessing how many pumps are left and how many pumps to do. Defaults to Easy.
+    AIDifficulty aiDifficulty = AIDifficulty.EASY; 
 
     void Start()
     {
@@ -26,7 +22,7 @@ public class GRHBalloonMG_AIController : MonoBehaviour
         }
         catch (Exception)
         {
-            Debug.LogError($"Parse Error: failed to load AI difficulty \"{GRHGameSettings.gameSettings.gameDifficulty}\"");
+            Debug.LogError($"Parse Error: failed to load AI difficulty.");
         }
     }
 
@@ -46,7 +42,7 @@ public class GRHBalloonMG_AIController : MonoBehaviour
             /* Medium AI will choose a random pump between 1 and 3 */
             case AIDifficulty.MEDIUM:
 
-                pumpAmount = UnityEngine.Random.Range(1, 3);
+                pumpAmount = UnityEngine.Random.Range(1, 4);
                 break;
 
             /*Hard AI will strategize and try to get players or other AI's out */
@@ -54,7 +50,7 @@ public class GRHBalloonMG_AIController : MonoBehaviour
 
                 if (pumpsLeft > 4) // The AI cannot cause an opponent to lose on their turn
                 {
-                    pumpAmount = UnityEngine.Random.Range(1, 3);
+                    pumpAmount = UnityEngine.Random.Range(1, 4);
                 }
                 else // The AI can cause an opponent to lose on their turn
                 {
