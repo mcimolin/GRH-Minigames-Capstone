@@ -1364,7 +1364,12 @@ MonoBehaviour:
 
     pump between 1-3
 
-    pumps'
+    pumps.
+
+    <size=220>(Pump
+    count will show
+
+    only the max pumps set)</size>'
 --- !u!222 &514893001
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1906,7 +1911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &663351700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3940,7 +3945,12 @@ MonoBehaviour:
 
     get another player
 
-    out the following turn'
+    out the following turn.
+
+    <size=220>(Pump
+    count will show
+
+    only the max pumps set)</size>'
 --- !u!222 &1665488583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4106,7 +4116,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1697718331}
   m_OnClick:
     m_PersistentCalls:
@@ -4372,7 +4382,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1760845703}
   m_OnClick:
     m_PersistentCalls:
@@ -4719,7 +4729,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "AI will always select \n1 pump each turn"
+  m_Text: 'AI will always select
+
+    1 pump each turn.
+
+    <size=220>(Pump count
+    will
+
+    display pumps left)</size>'
 --- !u!222 &1994819320
 CanvasRenderer:
   m_ObjectHideFlags: 0

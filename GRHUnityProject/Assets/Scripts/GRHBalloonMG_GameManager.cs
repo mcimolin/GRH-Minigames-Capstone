@@ -16,7 +16,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //0 - Player / 1 - AI 1 / 2 - AI 2 / 3 - AI 3
     bool[] activePlayers = new bool[4];
 
-    [SerializeField] GameObject[] charactersInScene, characterPosition; //The Characters in the scene and their grab positions
+    [SerializeField] GameObject[] charactersInScene, playerLabel; //The Characters in the scene & their set labels
+
+    [SerializeField] Sprite playerLabelImage, cpuLabelImage;
 
     int selectedCharacter; //The character the player selected to play as
 
@@ -26,7 +28,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
     [SerializeField] Text balloonPumpsLeftText; // The Display on the balloon of how many pumps are left [Added by Bryce]
 
-    [SerializeField] GameObject endScreen, endScreenText; // Panel and text feild that displays the end game message to the user [Added by Zane]
+    [SerializeField] GameObject endScreen, endScreenText; // Panel and text field that displays the end game message to the user [Added by Zane]
 
     [SerializeField] GameObject pumpButton1, pumpButton2, pumpButton3; //players pump buttons [Added by Zane]
 
@@ -58,8 +60,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         selectedCharacter = GRHGameSettings.gameSettings.selectedCharacter;
 
         //Sets the Player's selected character & position
-        animationController.SetCharacterAnimationPosition(GRHBalloonMG_AnimationController.AnimationObject.Player, charactersInScene[selectedCharacter].GetComponent<Animator>(), charactersInScene[selectedCharacter], characterPosition[selectedCharacter]);
-
+        animationController.SetCharacterAnimationPosition(GRHBalloonMG_AnimationController.AnimationObject.Player, charactersInScene[selectedCharacter].GetComponent<Animator>(), charactersInScene[selectedCharacter]);
+        SetLabel(playerLabel[selectedCharacter], playerLabelImage, "P1", Color.red);
 
         // Set the rest of the AI's active states and positions
         SetAIActiveState();
@@ -100,6 +102,14 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         //Hide the player UI.
         HidePlayerUI();
+    }
+
+    //Sets the CPU/Player labels
+    void SetLabel(GameObject label, Sprite img, string msg, Color color)
+    {
+        label.GetComponentInChildren<Image>().sprite = img;
+        label.GetComponentInChildren<Text>().text = msg;
+        label.GetComponentInChildren<Text>().color = color;
     }
 
     //Game advancement method.
@@ -164,6 +174,10 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             //All AI are knocked out. Game has finished.
             gameFinished = true;
+            balloonPumpsLeftText.text = "";
+
+            //Plays final crunch sound (does not play on knockout)
+            StartCoroutine(PlayCrunchSoundEffect());
         }
 
         //If there's still an AI left, check if the player's still active.
@@ -171,6 +185,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             StartCoroutine(PlayCrunchSoundEffect());
             gameFinished = true;
+            balloonPumpsLeftText.text = "";
         }
 
         //Return the final value.
@@ -462,7 +477,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //Now, we call EndGame.
             EndGame();
-        } else
+        } 
+        else
         {
             //Determine the first target and their destination.
             switch(currentGameState)
@@ -565,6 +581,12 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                     break;
             }
 
+            //Update the balloon pump count display if difficulty is set to easy
+            if (GRHGameSettings.gameSettings.gameDifficulty == "EASY")
+            {
+                balloonPumpsLeftText.text = $"{maxBalloonPumps - currentBalloonPumps}";
+            }
+
             //The second destination is always the same.
             destination2 = GRHBalloonMG_AnimationController.AnimationLocation.Pump;
 
@@ -609,7 +631,6 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         //Disable the character & location that is to be ignored
         charactersInScene[ignoreCharacter].SetActive(false);
-        characterPosition[ignoreCharacter].SetActive(false);
 
         //Set All characters that are enabled in the scene to their respective positions
         int AIToSet = 1;
@@ -617,7 +638,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             if (i != ignoreCharacter && i != selectedCharacter)
             {
-                animationController.SetCharacterAnimationPosition((GRHBalloonMG_AnimationController.AnimationObject)AIToSet, charactersInScene[i].GetComponent<Animator>(), charactersInScene[i], characterPosition[i]);
+                SetLabel(playerLabel[i], cpuLabelImage, "CPU", Color.blue);
+                animationController.SetCharacterAnimationPosition((GRHBalloonMG_AnimationController.AnimationObject)AIToSet, charactersInScene[i].GetComponent<Animator>(), charactersInScene[i]);
                 AIToSet++;
             }
         }
