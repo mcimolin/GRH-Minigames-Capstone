@@ -148,14 +148,14 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     public void QuitApplication()
     {
         // Closes game if in editor mode
-        if (UnityEditor.EditorApplication.isPlaying == true)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
-        {
-            // Closes game if in build mode
-            Application.Quit();
-        }
+        //if (UnityEditor.EditorApplication.isPlaying == true)
+        //{
+        //    UnityEditor.EditorApplication.isPlaying = false;
+        //}
+        //else
+        //{
+        // Closes game if in build mode
+        Application.Quit();
+        //}
     }
 }
