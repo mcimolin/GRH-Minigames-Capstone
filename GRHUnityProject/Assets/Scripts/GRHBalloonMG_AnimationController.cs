@@ -269,29 +269,33 @@ public class GRHBalloonMG_AnimationController : MonoBehaviour
     }
 
     //Sets the location of the character's position, their animator and the character's object.
-    internal void SetCharacterAnimationPosition(AnimationObject animCharacter, Animator animator, GameObject character, GameObject location)
+    internal void SetCharacterAnimationPosition(AnimationObject animCharacter, Animator animator, GameObject character)
     {
         switch (animCharacter)
         {
             case AnimationObject.Player:
                 playerObject = character;
                 playerAnimator = animator;
-                playerLocation = location;
+                character.transform.position = new Vector3(playerLocation.transform.position.x, character.transform.position.y, character.transform.position.z);
+                //playerLocation = location;
                 break;
             case AnimationObject.AI1:
                 AI1Object = character;
                 AI1Animator = animator;
-                AI1Location = location;
+                character.transform.position = new Vector3(AI1Location.transform.position.x, character.transform.position.y, character.transform.position.z);
+                //AI1Location = location;
                 break;
             case AnimationObject.AI2:
                 AI2Object = character;
                 AI2Animator = animator;
-                AI2Location = location;
+                character.transform.position = new Vector3(AI2Location.transform.position.x, character.transform.position.y, character.transform.position.z);
+                //AI2Location = location;
                 break;
             case AnimationObject.AI3:
                 AI3Object = character;
                 AI3Animator = animator;
-                AI3Location = location;
+                character.transform.position = new Vector3(AI3Location.transform.position.x, character.transform.position.y, character.transform.position.z);
+                //AI3Location = location;
                 break;
             default:
                 Debug.LogError("Error: No character was selected to be saved.");

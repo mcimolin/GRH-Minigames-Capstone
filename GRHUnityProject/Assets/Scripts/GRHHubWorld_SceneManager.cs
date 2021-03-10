@@ -18,12 +18,14 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     private string gameSelected;
 
     GRHGameSettings gameSettings;
+    GRHBalloonMG_SoundManager soundManager;
 
     bool creditsToggle;
 
     private void Awake()
     {
-        gameSettings = GameObject.FindObjectOfType<GRHGameSettings>();
+        gameSettings = FindObjectOfType<GRHGameSettings>();
+        soundManager = FindObjectOfType<GRHBalloonMG_SoundManager>();
         difficultySettingPanel.SetActive(false);
         creditsPanel.SetActive(false);
 
@@ -38,6 +40,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     {
         //Sets the defaults for balloon minigame difficulty panel
         pumpCount.text = gameSettings.pumpCount.ToString();
+        soundManager.HubWorldGameMusic();
     }
 
     // Button to start balloon game
@@ -78,6 +81,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     public void SelectDifficultySetting(string gameDifficulty)
     {
         gameSettings.gameDifficulty = gameDifficulty;
+        soundManager.balloonMG_Audio[0].Stop();
         SceneManager.LoadScene(gameSelected);
 
         Debug.Log("Game Loaded: " + gameSelected);
@@ -144,14 +148,14 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     public void QuitApplication()
     {
         // Closes game if in editor mode
-        if (UnityEditor.EditorApplication.isPlaying == true)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
-        {
-            // Closes game if in build mode
-            Application.Quit();
-        }
+        //if (UnityEditor.EditorApplication.isPlaying == true)
+        //{
+        //    UnityEditor.EditorApplication.isPlaying = false;
+        //}
+        //else
+        //{
+        // Closes game if in build mode
+        Application.Quit();
+        //}
     }
 }
