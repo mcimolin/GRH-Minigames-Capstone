@@ -54,7 +54,14 @@ public class GRHBalloonMG_AIController : MonoBehaviour
                 }
                 else // The AI can cause an opponent to lose on their turn
                 {
-                    pumpAmount = pumpsLeft - 1;
+                    if (pumpsLeft == 1)
+                    {
+                        pumpAmount = 1;
+                    }
+                    else
+                    {
+                        pumpAmount = pumpsLeft - 1;
+                    }
                 }
 
                 break;
