@@ -3081,6 +3081,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8941016070706520325, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941016070706520325, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
 --- !u!4 &518891276 stripped
@@ -4420,6 +4428,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7240876550152843476, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941016070706520325, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941016070706520325, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
+      propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6348,7 +6364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965368714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.41, z: -9.5}
+  m_LocalPosition: {x: 0, y: 23.02, z: -9.5}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 1426502304735522398}
@@ -18757,15 +18773,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2408221694999228610, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.77
+      value: 20.8
       objectReference: {fileID: 0}
     - target: {fileID: 2408221694999228610, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8
+      value: 2.84
       objectReference: {fileID: 0}
     - target: {fileID: 2408221694999228610, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.24
+      value: 0.83
       objectReference: {fileID: 0}
     - target: {fileID: 2408221694999228610, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18794,6 +18810,18 @@ PrefabInstance:
     - target: {fileID: 2408221694999228610, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408221694999228613, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 6.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408221694999228613, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2408221694999228613, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2408221694999228615, guid: 27b38871f5752a446b3769d088b7da63, type: 3}
       propertyPath: m_Name
@@ -19336,6 +19364,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7240876550152843476, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941016070706520325, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941016070706520325, guid: a90b217486b54754ab1b6c6e41704e9a, type: 3}
+      propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -26667,6 +26703,14 @@ PrefabInstance:
     - target: {fileID: 555307673010708963, guid: 18fc5b8a0e7ca8a4384f2715de227167, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 555307673010708963, guid: 18fc5b8a0e7ca8a4384f2715de227167, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 555307673010708963, guid: 18fc5b8a0e7ca8a4384f2715de227167, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 555307673010708964, guid: 18fc5b8a0e7ca8a4384f2715de227167, type: 3}
       propertyPath: m_LocalScale.x
