@@ -106,36 +106,40 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     //Sets tpump count amount for the Balloon Minigame
     public void SetPumpCount()
     {
-        if (string.IsNullOrEmpty(pumpCount.text))
+        if (!string.IsNullOrEmpty(pumpCount.text) && !pumpCount.text.Contains("-"))
         {
-            pumpCount.text = "0";
-        }
-
-        try
-        {
-            if (int.Parse(pumpCount.text) >= 15) // The minimum amount of pumps entered is met
+            try
             {
-                pumpCount.textComponent.color = Color.black;
-                gameSettings.pumpCount = int.Parse(pumpCount.text);
-                easyButton.enabled = true;
-                mediumButton.enabled = true;
-                hardButton.enabled = true;
-            }
-            else // The minimum amount is not met
-            {
-                pumpCount.textComponent.color = Color.red;
+                if (int.Parse(pumpCount.text) >= 15) // The minimum amount of pumps entered is met
+                {
+                    pumpCount.textComponent.color = Color.black;
+                    gameSettings.pumpCount = int.Parse(pumpCount.text);
+                    easyButton.enabled = true;
+                    mediumButton.enabled = true;
+                    hardButton.enabled = true;
+                }
+                else // The minimum amount is not met
+                {
+                    pumpCount.textComponent.color = Color.red;
 
-                easyButton.enabled = false;
-                mediumButton.enabled = false;
-                hardButton.enabled = false;
+                    easyButton.enabled = false;
+                    mediumButton.enabled = false;
+                    hardButton.enabled = false;
+                }
+            }
+            catch (Exception)
+            {
+                Debug.LogError("Error in parsing integer: No value to parse.");
             }
         }
-        catch (Exception)
+        else
         {
-            Debug.LogError("Error in parsing integer: No value to parse.");
+            pumpCount.textComponent.color = Color.red;
+
+            easyButton.enabled = false;
+            mediumButton.enabled = false;
+            hardButton.enabled = false;
         }
-        
-        
     }
 
     // Sets the player's character preference [Added by Bryce]
