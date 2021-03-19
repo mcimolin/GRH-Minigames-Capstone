@@ -795,7 +795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 14}
+  m_AnchoredPosition: {x: 0, y: 6}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366628557
@@ -1326,7 +1326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -163, y: 155}
+  m_AnchoredPosition: {x: -106.1, y: 155}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514893000
@@ -1362,14 +1362,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'opponents select
-
-    randomly 1 to 3 pumps.
-
-    (count displays
-
-    max
-    pumps)'
+  m_Text: "opponents select\nrandomly 1 to 3 \npumps.\ncount displays\nmax pumps."
 --- !u!222 &514893001
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4093,10 +4086,9 @@ MonoBehaviour:
 
     stay in the game.
 
-    (count displays
+    count displays
 
-    max
-    pumps)'
+    max pumps.'
 --- !u!222 &1665488583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4839,7 +4831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666, y: 151}
+  m_AnchoredPosition: {x: -692.6, y: 151}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1994819319
@@ -4879,9 +4871,9 @@ MonoBehaviour:
 
     select 1 pump.
 
-    (count displays
+    count displays
 
-    pumps left)'
+    pumps left.'
 --- !u!222 &1994819320
 CanvasRenderer:
   m_ObjectHideFlags: 0
