@@ -30,7 +30,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
     [SerializeField] GameObject endScreen, endScreenText; // Panel and text field that displays the end game message to the user [Added by Zane]
 
-    [SerializeField] GameObject pumpButton1, pumpButton2, pumpButton3; //players pump buttons [Added by Zane]
+    [SerializeField] GameObject pumpButton1, pumpButton2, pumpButton3, howManyPumpsPanel; //players pump buttons and the question panel asking how many pumps [Added by Zane]
 
     string endMessage; //The end message displayed to the user ie. (you win!/you lose) [Added by Zane]
 
@@ -153,6 +153,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                 pumpButton1.SetActive(false);
                 pumpButton2.SetActive(false);
                 pumpButton3.SetActive(false);
+                howManyPumpsPanel.SetActive(false);
                 endScreenText.GetComponent<Text>().text = endMessage;
                 break;
 
