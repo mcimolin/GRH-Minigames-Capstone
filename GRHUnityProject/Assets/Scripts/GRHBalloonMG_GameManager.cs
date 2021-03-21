@@ -12,6 +12,12 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
     BalloonPopGameStates currentGameState;
 
+    // [Added by Adam]
+    [SerializeField] GameObject confettiParticleLocation;
+    [SerializeField] ParticleSystem confettiParticle;
+    [SerializeField] GameObject pauseGamePanel;
+    private bool isPaused;
+
     //The array for whether a player is still in the game or not. Locations are as follows:
     //0 - Player / 1 - AI 1 / 2 - AI 2 / 3 - AI 3
     bool[] activePlayers = new bool[4];
@@ -55,6 +61,12 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             mainCamera.GetComponent<GRHCameraController>().Initialize();
         }
+
+        // [Added by Adam]
+        pauseGamePanel.SetActive(false);
+        soundManager.balloonMG_Audio[1].volume = 0.1f;
+        Time.timeScale = 1;
+        isPaused = false;
 
         //Sets current player character selection
         selectedCharacter = GRHGameSettings.gameSettings.selectedCharacter;
@@ -102,6 +114,28 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         //Hide the player UI.
         HidePlayerUI();
+    }
+
+    // [Added by Adam] Press escape to pause and again to resume game
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused == true)
+            {
+                pauseGamePanel.SetActive(false);
+                soundManager.balloonMG_Audio[1].volume = 0.1f;
+                isPaused = false;
+                Time.timeScale = 1;
+            }
+            else
+            {
+                pauseGamePanel.SetActive(true);
+                soundManager.balloonMG_Audio[1].volume = 0.05f;
+                isPaused = true;
+                Time.timeScale = 0;
+            }
+        }
     }
 
     //Sets the CPU/Player labels
@@ -452,16 +486,19 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                 case BalloonPopGameStates.AI1Turn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.AI1;
                     endMessage = "You Win";
+                    PlayConfettiEffect(); // - Added by Adam
                     break;
 
                 case BalloonPopGameStates.AI2Turn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.AI2;
                     endMessage = "You Win";
+                    PlayConfettiEffect();
                     break;
 
                 case BalloonPopGameStates.AI3Turn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.AI3;
                     endMessage = "You Win";
+                    PlayConfettiEffect();
                     break;
 
                 default:
@@ -646,6 +683,21 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         }
     }
 
+    public void PlayConfettiEffect()  //Plays confetti particle effect - Added by Adam
+    {
+        var particleEffect = Instantiate(confettiParticle, confettiParticleLocation.transform);
+        particleEffect.Play();
+        Destroy(particleEffect.gameObject, 5.0f);
+    }
+
+    public void ResumeGame() // [Added by Adam]
+    {
+        Time.timeScale = 1;
+        pauseGamePanel.SetActive(false);
+        soundManager.balloonMG_Audio[1].volume = 0.1f;
+        isPaused = false;
+    }
+
     //Loads the scene again if the player wants to play again
     public void PlayAgain()
     {
@@ -655,6 +707,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //Sends the user back to the hub world when the game ends
     public void QuitGame()
     {
+        Time.timeScale = 1;
+        isPaused = false;
         soundManager.balloonMG_Audio[1].Stop();
         SceneManager.LoadScene("GRHHubWorld_SceneManager");
     }
