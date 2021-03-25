@@ -7,7 +7,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
 {
     // Initial framework - Adam
 
-    [SerializeField] private GameObject difficultySettingPanel;
+    [SerializeField] private GameObject difficultySettingPanelBalloonGame, difficultySettingPanelCountingGame;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private Dropdown characterSelector;
     [SerializeField] private InputField pumpCount;
@@ -26,7 +26,8 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     {
         gameSettings = FindObjectOfType<GRHGameSettings>();
         soundManager = FindObjectOfType<GRHBalloonMG_SoundManager>();
-        difficultySettingPanel.SetActive(false);
+        difficultySettingPanelBalloonGame.SetActive(false);
+        difficultySettingPanelCountingGame.SetActive(false);
         creditsPanel.SetActive(false);
 
         easyButton.enabled = false;
@@ -46,28 +47,29 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     // Button to start balloon game
     public void StartBalloonGame()
     {
-        difficultySettingPanel.SetActive(true);
+        difficultySettingPanelBalloonGame.SetActive(true);
         gameSelected = "GRHBalloonMG_Scene";
     }
 
     // Button to start counting game
     public void StartCountingGame()
     {
-        difficultySettingPanel.SetActive(true);
+        difficultySettingPanelCountingGame.SetActive(true);
         gameSelected = "GRHCountingMG_Scene";
     }
 
     // Button to start space game
     public void StartSpaceGame()
     {
-        difficultySettingPanel.SetActive(true);
+        difficultySettingPanelBalloonGame.SetActive(true);
         gameSelected = "GRHSpaceMG_Scene";
     }
 
     // "X" button to close the difficulty panel
     public void CloseDifficultyPanel()
     {
-        difficultySettingPanel.SetActive(false);
+        difficultySettingPanelBalloonGame.SetActive(false);
+        difficultySettingPanelCountingGame.SetActive(false);
     }
 
     //Opens and closes the credits panel
