@@ -15,11 +15,11 @@ C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRH
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53172
+64834
 Successfully changed project path to: C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
 C:/Users/Yang/Documents/GitHub/GRH-Minigames-Capstone/GRH-Minigames-Capstone/GRHUnityProject
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 51.68 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 46.54 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
 [Subsystems] Discovering subsystems at path E:/Game Programs/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
@@ -35,80 +35,146 @@ Initialize mono
 Mono path[0] = 'E:/Game Programs/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Game Programs/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Game Programs/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56564
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56176
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Game Programs/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001306 seconds.
+Registered in 0.001409 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 50.83 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 40.92 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.207 seconds
+- Completed reload, in  1.010 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000938 seconds.
+Registered in 0.000905 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 52.98 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 45.02 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.163 seconds
+- Completed reload, in  1.045 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 0.80 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2171 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 102.5 MB.
-System memory in use after: 102.6 MB.
+Unloading 2292 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.9 MB.
+System memory in use after: 111.0 MB.
 
-Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 2611.
-Total: 3.426900 ms (FindLiveObjects: 0.395800 ms CreateObjectMapping: 0.195100 ms MarkObjects: 2.557200 ms  DeleteObjects: 0.277000 ms)
+Unloading 99 unused Assets to reduce memory usage. Loaded Objects now: 2731.
+Total: 2.606600 ms (FindLiveObjects: 0.262500 ms CreateObjectMapping: 0.135400 ms MarkObjects: 2.040400 ms  DeleteObjects: 0.167300 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/GRHHubWorld_SceneManager.unity
-  artifactKey: Guid(edf559a41455c9747815ad67bb6f6add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/GRHHubWorld_SceneManager.unity using Guid(edf559a41455c9747815ad67bb6f6add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c6a62130eb356930308cc8286b62f8b') in 0.025595 seconds
-  Import took 0.030160 seconds .
+  path: Assets/Sprites/Flower Sprite Sheet 1.psd
+  artifactKey: Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet 1.psd using Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f64dfcd4ffbee83f2541e9f3900a0be6') in 0.219312 seconds
+  Import took 0.223766 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001145 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Warning: Annotation not found!
+Received Import Request.
+  Time since last request: 11.187478 seconds.
+  path: Assets/Sprites/Flower Sprite Sheet 1.psd
+  artifactKey: Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet 1.psd using Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '472c2e0cc3ab89c2d47f6ee8e5d8e231') in 0.013800 seconds
+  Import took 0.017680 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002183 seconds.
+  path: Assets/Sprites/Flower Sprite Sheet 1.psd
+  artifactKey: Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet 1.psd using Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '472c2e0cc3ab89c2d47f6ee8e5d8e231') in 0.005975 seconds
+  Import took 0.009729 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.808737 seconds.
+  path: Assets/Sprites/Flower Sprite Sheet 1.psd
+  artifactKey: Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet 1.psd using Guid(032edff91b4680a4fb604a0f8fd15c14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7cc5236214dfb39f059d012bda27202') in 0.033743 seconds
+  Import took 0.037358 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 345.609837 seconds.
+  path: Assets/Sprites/Flower Sprite Sheet.psd
+  artifactKey: Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet.psd using Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61f8b634e9ab1f606ef8a28c63d38256') in 0.016178 seconds
+  Import took 0.020537 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.926222 seconds.
+  path: Assets/Sprites/Flower Sprite Sheet.psd
+  artifactKey: Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet.psd using Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '207542d500753341e9739614e1961813') in 0.012352 seconds
+  Import took 0.016290 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003016 seconds.
+  path: Assets/Sprites/Flower Sprite Sheet.psd
+  artifactKey: Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet.psd using Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '207542d500753341e9739614e1961813') in 0.006862 seconds
+  Import took 0.010927 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.368526 seconds.
+  path: Assets/Sprites/Flower Sprite Sheet.psd
+  artifactKey: Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/Flower Sprite Sheet.psd using Guid(cc245a3716771184aa4013d9c925480f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '454d01d8005625b6c360713833692c81') in 0.032924 seconds
+  Import took 0.036356 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1066.649359 seconds.
+  path: Assets/Sprites/GRHCountingMG_Flower_Sprite.prefab
+  artifactKey: Guid(79837e4bcfd4bbc43ac53fd044d46a21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHCountingMG_Flower_Sprite.prefab using Guid(79837e4bcfd4bbc43ac53fd044d46a21) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The Animator Controller (Flower Sprite Sheet_0 1) you have used is not valid. Animations will not play
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
-UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
 
-[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 332]
 
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.007 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2129 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 100.4 MB.
-System memory in use after: 100.5 MB.
+The Animator Controller (Flower Sprite Sheet_0 1) you have used is not valid. Animations will not play
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:InitInstantiatedPreviewRecursive (UnityEngine.GameObject)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2614.
-Total: 3.057700 ms (FindLiveObjects: 0.591000 ms CreateObjectMapping: 0.222100 ms MarkObjects: 2.154800 ms  DeleteObjects: 0.088700 ms)
+[C:\buildslave\unity\build\Modules/Animation/Director/AnimatorControllerPlayable.cpp line 332]
 
+ -> (artifact id: '49c197dade97121e1a6805055f7fb188') in 0.206929 seconds
+  Import took 0.211943 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000236 seconds.
+  path: Assets/Sprites/GRHBalloonMG_PumpSelectionHUD.psd
+  artifactKey: Guid(39e69c4c0c77b6b44916a55df02fa97b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/GRHBalloonMG_PumpSelectionHUD.psd using Guid(39e69c4c0c77b6b44916a55df02fa97b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbd76ba266163c0a8642b0bb0bc4e88a') in 0.039772 seconds
+  Import took 0.043909 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
