@@ -1,0 +1,5 @@
+newmtl GRHCountingMG_GrassPatches
+map_Kd GRHBalloonMG_GrassPatches.png
+Kd 0.2844703 0.6037736 0
+d 1
+
