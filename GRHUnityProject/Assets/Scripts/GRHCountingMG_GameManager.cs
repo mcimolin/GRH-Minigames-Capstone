@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GRHCountingMG_GameManager : MonoBehaviour
 {
     // These objects will hold the Prefabs of what will be spawned into the scene when the game starts.
-    [SerializeField] internal GameObject butterflyPrefab = null, flowerPrefab = null, frogPrefab = null, lilypadPrefab = null, fishPrefab = null, somethingPrefab = null;
+    [SerializeField] internal GameObject butterflyPrefab = null, flowerPrefab = null, frogPrefab = null, lilypadPrefab = null, fishPrefab = null, bubblePrefab = null;
     
     // This will hold the amount of objects that exist within the scene.
     internal GameObject[] objectsToGuess;
@@ -19,11 +19,20 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     //Checks to see if the game is currently playing.
     internal bool gameIsPlaying = false, gameEnd = false;
 
+    // AI scripts
+    GameObject[] AIObjects = null;
+
     // The amount of objects to spawn into the game for the player to guess, and the player's current guess amount.
-    int guessAmount = 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
+    int spawnablesAmount = 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
 
     // The text display of how much time is left for the minigame;
     [SerializeField] Text timeLeftText = null;
+
+    // The Game Ending panel
+    [SerializeField] GameObject gameEndPanel = null;
+
+    // The win condition display text
+    [SerializeField] Text gameEndWinCondition = null;
 
     enum GameDifficulty { EASY, MEDIUM, HARD }
 
@@ -42,6 +51,9 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         {
             Debug.LogError($"Parse Error: failed to load game difficulty.");
         }
+
+        //Sets the amount of spawnables that the player must guess
+        spawnablesAmount = UnityEngine.Random.Range(10, 26);
 
         //gameLength = GRHGameSettings.gameSettings.gameLength;
 
@@ -63,7 +75,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         }
         else if (gameEnd)
         {
-            EndGame();
+            StartCoroutine(EndGame());
         }
     }
 
@@ -72,10 +84,22 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         switch (gameDifficulty)
         {
             case GameDifficulty.EASY:
+                for (int i = 0; i < spawnablesAmount; i++)
+                {
+                    //Spawn Butterflies
+                }
                 break;
             case GameDifficulty.MEDIUM:
+                for (int i = 0; i < spawnablesAmount; i++)
+                {
+                    //Spawn Frogs
+                }
                 break;
             case GameDifficulty.HARD:
+                for (int i = 0; i < spawnablesAmount; i++)
+                {
+                    //Spawn Fish
+                }
                 break;
             default:
                 break;
@@ -107,19 +131,23 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         }
     }
 
-    internal void EndGame()
+    IEnumerator EndGame()
     {
-        if (playerGuess == guessAmount && AI1Guess != guessAmount && AI2Guess != guessAmount && AI3Guess != guessAmount)
+
+        if (playerGuess == spawnablesAmount)
         {
             // Set the player's win condition as 'Win'
-        }
-        else if (playerGuess == guessAmount && (AI1Guess == guessAmount || AI2Guess == guessAmount || AI3Guess == guessAmount))
-        {
-            // Set the player's win condition as 'Tie' (will we have multiple rounds that will wait for the player to win?)
+            gameEndWinCondition.text = "You Win";
         }
         else
         {
-            // Sert the player's win status as 'Lose'
+            // Set the player's win status as 'Lose'
+            gameEndWinCondition.text = "You Lose";
         }
+
+        //Wait for a short amount of time after game ends before displaying panel.
+        yield return new WaitForSeconds(1.25f);
+
+        gameEndPanel.SetActive(true);
     }
 }
