@@ -26,10 +26,10 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     GameObject[] AIObjects = null;
 
     // The amount of objects to spawn into the game for the player to guess, and the player's current guess amount.
-    int spawnablesAmount = 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
+    int spawnablesAmount = 0, fakeSpawnablesAmount= 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
 
     // The text display of how much time is left for the minigame;
-    [SerializeField] Text timeLeftText = null;
+    [SerializeField] Text timeLeftText = null, startGameText = null;
 
     // The Game Ending panel
     [SerializeField] GameObject gameEndPanel = null;
@@ -55,12 +55,19 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             Debug.LogError($"Parse Error: failed to load game difficulty.");
         }
 
+        try
+        {
+            //gameLength = GRHGameSettings.gameSettings.gameLength;
+        }
+        catch
+        {
+            Debug.LogError($"Parse Error: failed to load game length.");
+        }
+
         //Sets the amount of spawnables that the player must guess
-        spawnablesAmount = UnityEngine.Random.Range(10, 26);
+        spawnablesAmount = UnityEngine.Random.Range(5, 16);
 
-        //gameLength = GRHGameSettings.gameSettings.gameLength;
-
-        SpawnEntities();
+        StartCoroutine(DelayForGameStart());
     }
 
     // Update is called once per frame
@@ -84,30 +91,61 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     internal void SpawnEntities()
     {
+        float randomX = 0;
+        float randomY = 0;
+        float randomZ = 0;
+
         switch (gameDifficulty)
         {
             case GameDifficulty.EASY:
+                //Spawn Butterflies
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    //Spawn Butterflies
+                }
+
+                //Spawn Flowers
+                for (int i = 0; i < fakeSpawnablesAmount; i++)
+                {
                 }
                 break;
+
+
             case GameDifficulty.MEDIUM:
+                //Spawn Frogs
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    //Spawn Frogs
+                }
+
+                //Spawn Lilypads
+                for (int i = 0; i < fakeSpawnablesAmount; i++)
+                {
                 }
                 break;
+
+
             case GameDifficulty.HARD:
+                //Spawn Fish
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    //Spawn Fish
-                    float randomX = fishSpawnArea.transform.position.x + UnityEngine.Random.Range(-4.0f, 4.0f);
-                    float randomZ = fishSpawnArea.transform.position.z + UnityEngine.Random.Range(-2, 0.75f);
+                    randomX = fishSpawnArea.transform.position.x + UnityEngine.Random.Range(-4.0f, 4.0f);
+                    randomY = fishSpawnArea.transform.position.y;
+                    randomZ = fishSpawnArea.transform.position.z + UnityEngine.Random.Range(-2, 0.75f);
                     GameObject fishObj = Instantiate(fishPrefab);
-                    fishObj.transform.position = new Vector3(randomX, fishSpawnArea.transform.position.y, randomZ);
+                    fishObj.transform.position = new Vector3(randomX, randomY, randomZ);
                     fishObj.transform.Rotate(Vector3.left * -90);
                     fishObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                }
+
+                //Spawn Bubbles
+                for (int i = 0; i < fakeSpawnablesAmount; i++)
+                {
+                    randomX = bubbleSpawnArea.transform.position.x + UnityEngine.Random.Range(-4.0f, 4.0f);
+                    randomY = bubbleSpawnArea.transform.position.y;
+                    randomZ = bubbleSpawnArea.transform.position.z + UnityEngine.Random.Range(-2, 0.75f);
+                    GameObject bubbleObj = Instantiate(bubblePrefab);
+                    bubbleObj.transform.position = new Vector3(randomX, randomY, randomZ);
+                    bubbleObj.transform.Rotate(Vector3.left * -90);
+                    bubbleObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                 }
                 break;
             default:
@@ -138,6 +176,25 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         {
             playerGuess += value;
         }
+    }
+
+    IEnumerator DelayForGameStart()
+    {
+        startGameText.text = "3";
+        yield return new WaitForSeconds(1);
+        
+        startGameText.text = "2";
+        yield return new WaitForSeconds(1);
+
+        startGameText.text = "1";
+        yield return new WaitForSeconds(1);
+
+        startGameText.text = "GO!";
+        yield return new WaitForSeconds(1);
+
+        startGameText.text = "";
+        SpawnEntities();
+        AdvanceGame();
     }
 
     IEnumerator EndGame()
