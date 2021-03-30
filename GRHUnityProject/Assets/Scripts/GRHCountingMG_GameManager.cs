@@ -9,12 +9,15 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 {
     // These objects will hold the Prefabs of what will be spawned into the scene when the game starts.
     [SerializeField] internal GameObject butterflyPrefab = null, flowerPrefab = null, frogPrefab = null, lilypadPrefab = null, fishPrefab = null, bubblePrefab = null;
-    
+
+    // These objects will hold the Spawn locations for the spawnable objects.
+    [SerializeField] internal GameObject butterflySpawnArea = null, flowerSpawnArea = null, frogSpawnArea = null, lilypadSpawnArea = null, fishSpawnArea = null, bubbleSpawnArea = null;
+
     // This will hold the amount of objects that exist within the scene.
     internal GameObject[] objectsToGuess;
 
     // The game's length and the current time spent into the game.
-    internal float gameLength = 0, currentTime = 0;
+    internal float gameLength = 20, currentTime = 0;
 
     //Checks to see if the game is currently playing.
     internal bool gameIsPlaying = false, gameEnd = false;
@@ -37,7 +40,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     enum GameDifficulty { EASY, MEDIUM, HARD }
 
     // The difficulty of the game.
-    GameDifficulty gameDifficulty = GameDifficulty.EASY;
+    GameDifficulty gameDifficulty = GameDifficulty.HARD;
 
     // Start is called before the first frame update
     void Start()
@@ -71,7 +74,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         if (gameIsPlaying && !gameEnd)
         {
             currentTime += Time.deltaTime;
-            timeLeftText.text = $"Time Left: {gameLength - currentTime}";
+            timeLeftText.text = $"Time Left: {(int)(gameLength - currentTime)}";
         }
         else if (gameEnd)
         {
@@ -99,11 +102,17 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
                     //Spawn Fish
+                    float randomX = fishSpawnArea.transform.position.x + UnityEngine.Random.Range(-4.0f, 4.0f);
+                    float randomZ = fishSpawnArea.transform.position.z + UnityEngine.Random.Range(-2, 0.75f);
+                    GameObject fishObj = Instantiate(fishPrefab);
+                    fishObj.transform.position = new Vector3(randomX, fishSpawnArea.transform.position.y, randomZ);
+                    fishObj.transform.Rotate(Vector3.left * -90);
+                    fishObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                 }
                 break;
             default:
                 break;
-        }
+        } 
     }
 
     internal void AdvanceGame()

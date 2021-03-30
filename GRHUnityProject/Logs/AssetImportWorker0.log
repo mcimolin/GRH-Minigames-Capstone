@@ -15,11 +15,11 @@ C:/Users/bryce/OneDrive/Documents/GitHub/GRH-Minigames-Capstone/GRHUnityProject
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51491
+59552
 Successfully changed project path to: C:/Users/bryce/OneDrive/Documents/GitHub/GRH-Minigames-Capstone/GRHUnityProject
 C:/Users/bryce/OneDrive/Documents/GitHub/GRH-Minigames-Capstone/GRHUnityProject
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 49.63 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 51.47 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
@@ -35,25 +35,13 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56476
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56988
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002261 seconds.
+Registered in 0.002017 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 45.96 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.058 seconds
-Platform modules already initialized, skipping
-Registering precompiled user dll's ...
-Registered in 0.001039 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 48.96 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 48.76 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -61,158 +49,338 @@ RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
 - Completed reload, in  1.139 seconds
 Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001156 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 51.43 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.188 seconds
+Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.51 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2294 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.8 MB.
-System memory in use after: 122.0 MB.
+System memory in use before: 121.9 MB.
+System memory in use after: 122.1 MB.
 
 Unloading 98 unused Assets to reduce memory usage. Loaded Objects now: 2745.
-Total: 4.470400 ms (FindLiveObjects: 0.913300 ms CreateObjectMapping: 0.186800 ms MarkObjects: 3.016800 ms  DeleteObjects: 0.350900 ms)
+Total: 3.160800 ms (FindLiveObjects: 0.419600 ms CreateObjectMapping: 0.500600 ms MarkObjects: 2.065500 ms  DeleteObjects: 0.174100 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33030207fb683fd7c31bcdce06934f33') in 0.036074 seconds
-  Import took 0.040553 seconds .
+  path: Assets/Scenes/GRHBalloonMG_Scene.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/GRHBalloonMG_Scene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '876e13340d1a22d082239096d423208b') in 0.011615 seconds
+  Import took 0.016275 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 48.475520 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85268e343e08c14618acf4d8f3c2d672') in 0.010348 seconds
-  Import took 0.017189 seconds .
+  Time since last request: 15.891595 seconds.
+  path: Assets/Scenes/GRHCountingMG.unity
+  artifactKey: Guid(2bdee86a92cab3e4eaf3a753aebc7cc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/GRHCountingMG.unity using Guid(2bdee86a92cab3e4eaf3a753aebc7cc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97577a1c69f34b5ef48b3e5ce6c0c1ea') in 0.014817 seconds
+  Import took 0.020217 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 27.492369 seconds.
+  Time since last request: 309.366759 seconds.
   path: Assets/Scripts/GRHCountingMG_GameManager.cs
   artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f1bb1373c285365fa1a9fecb085fd49') in 0.006477 seconds
-  Import took 0.010862 seconds .
+Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e002bf190a6afcff47a6cf258565e942') in 0.029978 seconds
+  Import took 0.034459 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000278 seconds.
+  Time since last request: 0.001597 seconds.
   path: Assets/Scripts/GRHCountingMG_GameManager.cs
   artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f1bb1373c285365fa1a9fecb085fd49') in 0.006734 seconds
-  Import took 0.010597 seconds .
+Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e002bf190a6afcff47a6cf258565e942') in 0.002193 seconds
+  Import took 0.005943 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 89.172027 seconds.
+  Time since last request: 15.729417 seconds.
   path: Assets/Scripts/GRHCountingMG_GameManager.cs
   artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fca1918849e42305ce998ec1724c31c0') in 0.007756 seconds
-  Import took 0.012029 seconds .
+Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03581863cc7c12f077c5edd459ea5a15') in 0.002265 seconds
+  Import took 0.007018 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001079 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.013 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.4 MB.
+System memory in use after: 118.5 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2748.
+Total: 3.346500 ms (FindLiveObjects: 0.310900 ms CreateObjectMapping: 0.394900 ms MarkObjects: 2.542500 ms  DeleteObjects: 0.096600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001180 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.54 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.013 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.4 MB.
+System memory in use after: 118.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2751.
+Total: 2.832600 ms (FindLiveObjects: 0.256900 ms CreateObjectMapping: 0.126400 ms MarkObjects: 2.356100 ms  DeleteObjects: 0.092200 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.001374 seconds.
+  Time since last request: 58.081052 seconds.
   path: Assets/Scripts/GRHCountingMG_GameManager.cs
   artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fca1918849e42305ce998ec1724c31c0') in 0.006450 seconds
-  Import took 0.010391 seconds .
+Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b806c3ed3a0c8eab16b3dc20696b19a2') in 0.007194 seconds
+  Import took 0.011386 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 8.264999 seconds.
+  Time since last request: 0.039065 seconds.
   path: Assets/Scripts/GRHCountingMG_GameManager.cs
   artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '079abf83714ad43817a6b9a4aad81ffc') in 0.009291 seconds
-  Import took 0.013801 seconds .
+Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b806c3ed3a0c8eab16b3dc20696b19a2') in 0.003573 seconds
+  Import took 0.008345 seconds .
 
 ========================================================================
-Received Import Request.
-  Time since last request: 2.781192 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c8da8c7e78e92b3b761c44e05e86100') in 0.003230 seconds
-  Import took 0.007106 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001865 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.918 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.4 MB.
+System memory in use after: 118.6 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2754.
+Total: 6.040300 ms (FindLiveObjects: 0.423000 ms CreateObjectMapping: 0.389900 ms MarkObjects: 5.138100 ms  DeleteObjects: 0.087600 ms)
 
 ========================================================================
-Received Import Request.
-  Time since last request: 19.546701 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e19f51ce6ed287335ef5bf938030818b') in 0.003290 seconds
-  Import took 0.007518 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001271 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.72 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.143 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.6 MB.
+System memory in use after: 118.7 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2757.
+Total: 2.323200 ms (FindLiveObjects: 0.237900 ms CreateObjectMapping: 0.088400 ms MarkObjects: 1.921500 ms  DeleteObjects: 0.074400 ms)
 
 ========================================================================
-Received Import Request.
-  Time since last request: 0.003157 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e19f51ce6ed287335ef5bf938030818b') in 0.003827 seconds
-  Import took 0.007224 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001111 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.018 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.53 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.6 MB.
+System memory in use after: 118.7 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2760.
+Total: 2.748800 ms (FindLiveObjects: 0.344500 ms CreateObjectMapping: 0.121100 ms MarkObjects: 2.188000 ms  DeleteObjects: 0.092400 ms)
 
 ========================================================================
-Received Import Request.
-  Time since last request: 11.932674 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10db2a2cc993fced161f89f692035ec8') in 0.003333 seconds
-  Import took 0.007401 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001177 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.981 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.54 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.6 MB.
+System memory in use after: 118.7 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2763.
+Total: 2.632800 ms (FindLiveObjects: 0.238500 ms CreateObjectMapping: 0.097100 ms MarkObjects: 2.223000 ms  DeleteObjects: 0.072900 ms)
 
 ========================================================================
-Received Import Request.
-  Time since last request: 17.090181 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '714489680f3f3a64d9875215a7461f1f') in 0.006547 seconds
-  Import took 0.010586 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001177 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.913 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.6 MB.
+System memory in use after: 118.8 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2766.
+Total: 3.108100 ms (FindLiveObjects: 0.279600 ms CreateObjectMapping: 0.114300 ms MarkObjects: 2.624700 ms  DeleteObjects: 0.088200 ms)
 
 ========================================================================
-Received Import Request.
-  Time since last request: 0.000712 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '714489680f3f3a64d9875215a7461f1f') in 0.006391 seconds
-  Import took 0.010280 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001283 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-========================================================================
-Received Import Request.
-  Time since last request: 43.236795 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0865a39f7a583e902fcd32fbc5cbc1a7') in 0.003357 seconds
-  Import took 0.007131 seconds .
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
 
-========================================================================
-Received Import Request.
-  Time since last request: 10.104524 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd12ed144876e3b2ba966321e44a9c23c') in 0.008484 seconds
-  Import took 0.017457 seconds .
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.978 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.50 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2224 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.5 MB.
+System memory in use after: 118.7 MB.
 
-========================================================================
-Received Import Request.
-  Time since last request: 26.450563 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91afaf536b664bba89c2af19a3e039e5') in 0.003637 seconds
-  Import took 0.007908 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002967 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91afaf536b664bba89c2af19a3e039e5') in 0.003532 seconds
-  Import took 0.007820 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 15.325961 seconds.
-  path: Assets/Scripts/GRHCountingMG_GameManager.cs
-  artifactKey: Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/GRHCountingMG_GameManager.cs using Guid(2f20126541d29cb4d93b611524208613) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2071ef8ce32434cb59e596786aebe31') in 0.003944 seconds
-  Import took 0.010964 seconds .
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 2769.
+Total: 2.438400 ms (FindLiveObjects: 0.215600 ms CreateObjectMapping: 0.091300 ms MarkObjects: 2.032700 ms  DeleteObjects: 0.097500 ms)
 
