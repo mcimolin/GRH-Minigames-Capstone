@@ -91,21 +91,24 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     internal void SpawnEntities()
     {
-        float randomX = 0;
-        float randomY = 0;
-        float randomZ = 0;
+        //TO ADD: make random values pull the boundaries from their respective scripts
+        Vector3 randomPos;
 
         switch (gameDifficulty)
         {
             case GameDifficulty.EASY:
-                //Spawn Butterflies
+                // Spawn Butterflies
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), UnityEngine.Random.Range(-2f, 2f), 0);
+                    Entity(butterflySpawnArea, butterflyPrefab, randomPos);
                 }
 
                 //Spawn Flowers
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 2f));
+                    Entity(flowerSpawnArea, flowerPrefab, randomPos);
                 }
                 break;
 
@@ -114,11 +117,15 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 //Spawn Frogs
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 2f));
+                    Entity(frogSpawnArea, frogPrefab, randomPos);
                 }
 
                 //Spawn Lilypads
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
+                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos);
                 }
                 break;
 
@@ -127,30 +134,29 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 //Spawn Fish
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    randomX = fishSpawnArea.transform.position.x + UnityEngine.Random.Range(-4.0f, 4.0f);
-                    randomY = fishSpawnArea.transform.position.y;
-                    randomZ = fishSpawnArea.transform.position.z + UnityEngine.Random.Range(-2, 0.75f);
-                    GameObject fishObj = Instantiate(fishPrefab);
-                    fishObj.transform.position = new Vector3(randomX, randomY, randomZ);
-                    fishObj.transform.Rotate(Vector3.left * -90);
-                    fishObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
+                    Entity(fishSpawnArea, fishPrefab, randomPos);
+
                 }
 
                 //Spawn Bubbles
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
-                    randomX = bubbleSpawnArea.transform.position.x + UnityEngine.Random.Range(-4.0f, 4.0f);
-                    randomY = bubbleSpawnArea.transform.position.y;
-                    randomZ = bubbleSpawnArea.transform.position.z + UnityEngine.Random.Range(-2, 0.75f);
-                    GameObject bubbleObj = Instantiate(bubblePrefab);
-                    bubbleObj.transform.position = new Vector3(randomX, randomY, randomZ);
-                    bubbleObj.transform.Rotate(Vector3.left * -90);
-                    bubbleObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
+                    Entity(bubbleSpawnArea, bubblePrefab, randomPos);
                 }
                 break;
             default:
                 break;
         } 
+    }
+
+    internal void Entity(GameObject spawnLocation, GameObject entityPrefab, Vector3 location)
+    {
+        GameObject entityObj = Instantiate(entityPrefab);
+        entityObj.transform.position = spawnLocation.transform.position + location;
+        entityObj.transform.Rotate(Vector3.left * -90);
+        entityObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
     }
 
     internal void AdvanceGame()
