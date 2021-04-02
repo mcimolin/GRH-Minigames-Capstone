@@ -26,10 +26,10 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     GameObject[] AIObjects = null;
 
     // The amount of objects to spawn into the game for the player to guess, and the player's current guess amount.
-    int spawnablesAmount = 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
+    int spawnablesAmount = 0, fakeSpawnablesAmount= 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
 
     // The text display of how much time is left for the minigame;
-    [SerializeField] Text timeLeftText = null;
+    [SerializeField] Text timeLeftText = null, startGameText = null;
 
     // The Game Ending panel
     [SerializeField] GameObject gameEndPanel = null;
@@ -55,12 +55,19 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             Debug.LogError($"Parse Error: failed to load game difficulty.");
         }
 
+        try
+        {
+            //gameLength = GRHGameSettings.gameSettings.gameLength;
+        }
+        catch
+        {
+            Debug.LogError($"Parse Error: failed to load game length.");
+        }
+
         //Sets the amount of spawnables that the player must guess
-        spawnablesAmount = UnityEngine.Random.Range(10, 26);
+        spawnablesAmount = UnityEngine.Random.Range(5, 16);
 
-        //gameLength = GRHGameSettings.gameSettings.gameLength;
-
-        SpawnEntities();
+        StartCoroutine(DelayForGameStart());
     }
 
     // Update is called once per frame
@@ -84,35 +91,86 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     internal void SpawnEntities()
     {
+        //TO ADD: make random values pull the boundaries from their respective scripts
+        Vector3 randomPos;
+
         switch (gameDifficulty)
         {
             case GameDifficulty.EASY:
+                // Spawn Butterflies
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    //Spawn Butterflies
+                    randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), UnityEngine.Random.Range(-1f, 3f), 0);
+                    Entity(butterflySpawnArea, butterflyPrefab, randomPos);
+                }
+
+                //Spawn Flowers
+                for (int i = 0; i < fakeSpawnablesAmount; i++)
+                {
+                    int catchNum = 0;
+                    do
+                    {
+                        randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), 0, UnityEngine.Random.Range(-12f, 8f));
+                        catchNum += 1;
+                    } while (randomPos.x < 10 && randomPos.x > -8 && randomPos.z < 5 && randomPos.z > -10 && catchNum < 20);
+
+                    if (catchNum != 20)
+                    {
+                        Entity(flowerSpawnArea, flowerPrefab, randomPos);
+                    }
+                    else
+                    {
+                        Debug.LogError("Entity Spawn Error: Did not spawn object.");
+                    }
+
                 }
                 break;
+
+
             case GameDifficulty.MEDIUM:
+                //Spawn Frogs
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    //Spawn Frogs
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 2f));
+                    Entity(frogSpawnArea, frogPrefab, randomPos);
+                }
+
+                //Spawn Lilypads
+                for (int i = 0; i < fakeSpawnablesAmount; i++)
+                {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
+                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos);
                 }
                 break;
+
+
             case GameDifficulty.HARD:
+                //Spawn Fish
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    //Spawn Fish
-                    float randomX = fishSpawnArea.transform.position.x + UnityEngine.Random.Range(-4.0f, 4.0f);
-                    float randomZ = fishSpawnArea.transform.position.z + UnityEngine.Random.Range(-2, 0.75f);
-                    GameObject fishObj = Instantiate(fishPrefab);
-                    fishObj.transform.position = new Vector3(randomX, fishSpawnArea.transform.position.y, randomZ);
-                    fishObj.transform.Rotate(Vector3.left * -90);
-                    fishObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
+                    Entity(fishSpawnArea, fishPrefab, randomPos);
+
+                }
+
+                //Spawn Bubbles
+                for (int i = 0; i < fakeSpawnablesAmount; i++)
+                {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
+                    Entity(bubbleSpawnArea, bubblePrefab, randomPos);
                 }
                 break;
             default:
                 break;
         } 
+    }
+
+    internal void Entity(GameObject spawnLocation, GameObject entityPrefab, Vector3 location)
+    {
+        GameObject entityObj = Instantiate(entityPrefab);
+        entityObj.transform.position = spawnLocation.transform.position + location;
+        entityObj.transform.Rotate(Vector3.left * -90);
+        entityObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
     }
 
     internal void AdvanceGame()
@@ -138,6 +196,25 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         {
             playerGuess += value;
         }
+    }
+
+    IEnumerator DelayForGameStart()
+    {
+        startGameText.text = "3";
+        yield return new WaitForSeconds(1);
+        
+        startGameText.text = "2";
+        yield return new WaitForSeconds(1);
+
+        startGameText.text = "1";
+        yield return new WaitForSeconds(1);
+
+        startGameText.text = "GO!";
+        yield return new WaitForSeconds(1);
+
+        startGameText.text = "";
+        SpawnEntities();
+        AdvanceGame();
     }
 
     IEnumerator EndGame()
