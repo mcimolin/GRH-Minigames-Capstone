@@ -10,14 +10,17 @@ public class GRHGameSettings : MonoBehaviour
     // EASY, MEDIUM, HARD
     public string gameDifficulty;
 
+    // Tells which character the player will play in game, default being "Popcorn" [Added by Adam]
+    public int selectedCharacter;
+
     // Tells if game shows pump count or not (Balloon Minigame)
     public bool showPumpCount;
 
     // The amount of pumps the balloon will start with (Balloon Minigame)
     public int pumpCount;
 
-    // Tells which character the player will play in game, default being "Popcorn" [Added by Adam]
-    public int selectedCharacter;
+    //The length of time that the game will run for (Counting Minigame)
+    public int gameLength;
 
     private void Awake()
     {
@@ -38,5 +41,6 @@ public class GRHGameSettings : MonoBehaviour
         showPumpCount = true;
         pumpCount = 15;
         selectedCharacter = 0;
+        gameLength = 20;
     }
 }

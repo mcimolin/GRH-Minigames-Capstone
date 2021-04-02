@@ -64,7 +64,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             Debug.LogError($"Parse Error: failed to load game length.");
         }
 
-        //Sets the amount of spawnables that the player must guess
+        // Sets the amount of spawnables that the player must guess
         spawnablesAmount = UnityEngine.Random.Range(5, 16);
         fakeSpawnablesAmount = 5;
 
@@ -74,30 +74,38 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Checks to see if the game has been running longer than the set length for the game. Sets the game as ended if so.
         if (currentTime >= gameLength)
         {
             gameEnd = true;
         }
 
-        if (gameIsPlaying && !gameEnd)
+        
+        if (gameIsPlaying && !gameEnd) // If the game is currently being played and the game has not been set as ended, continue to progress the time of the game.
         {
             currentTime += Time.deltaTime;
             timeLeftText.text = $"Time Left: {(int)(gameLength - currentTime)}";
         }
-        else if (gameEnd)
+        else if (gameEnd) // The game has been set as ended
         {
             StartCoroutine(EndGame());
         }
     }
 
+    /// <summary>
+    /// Handles the selection of which entities will be spawned into the scene.
+    /// Entities that will be spawned will be passed to the Entity() method to handle the instantiation of the entity and the modifications done to the entity object.
+    /// Entities that can be spawned will be handled by the game's difficulty that is selected. One real entity type and one fake entity type will be set.
+    /// </summary>
     internal void SpawnEntities()
     {
-        //TO ADD: make random values pull the boundaries from their respective scripts
         Vector3 randomPos;
 
         switch (gameDifficulty)
         {
+            /* EASY difficulty selected: Butterflies & Flowers */
             case GameDifficulty.EASY:
+                
                 // Spawn Butterflies
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
@@ -105,10 +113,10 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                     Entity(butterflySpawnArea, butterflyPrefab, randomPos, 0, new Vector3(0, 0, 0));
                 }
 
-                //Spawn Flowers
+                // Spawn Flowers
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
-                    int catchNum = 0;
+                    int catchNum = 0; // Catch number for do-while loop. Used to break out if infinite loop occurs or too long of loading occurs
 
                     do
                     {
@@ -116,6 +124,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                         catchNum += 1;
                     } while (randomPos.x < 10 && randomPos.x > -8 && randomPos.z < 5 && randomPos.z > -10 && catchNum < 15);
 
+                    // Spawns entity if viable position was found
                     if (catchNum != 20)
                     {
                         Entity(flowerSpawnArea, flowerPrefab, randomPos, 0, new Vector3(0, 0, 0));
@@ -128,23 +137,32 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 }
                 break;
 
-
+            /* MEDIUM difficulty selected: Frogs & Lilypads */
             case GameDifficulty.MEDIUM:
-                //Spawn Frogs
+                
+                // Spawn Frogs
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    int catchNum = 0;
+                    int catchNum = 0; // Catch number for do-while loop. Used to break out if infinite loop occurs or too long of loading occurs
 
                     do
                     {
                         randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), 0, UnityEngine.Random.Range(-12f, 8f));
                         catchNum += 1;
                     } while (randomPos.x < 10 && randomPos.x > -8 && randomPos.z < 5 && randomPos.z > -10 && catchNum < 15);
-
-                    Entity(frogSpawnArea, frogPrefab, randomPos, 0, new Vector3(0, 0, 0));
+                    
+                    // Spawns entity if viable position was found
+                    if (catchNum != 20)
+                    {
+                        Entity(frogSpawnArea, frogPrefab, randomPos, 0, new Vector3(0, 0, 0));
+                    }
+                    else
+                    {
+                        Debug.LogError("Entity Spawn Error: Did not spawn object.");
+                    }
                 }
 
-                //Spawn Lilypads
+                // Spawn Lilypads
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
@@ -152,9 +170,10 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 }
                 break;
 
-
+            /* HARD difficulty selected: Fish and Bubbles */
             case GameDifficulty.HARD:
-                //Spawn Fish
+                
+                // Spawn Fish
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
@@ -174,42 +193,87 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         } 
     }
 
+    /// <summary>
+    /// Spawns the specified entity type into the scene. 
+    /// Sets the desired spawning location, the rotation and scaling of the entity.
+    /// </summary>
     internal void Entity(GameObject spawnLocation, GameObject entityPrefab, Vector3 location, float rotation, Vector3 scale)
     {
+        // Spawn entities prefab and store to a modifiable object
         GameObject entityObj = Instantiate(entityPrefab);
+
+        // Sets the alpha value of the sprite to 0 (invisible)
+        entityObj.GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 0);
+
+        // Modify the entities positioning, rotation and scaling
         entityObj.transform.position = spawnLocation.transform.position + location;
         entityObj.transform.Rotate(Vector3.left * rotation);
-        //entityObj.transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").transform.position);
         entityObj.transform.localScale = scale;
+
+        // Slowly fades the entity into view
+        StartCoroutine(FadeEntityIn(entityObj));
+
     }
 
+    /// <summary>
+    /// Starts the game.
+    /// Set's all variables required to begin the playing of the game.
+    /// </summary>
     internal void AdvanceGame()
     {
         gameIsPlaying = true;
         currentTime = 0;
     }
 
-    internal void PlayerGuess(int value)
+    /// <summary>
+    /// Modifies the player's current guess count.
+    /// This will be handled by button calls in the scene.
+    /// value: the value that is passed by the button (-1 or 1) that will be used to modify the player's guess.
+    /// </summary>
+    public void PlayerGuess(int value)
     {
-        if (playerGuess == 0) 
+        if (playerGuess == 0) // Player's current guess is zero. Confirms that player will not have a guess lower than zero.
         { 
-            if (value > 0)
+            if (value > 0) // Player inputs a positive guess
             {
                 playerGuess += value;
             }
-            else
+            else // Player inputs a negative guess that puts their current guess lower than zero
             {
                 Debug.LogError("Current guess would be negative. Ignoring guess change.");
             }
         }
-        else
+        else // Player's input will not result in a negative guess
         {
             playerGuess += value;
         }
     }
 
+    /// <summary>
+    /// Fades the specified entity into the scene.
+    /// </summary>
+    IEnumerator FadeEntityIn(GameObject entity)
+    {
+        float alphaValue = 1.0f; //The value the entity will fade to
+        float alphaTime = 1.5f; //The time it will take to complete the fade transition
+        float alpha = entity.GetComponent<SpriteRenderer>().material.color.a; //The current alpha value of the sprite
+
+        // Fades in the entity sprite over time
+        for (float a = 0f; a < 1.0f; a += Time.deltaTime / alphaTime)
+        {
+            Color color = new Color(1, 1, 1, Mathf.Lerp(alpha, alphaValue, a));
+            entity.GetComponent<SpriteRenderer>().material.color = color;
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Delay's the starting of the game, counting down.
+    /// </summary>
     IEnumerator DelayForGameStart()
     {
+        yield return new WaitForSeconds(0.75f);
+
         startGameText.text = "3";
         yield return new WaitForSeconds(1);
         
@@ -223,10 +287,17 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         startGameText.text = "";
+
+        // Begins the game
         SpawnEntities();
         AdvanceGame();
     }
 
+    /// <summary>
+    /// Handles all end game functionality.
+    /// Displays the win/lose status of the player.
+    /// Displays the play again or return to menu panel.
+    /// </summary>
     IEnumerator EndGame()
     {
 
