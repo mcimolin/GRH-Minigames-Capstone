@@ -100,15 +100,29 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 // Spawn Butterflies
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), UnityEngine.Random.Range(-2f, 2f), 0);
+                    randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), UnityEngine.Random.Range(-1f, 3f), 0);
                     Entity(butterflySpawnArea, butterflyPrefab, randomPos);
                 }
 
                 //Spawn Flowers
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 2f));
-                    Entity(flowerSpawnArea, flowerPrefab, randomPos);
+                    int catchNum = 0;
+                    do
+                    {
+                        randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), 0, UnityEngine.Random.Range(-12f, 8f));
+                        catchNum += 1;
+                    } while (randomPos.x < 10 && randomPos.x > -8 && randomPos.z < 5 && randomPos.z > -10 && catchNum < 20);
+
+                    if (catchNum != 20)
+                    {
+                        Entity(flowerSpawnArea, flowerPrefab, randomPos);
+                    }
+                    else
+                    {
+                        Debug.LogError("Entity Spawn Error: Did not spawn object.");
+                    }
+
                 }
                 break;
 
