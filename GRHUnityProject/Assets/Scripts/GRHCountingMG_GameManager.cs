@@ -40,7 +40,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     enum GameDifficulty { EASY, MEDIUM, HARD }
 
     // The difficulty of the game.
-    GameDifficulty gameDifficulty = GameDifficulty.HARD;
+    [SerializeField] GameDifficulty gameDifficulty = GameDifficulty.HARD;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +66,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
         //Sets the amount of spawnables that the player must guess
         spawnablesAmount = UnityEngine.Random.Range(5, 16);
+        fakeSpawnablesAmount = 5;
 
         StartCoroutine(DelayForGameStart());
     }
@@ -101,22 +102,23 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), UnityEngine.Random.Range(-1f, 3f), 0);
-                    Entity(butterflySpawnArea, butterflyPrefab, randomPos);
+                    Entity(butterflySpawnArea, butterflyPrefab, randomPos, 0, new Vector3(0, 0, 0));
                 }
 
                 //Spawn Flowers
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
                     int catchNum = 0;
+
                     do
                     {
                         randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), 0, UnityEngine.Random.Range(-12f, 8f));
                         catchNum += 1;
-                    } while (randomPos.x < 10 && randomPos.x > -8 && randomPos.z < 5 && randomPos.z > -10 && catchNum < 20);
+                    } while (randomPos.x < 10 && randomPos.x > -8 && randomPos.z < 5 && randomPos.z > -10 && catchNum < 15);
 
                     if (catchNum != 20)
                     {
-                        Entity(flowerSpawnArea, flowerPrefab, randomPos);
+                        Entity(flowerSpawnArea, flowerPrefab, randomPos, 0, new Vector3(0, 0, 0));
                     }
                     else
                     {
@@ -131,15 +133,22 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 //Spawn Frogs
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 2f));
-                    Entity(frogSpawnArea, frogPrefab, randomPos);
+                    int catchNum = 0;
+
+                    do
+                    {
+                        randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), 0, UnityEngine.Random.Range(-12f, 8f));
+                        catchNum += 1;
+                    } while (randomPos.x < 10 && randomPos.x > -8 && randomPos.z < 5 && randomPos.z > -10 && catchNum < 15);
+
+                    Entity(frogSpawnArea, frogPrefab, randomPos, 0, new Vector3(0, 0, 0));
                 }
 
                 //Spawn Lilypads
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
-                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos);
+                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos, 0, new Vector3(0, 0, 0));
                 }
                 break;
 
@@ -149,7 +158,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
-                    Entity(fishSpawnArea, fishPrefab, randomPos);
+                    Entity(fishSpawnArea, fishPrefab, randomPos, -90, new Vector3(1, 1, 1));
 
                 }
 
@@ -157,7 +166,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
-                    Entity(bubbleSpawnArea, bubblePrefab, randomPos);
+                    //Entity(bubbleSpawnArea, bubblePrefab, randomPos -90, new Vector3(1, 1, 1));
                 }
                 break;
             default:
@@ -165,12 +174,13 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         } 
     }
 
-    internal void Entity(GameObject spawnLocation, GameObject entityPrefab, Vector3 location)
+    internal void Entity(GameObject spawnLocation, GameObject entityPrefab, Vector3 location, float rotation, Vector3 scale)
     {
         GameObject entityObj = Instantiate(entityPrefab);
         entityObj.transform.position = spawnLocation.transform.position + location;
-        entityObj.transform.Rotate(Vector3.left * -90);
-        entityObj.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        entityObj.transform.Rotate(Vector3.left * rotation);
+        //entityObj.transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").transform.position);
+        entityObj.transform.localScale = scale;
     }
 
     internal void AdvanceGame()
