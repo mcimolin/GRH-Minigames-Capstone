@@ -26,7 +26,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     GameObject[] AIObjects = null;
 
     // The amount of objects to spawn into the game for the player to guess, and the player's current guess amount.
-    int spawnablesAmount = 0, fakeSpawnablesAmount= 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
+    int spawnablesAmount = 0, fakeSpawnablesAmount = 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
 
     // The text display of how much time is left for the minigame;
     [SerializeField] Text timeLeftText = null, startGameText = null;
@@ -57,7 +57,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
         try
         {
-            //gameLength = GRHGameSettings.gameSettings.gameLength;
+            gameLength = GRHGameSettings.gameSettings.gameLength;
         }
         catch
         {
@@ -110,7 +110,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), UnityEngine.Random.Range(-1f, 3f), 0);
-                    Entity(butterflySpawnArea, butterflyPrefab, randomPos, 0, new Vector3(0, 0, 0));
+                    Entity(butterflySpawnArea, butterflyPrefab, randomPos, new Vector3(0, 0, 0));
                 }
 
                 // Spawn Flowers
@@ -127,7 +127,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                     // Spawns entity if viable position was found
                     if (catchNum != 20)
                     {
-                        Entity(flowerSpawnArea, flowerPrefab, randomPos, 0, new Vector3(0, 0, 0));
+                        Entity(flowerSpawnArea, flowerPrefab, randomPos, new Vector3(0, 0, 0));
                     }
                     else
                     {
@@ -154,7 +154,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                     // Spawns entity if viable position was found
                     if (catchNum != 20)
                     {
-                        Entity(frogSpawnArea, frogPrefab, randomPos, 0, new Vector3(0, 0, 0));
+                        Entity(frogSpawnArea, frogPrefab, randomPos, new Vector3(0, 0, 0));
                     }
                     else
                     {
@@ -166,7 +166,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
-                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos, 0, new Vector3(0, 0, 0));
+                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos, new Vector3(0, 0, 0));
                 }
                 break;
 
@@ -177,7 +177,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < spawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
-                    Entity(fishSpawnArea, fishPrefab, randomPos, -90, new Vector3(1, 1, 1));
+                    Entity(fishSpawnArea, fishPrefab, randomPos, new Vector3(1, 1, 1));
 
                 }
 
@@ -185,7 +185,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < fakeSpawnablesAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.0f, 4.0f), 0, UnityEngine.Random.Range(-2f, 0.75f));
-                    //Entity(bubbleSpawnArea, bubblePrefab, randomPos -90, new Vector3(1, 1, 1));
+                    Entity(bubbleSpawnArea, bubblePrefab, randomPos, new Vector3(1, 1, 1));
                 }
                 break;
             default:
@@ -197,7 +197,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     /// Spawns the specified entity type into the scene. 
     /// Sets the desired spawning location, the rotation and scaling of the entity.
     /// </summary>
-    internal void Entity(GameObject spawnLocation, GameObject entityPrefab, Vector3 location, float rotation, Vector3 scale)
+    internal void Entity(GameObject spawnLocation, GameObject entityPrefab, Vector3 location, Vector3 scale)
     {
         // Spawn entities prefab and store to a modifiable object
         GameObject entityObj = Instantiate(entityPrefab);
@@ -207,7 +207,6 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
         // Modify the entities positioning, rotation and scaling
         entityObj.transform.position = spawnLocation.transform.position + location;
-        entityObj.transform.Rotate(Vector3.left * rotation);
         entityObj.transform.localScale = scale;
 
         // Slowly fades the entity into view
