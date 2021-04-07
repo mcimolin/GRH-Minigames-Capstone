@@ -19,8 +19,14 @@ public class GRHGameSettings : MonoBehaviour
     // The amount of pumps the balloon will start with (Balloon Minigame)
     public int pumpCount;
 
+    // The level of difficulty for the opponent (Counting Minigame)
+    public int opponentLevel;
+
     //The length of time that the game will run for (Counting Minigame)
-    public int gameLength;
+    public int timeLimit;
+
+    //The option to display AI's guesses during the game (Counting Minigame)
+    public bool displayOpponentCount;
 
     private void Awake()
     {
@@ -41,6 +47,8 @@ public class GRHGameSettings : MonoBehaviour
         showPumpCount = true;
         pumpCount = 15;
         selectedCharacter = 0;
-        gameLength = 20;
+        opponentLevel = 0;
+        timeLimit = 20;
+        displayOpponentCount = true;
     }
 }
