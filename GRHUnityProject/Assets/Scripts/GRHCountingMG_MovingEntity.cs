@@ -15,12 +15,6 @@ public class GRHCountingMG_MovingEntity : MonoBehaviour
     protected Camera mainCam;
     protected SpriteRenderer sprite;
 
-    //Start method included for testing purposes.
-    private void Start()
-    {
-        Initialize();
-    }
-
     //Initialize script to be called from game manager's start function.
     internal virtual void Initialize()
     {
@@ -29,7 +23,6 @@ public class GRHCountingMG_MovingEntity : MonoBehaviour
 
         //Set up the game object for initial use.
         DetermineDestination();
-        EnableMovement();
     }
     
     //Entity movement will be done in the update method in the extended classes, so no Update() function here.
