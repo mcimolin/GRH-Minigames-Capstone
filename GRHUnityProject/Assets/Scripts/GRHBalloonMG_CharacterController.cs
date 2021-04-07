@@ -7,11 +7,14 @@ using UnityEngine.UI;
 // Initial Framework: Bryce
 public class GRHBalloonMG_CharacterController : MonoBehaviour
 {
+    //The Counting Minigame's GameManager script
+    [SerializeField] GRHCountingMG_GameManager gm;
+
     //These are the positions in which the characters will be standing.
     [SerializeField] GameObject[] positions;
 
-    //This array will hold the characters gameobjects to be transferred over to the positions
-    [SerializeField] GameObject[] characters, labels;
+    //These arrays will hold the characters gameobjects to be transferred over to the positions and their labels
+    [SerializeField] internal GameObject[] characters, labels;
 
     //Holds the sprite images of the CPU icon and Player Icon.
     [SerializeField] Sprite cpuLabelImage, playerLabelImage;
@@ -28,6 +31,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Gets the player's selected character model and stores it for use in this script.
         try
         {
             playerCharacter = GRHGameSettings.gameSettings.selectedCharacter;
@@ -70,6 +74,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     void SetRandomPositions()
     {
         int randomPosition;
+        int aiIndex = 0;
 
         for (int i = 0; i < characters.Length; i++)
         {
@@ -96,7 +101,9 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                     }
                     else
                     {
-                        SetLabel(labels[i], cpuLabelImage, "CPU", Color.blue);
+                        SetLabel(labels[i], cpuLabelImage, "?", Color.blue);
+                        gm.AIGuessTexts[aiIndex] = labels[i].GetComponentInChildren<Text>();
+                        aiIndex += 1;
                     }
 
                     characters[i].transform.parent = positions[randomPosition].transform;
@@ -110,6 +117,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     void SetRandomPositions(int startPosition)
     {
         int randomPosition;
+        int aiIndex = 0; //The index for setting which AI is where.
 
         for (int i = 0; i < characters.Length; i++)
         {
@@ -129,7 +137,9 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                 }
                 else
                 {
-                    SetLabel(labels[i], cpuLabelImage, "CPU", Color.blue);
+                    SetLabel(labels[i], cpuLabelImage, "?", Color.blue);
+                    gm.AIGuessTexts[aiIndex] = labels[i].GetComponentInChildren<Text>();
+                    aiIndex += 1;
 
                     characters[i].transform.parent = positions[randomPosition].transform;
                     characters[i].transform.position = positions[randomPosition].transform.position;

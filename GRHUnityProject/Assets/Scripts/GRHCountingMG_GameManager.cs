@@ -22,8 +22,11 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     //Checks to see if the game is currently playing.
     internal bool gameIsPlaying = false, gameEnd = false;
 
+    // Toggleable option to display the AI guesses while the game is playing.
+    internal bool displayAIGuesses = true;
+
     // AI scripts
-    GameObject[] AIObjects = null;
+    internal GameObject[] AIObjects = null;
 
     // The amount of objects to spawn into the game for the player to guess, and the player's current guess amount.
     int spawnablesAmount = 0, fakeSpawnablesAmount = 0, playerGuess = 0, AI1Guess = 0, AI2Guess = 0, AI3Guess = 0;
@@ -37,10 +40,18 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // The win condition display text
     [SerializeField] Text gameEndWinCondition = null;
 
+    // The AI's guess textboxes to display their current guess
+    [SerializeField] internal Text[] AIGuessTexts;
+
     enum GameDifficulty { EASY, MEDIUM, HARD }
 
     // The difficulty of the game.
     [SerializeField] GameDifficulty gameDifficulty = GameDifficulty.HARD;
+
+    private void Awake()
+    {
+        AIGuessTexts = new Text[3];
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -55,9 +66,20 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             Debug.LogError($"Parse Error: failed to load game difficulty.");
         }
 
+        // Gets the difficulty that was set for the minigame and stores it for use in this script.
         try
         {
-            gameLength = GRHGameSettings.gameSettings.gameLength;
+            displayAIGuesses = GRHGameSettings.gameSettings.displayOpponentCount;
+        }
+        catch (Exception)
+        {
+            Debug.LogError($"Parse Error: failed to load display of AI guesses.");
+        }
+
+        // Gets the game's duration for the minigame to store it for use in this script
+        try
+        {
+            gameLength = GRHGameSettings.gameSettings.timeLimit;
         }
         catch
         {
@@ -89,6 +111,14 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         else if (gameEnd) // The game has been set as ended
         {
             StartCoroutine(EndGame());
+        }
+
+        //Updates the AI's guess displays if the option to display them is enabled.
+        if (displayAIGuesses)
+        {
+            AIGuessTexts[0].text = $"{AI1Guess}";
+            AIGuessTexts[1].text = $"{AI2Guess}";
+            AIGuessTexts[2].text = $"{AI3Guess}";
         }
     }
 
