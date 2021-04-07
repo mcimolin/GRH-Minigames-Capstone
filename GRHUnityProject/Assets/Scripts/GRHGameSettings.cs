@@ -48,7 +48,7 @@ public class GRHGameSettings : MonoBehaviour
         pumpCount = 15;
         selectedCharacter = 0;
         opponentLevel = 0;
-        timeLimit = 20;
+        timeLimit = 30;
         displayOpponentCount = true;
     }
 }
