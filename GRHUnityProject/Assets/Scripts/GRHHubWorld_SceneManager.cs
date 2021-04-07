@@ -14,6 +14,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
+    [SerializeField] private Slider opponentLevelSlider, timeSlider;
 
     private string gameSelected;
 
@@ -105,6 +106,19 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         }
     }
 
+    //Sets weather the opponents counts are displayed above their heads (Counting Game)
+    public void ToggleOpponentCounts()
+    {
+        if (!gameSettings.displayOpponentCount)
+        {
+            gameSettings.displayOpponentCount = true;
+        }
+        else
+        {
+            gameSettings.displayOpponentCount = false;
+        }
+    }
+
     //Sets tpump count amount for the Balloon Minigame
     public void SetPumpCount()
     {
@@ -142,6 +156,16 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
             mediumButton.enabled = false;
             hardButton.enabled = false;
         }
+    }
+
+    public void SetOpponentLevel()
+    {
+        gameSettings.opponentLevel = (int)opponentLevelSlider.value;
+    }
+
+    public void SetTimeLimit()
+    {
+        gameSettings.timeLimit = (int)(timeSlider.value * 15);
     }
 
     // Sets the player's character preference [Added by Bryce]
