@@ -19,7 +19,7 @@ public class GRHCountingMG_AIController : MonoBehaviour
 
     private void Start()
     {
-        percentChance = GRHGameSettings.gameSettings.opponentLevel;
+        percentChance = GRHGameSettings.gameSettings.opponentLevel * 10;
         timeStamp = -1.0f;
     }
 

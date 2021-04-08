@@ -8,6 +8,9 @@ using UnityEngine.UI;
 // Initial Framework: Bryce
 public class GRHCountingMG_GameManager : MonoBehaviour
 {
+    //Counting Game sound manager
+    [SerializeField] internal GRHCountingMG_SoundManager soundManager;
+
     enum GameDifficulty { EASY, MEDIUM, HARD }
 
     // The difficulty of the game.
@@ -66,6 +69,13 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     {
         addButton.interactable = false;
         subtractButton.interactable = false;
+
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<GRHCountingMG_SoundManager>();
+
+        if (!soundManager.IsCountingGameMusicPlaying())
+        {
+            soundManager.CountingGameMusic();
+        }
 
         // Gets the difficulty that was set for the minigame and stores it for use in this script.
         try
@@ -198,7 +208,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                                 }
                             }
                         }
-                    } while (randomPos.x <= 9.5f && randomPos.x >= -7.75f && randomPos.z <= 3.5f && randomPos.z >= -2 && similarPositioning && catchNum < 15);
+                    } while (((randomPos.x <= 9.5f && randomPos.x >= -7.75f && randomPos.z <= 3.5f && randomPos.z >= -2) || similarPositioning) && catchNum < 15);
 
                     // Spawns entity if viable position was found
                     if (catchNum != 20)
@@ -330,6 +340,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             if (value > 0) // Player inputs a positive guess
             {
                 playerGuess += value;
+                soundManager.GuessButtonSound();
             }
             else // Player inputs a negative guess that puts their current guess lower than zero
             {
@@ -341,12 +352,14 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             if (playerGuess < 30) //Player's input does not go over the max limit of 30.
             {
                 playerGuess += value;
+                soundManager.GuessButtonSound();
             }
             else //Player's input would be over the max limit of 30.
             {
                 if (value < 0)
                 {
                     playerGuess += value;
+                    soundManager.GuessButtonSound();
                 }
                 else
                 {
@@ -444,11 +457,13 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
+        //soundManager.StopCountingGameMusic();
         SceneManager.LoadScene("GRHCountingMG_Scene");
     }
 
     public void ExitMinigame()
     {
+        soundManager.StopCountingGameMusic();
         SceneManager.LoadScene("GRHHubWorld_SceneManager");
     }
 }
