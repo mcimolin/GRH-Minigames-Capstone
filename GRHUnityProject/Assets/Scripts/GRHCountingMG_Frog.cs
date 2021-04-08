@@ -135,9 +135,10 @@ public class GRHCountingMG_Frog : GRHCountingMG_MovingEntity
     //If the frog is jumping, toggle the animation back to stationary.
     internal override void DisableMovement()
     {
-        //If we're in the jumping state, we're in the jumping animation.
+        //If we're in the jumping state, we're in the jumping animation. Toggle it, and switch to the waiting state to avoid multiple calls.
         if (currentState == FrogState.Jumping)
         {
+            currentState = FrogState.Waiting;
             animator.SetTrigger("JumpToggle");
         }
 
