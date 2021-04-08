@@ -1,13 +1,31 @@
 fileFormatVersion: 2
-guid: 19bc64ada6d099144830499416cec849
+guid: ef4d9ef29e17e204ba3d730c82177c65
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4345832998678286624
-    second: GRHCountingMG_Lillypad_0
+      213: 755884960693996581
+    second: GRHCountingMG_RipplesSpriteSheet_0
   - first:
-      213: 1462483466541426230
-    second: GRHCountingMG_Lillypad_1
+      213: 7624066901910124298
+    second: GRHCountingMG_RipplesSpriteSheet_1
+  - first:
+      213: -9083217169849421748
+    second: GRHCountingMG_RipplesSpriteSheet_2
+  - first:
+      213: 7846981777180384803
+    second: GRHCountingMG_RipplesSpriteSheet_3
+  - first:
+      213: 8579517165903176712
+    second: GRHCountingMG_RipplesSpriteSheet_4
+  - first:
+      213: -8673784742145568988
+    second: GRHCountingMG_RipplesSpriteSheet_5
+  - first:
+      213: 7339458907055459798
+    second: GRHCountingMG_RipplesSpriteSheet_6
+  - first:
+      213: -6876088303570979537
+    second: GRHCountingMG_RipplesSpriteSheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -169,13 +187,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GRHCountingMG_Lillypad_0
+      name: GRHCountingMG_RipplesSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 926
-        height: 390
+        y: 1158
+        width: 432
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ee2c94b9ef70b3c0800000000000000
-      internalID: -4345832998678286624
+      spriteID: 52cc93ded517d7a00800000000000000
+      internalID: 755884960693996581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GRHCountingMG_Lillypad_1
+      name: GRHCountingMG_RipplesSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 1752
-        y: 0
-        width: 924
-        height: 390
+        x: 992
+        y: 1151
+        width: 484
+        height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,8 +222,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6366519d6f8cb4410800000000000000
-      internalID: 1462483466541426230
+      spriteID: a077a2804702ec960800000000000000
+      internalID: 7624066901910124298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRHCountingMG_RipplesSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1964
+        y: 1137
+        width: 583
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c407565eb1ee1f180800000000000000
+      internalID: -9083217169849421748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRHCountingMG_RipplesSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 3027
+        y: 1158
+        width: 434
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32edccbe95416ec60800000000000000
+      internalID: 7846981777180384803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRHCountingMG_RipplesSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 15
+        width: 449
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 804660af761901770800000000000000
+      internalID: 8579517165903176712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRHCountingMG_RipplesSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 8
+        width: 485
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42fc5329bb680a780800000000000000
+      internalID: -8673784742145568988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRHCountingMG_RipplesSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 0
+        width: 583
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd0e966dfefad560800000000000000
+      internalID: 7339458907055459798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRHCountingMG_RipplesSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 3061
+        y: 6
+        width: 431
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25fe657e1a3390a0800000000000000
+      internalID: -6876088303570979537
       vertices: []
       indices: 
       edges: []
