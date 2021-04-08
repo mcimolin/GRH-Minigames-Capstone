@@ -32,6 +32,9 @@ public class GRHCountingMG_Frog : GRHCountingMG_MovingEntity
         waitStartTime = Time.time;
         waitTime = Random.Range(minimumWaitTime, maximumWaitTime);
 
+        //We don't want all the frogs to jump at about the same time, so reduce the initial waiting time by between 0 and the wait time.
+        waitTime -= Random.Range(0f, waitTime);
+
         //This will determine the first destination point for the frog to go to.
         base.Initialize();
     }
