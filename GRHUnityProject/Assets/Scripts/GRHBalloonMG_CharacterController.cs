@@ -22,6 +22,9 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     //Set's the toggleable option of random spawns or set spawns.
     [SerializeField] bool setRandomPositions = false;
 
+    //The camera located in the scene
+    [SerializeField] Camera mainCam;
+
     //The player's selected character (defaults to 0: Cotton Candy)
     int playerCharacter = 0;
 
@@ -62,6 +65,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     void SetBasePositions()
     {
         //Sets the player's character to the far left side.
+        characters[playerCharacter].transform.Rotate(27, 0, 0);
         characters[playerCharacter].transform.parent = positions[0].transform;
         characters[playerCharacter].transform.position = positions[0].transform.position;
         characters[playerCharacter].GetComponentInChildren<Image>();
@@ -103,9 +107,11 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                     {
                         SetLabel(labels[i], cpuLabelImage, "?", Color.blue);
                         gm.AIGuessTexts[aiIndex] = labels[i].GetComponentInChildren<Text>();
+                        labels[i].GetComponentInChildren<Text>().fontSize = 50;
                         aiIndex += 1;
                     }
 
+                    characters[i].transform.Rotate(27, 0, 0);
                     characters[i].transform.parent = positions[randomPosition].transform;
                     characters[i].transform.position = positions[randomPosition].transform.position;
                 }
@@ -139,8 +145,10 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                 {
                     SetLabel(labels[i], cpuLabelImage, "?", Color.blue);
                     gm.AIGuessTexts[aiIndex] = labels[i].GetComponentInChildren<Text>();
+                    labels[i].GetComponentInChildren<Text>().fontSize = 50;
                     aiIndex += 1;
 
+                    characters[i].transform.Rotate(27, 0, 0);
                     characters[i].transform.parent = positions[randomPosition].transform;
                     characters[i].transform.position = positions[randomPosition].transform.position;
                 }
