@@ -28,6 +28,15 @@ public class GRHGameSettings : MonoBehaviour
     //The option to display AI's guesses during the game (Counting Minigame)
     public bool displayOpponentCount;
 
+    // The amount of objects to spawn (Counting Minigame)
+    public int entityAmount;
+
+    // The scale size of the entities that will be spawned (Counting Minigame)
+    public float entityScaling;
+
+    // The speed in which the entities move around on the scene
+    public float entityMovementSpeed;
+
     private void Awake()
     {
         // Checks to make sure there is only one of this script loaded [Added by Bryce]
@@ -50,5 +59,8 @@ public class GRHGameSettings : MonoBehaviour
         opponentLevel = 0;
         timeLimit = 30;
         displayOpponentCount = true;
+        entityAmount = 20;
+        entityScaling = 1.5f;
+        entityMovementSpeed = 0.5f;
     }
 }
