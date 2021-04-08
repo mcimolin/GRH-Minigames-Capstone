@@ -44,7 +44,7 @@ PlayerSettings:
     duration: 3
   - logo: {fileID: 21300000, guid: 893a6c73936c5124d9806c55a16a9fc4, type: 3}
     duration: 3
-  - logo: {fileID: 21300000, guid: ddf2e1949943a1c438ae5f07380a0a9f, type: 3}
+  - logo: {fileID: 21300000, guid: 742add3885acda9479f87f25bf0ceb26, type: 3}
     duration: 3
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 3
