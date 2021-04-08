@@ -15,8 +15,11 @@ public class GRHCountingMG_AIController : MonoBehaviour
     public float guessRate;
     private float timeStamp;
 
+    public bool canGuess = false; // AI is able to guess if game is still playing
+
     private void Start()
     {
+        percentChance = GRHGameSettings.gameSettings.opponentLevel;
         timeStamp = -1.0f;
     }
 
@@ -24,7 +27,7 @@ public class GRHCountingMG_AIController : MonoBehaviour
     {
         // Set the guess rate, when the game starts the AI will wait (guessRate) seconds before guessing 
         // and continue doing so for the set time throughout the game
-        if (Time.time > timeStamp + guessRate)
+        if (Time.time > timeStamp + guessRate && canGuess)
         {
             Guess();
             timeStamp = Time.time;
@@ -37,7 +40,7 @@ public class GRHCountingMG_AIController : MonoBehaviour
         if (ai_Guess < totalCount)
         {
             int ran = Random.Range(1, 101);
-            Debug.Log(ran);
+            //Debug.Log(ran);
             if (ran >= 1 && ran <= percentChance)
             {
                 ai_Guess += 1;
@@ -48,7 +51,7 @@ public class GRHCountingMG_AIController : MonoBehaviour
         if (ai_Guess > totalCount)
         {
             int ran = Random.Range(1, 101);
-            Debug.Log(ran);
+            //Debug.Log(ran);
             if (ran >= 1 && ran <= percentChance)
             {
                 ai_Guess -= 1;
