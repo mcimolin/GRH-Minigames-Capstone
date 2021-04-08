@@ -39,7 +39,13 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: 9070242939952500059, guid: b4a64033ee68f324a9dbae6bf6d9bbd6, type: 3}
+    duration: 2
+  - logo: {fileID: 21300000, guid: acd88dffc8133704f9bd0200eef48077, type: 3}
+    duration: 2
+  - logo: {fileID: 21300000, guid: ddf2e1949943a1c438ae5f07380a0a9f, type: 3}
+    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -145,7 +151,8 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.GRHUnityProject
   buildNumber:
     Standalone: 0
     iPhone: 0
