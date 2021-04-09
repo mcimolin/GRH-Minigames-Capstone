@@ -31,6 +31,10 @@ public class GRHCountingMG_Fish : GRHCountingMG_MovingEntity
         visibilityStateStartTime = Time.time;
         visibilityStateWaitTime = Random.Range(minimumVisibleTime, maximumVisibleTime);
         currentVisualState = VisibilityState.Visible;
+
+        //We also want to reduce the initial fish visibility time to some random lower amount, so they don't all disappear at the same time.
+        //To do this, we'll reduce this initial visibility state wait time by a random amount from 0 to the wait time.
+        visibilityStateWaitTime -= Random.Range(0f, visibilityStateWaitTime);
     }
 
     //Basically, the fish will move from their current position to the current destination, at their speed, if movement is enabled.
@@ -38,6 +42,11 @@ public class GRHCountingMG_Fish : GRHCountingMG_MovingEntity
     //The fish will also transition from visible to invisible, waiting a certain amount of time between state changes.
     void Update()
     {
+        //Are we still fading in?
+        if (fadingIn)
+        {
+            base.Update();
+        }
         //Is movement enabled?
         if (movementEnabled)
         {
@@ -94,6 +103,12 @@ public class GRHCountingMG_Fish : GRHCountingMG_MovingEntity
                         visibilityStateStartTime = Time.time;
                         visibilityStateWaitTime = Random.Range(minimumVisibilityTransitionTime, maximumVisibilityTransitionTime);
                         currentVisualState = VisibilityState.TransitioningToInvisible;
+
+                        //If the fish is still fading in, stop fading it in so it can fade out.
+                        if (fadingIn)
+                        {
+                            fadingIn = false;
+                        }
                     }
                     break;
 

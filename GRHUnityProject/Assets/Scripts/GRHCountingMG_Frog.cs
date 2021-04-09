@@ -19,11 +19,12 @@ public class GRHCountingMG_Frog : GRHCountingMG_MovingEntity
 
     Vector2 groundedPosition;
 
-    Animator animator;
-
     //Initalize the frog to the waiting state, determine it's waiting time, and then call the base initialize method.
     internal override void Initialize()
     {
+        //Start by calling the base initialize method, which will determine a destination and enable movement.
+        base.Initialize();
+
         //Get the animator for toggling jump animations.
         animator = GetComponent<Animator>();
 
@@ -32,12 +33,17 @@ public class GRHCountingMG_Frog : GRHCountingMG_MovingEntity
         waitStartTime = Time.time;
         waitTime = Random.Range(minimumWaitTime, maximumWaitTime);
 
-        //This will determine the first destination point for the frog to go to.
-        base.Initialize();
+        //We don't want all the frogs to jump at about the same time, so reduce the initial waiting time by between 0 and the wait time.
+        waitTime -= Random.Range(0f, waitTime);
     }
     
     void Update()
     {
+        //Are we still fading in?
+        if (fadingIn)
+        {
+            base.Update();
+        }
         //Is movement enabled?
         if (movementEnabled)
         {
