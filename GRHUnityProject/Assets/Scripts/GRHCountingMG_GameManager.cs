@@ -31,6 +31,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // The win condition display text
     [SerializeField] Text gameEndWinCondition = null;
 
+    // The Add and Subtract buttons for the player's guess input
     [SerializeField] Button addButton = null, subtractButton = null;
 
     // The AI's guess textboxes to display their current guess
@@ -44,6 +45,12 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     // The game's length and the current time spent into the game.
     internal float gameDuration = 30, currentTime = 0;
+
+    // The total amount of entities that will be spawned into the scene (split between the real and fake)
+    internal int amountOfEntitiesToSpawn = 30;
+
+    // The modification of the entity scaling from the settings
+    internal float entityScaling = 1;
 
     //Checks to see if the game is currently playing.
     internal bool gameIsPlaying = false, gameEnd = false;
@@ -107,9 +114,29 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             Debug.LogError($"Parse Error: failed to load game length.");
         }
 
+        // Gets the amount of entities to spawn for the minigame to store it for use in this script
+        try
+        {
+            amountOfEntitiesToSpawn = GRHGameSettings.gameSettings.entityAmount;
+        }
+        catch
+        {
+            Debug.LogError($"Parse Error: failed to load entity amount.");
+        }
+
+        // Gets the entity scaling setting for the minigame to store it for use in this script
+        try
+        {
+            entityScaling = GRHGameSettings.gameSettings.entityScaling;
+        }
+        catch
+        {
+            Debug.LogError($"Parse Error: failed to load entity amount.");
+        }
+
         // Sets the amount of spawnables that the player must guess
-        entityAmount = UnityEngine.Random.Range(5, 16);
-        fakeEntityAmount = UnityEngine.Random.Range(5, 16);
+        entityAmount = (int)UnityEngine.Random.Range((amountOfEntitiesToSpawn/2) / 1.75f, (amountOfEntitiesToSpawn/2) * 1.75f);
+        fakeEntityAmount = amountOfEntitiesToSpawn - entityAmount;
 
         //Set the Time Left text to display how much time will be on the clock.
         timeLeftText.text = $"Time Left: {gameDuration}";
@@ -119,6 +146,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             AIObjects[i].GetComponent<GRHCountingMG_AIController>().totalCount = entityAmount;
         }
 
+        //Starts the Countdown timer for starting the game.
         StartCoroutine(DelayForGameStart());
     }
 
@@ -182,7 +210,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < entityAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-11.0f, 11.0f), UnityEngine.Random.Range(-1f, 3f), 0);
-                    Entity(butterflySpawnArea, butterflyPrefab, randomPos, new Vector3(0.75f, 0.75f, 0.75f));
+                    Entity(butterflySpawnArea, butterflyPrefab, randomPos, new Vector3(0.75f, 0.75f, 0.75f) * entityScaling);
                 }
 
                 List<Vector3> entityPositionsList = new List<Vector3>(); // Holds a list of the entity positions. Used to stop entities spawning on one another
@@ -213,7 +241,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                     // Spawns entity if viable position was found
                     if (catchNum != 20)
                     {
-                        Entity(flowerSpawnArea, flowerPrefab, randomPos, new Vector3(0.8f, 0.8f, 0.8f));
+                        Entity(flowerSpawnArea, flowerPrefab, randomPos, new Vector3(0.8f, 0.8f, 0.8f) * entityScaling);
                     }
                     else
                     {
@@ -223,9 +251,30 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 }
                 break;
 
-            /* MEDIUM difficulty selected: Frogs & Lilypads */
+
+            /* MEDIUM difficulty selected: Fish and Bubbles */
             case GameDifficulty.MEDIUM:
                 
+                // Spawn Fish
+                for (int i = 0; i < entityAmount; i++)
+                {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0, UnityEngine.Random.Range(-4f, 0.75f));
+                    Entity(fishSpawnArea, fishPrefab, randomPos, new Vector3(1, 1, 1) * entityScaling);
+
+                }
+
+                //Spawn Bubbles
+                for (int i = 0; i < fakeEntityAmount; i++)
+                {
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0, UnityEngine.Random.Range(-4f, 0.75f));
+                    Entity(bubbleSpawnArea, bubblePrefab, randomPos, new Vector3(0.5f, 0.5f, 0.5f) * entityScaling);
+                }
+                break;
+
+
+            /* HARD difficulty selected: Frogs & Lilypads */
+            case GameDifficulty.HARD:
+
                 // Spawn Frogs
                 for (int i = 0; i < entityAmount; i++)
                 {
@@ -236,11 +285,11 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                         randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), 0.5f, UnityEngine.Random.Range(-8f, 5f));
                         catchNum += 1;
                     } while (randomPos.x <= 9.5f && randomPos.x >= -7.75f && randomPos.z <= 3.5f && randomPos.z >= -4 && catchNum < 15);
-                    
+
                     // Spawns entity if viable position was found
                     if (catchNum != 20)
                     {
-                        Entity(frogSpawnArea, frogPrefab, randomPos, new Vector3(1.25f, 1.25f, 1.25f));
+                        Entity(frogSpawnArea, frogPrefab, randomPos, new Vector3(1.25f, 1.25f, 1.25f) * entityScaling);
                     }
                     else
                     {
@@ -252,26 +301,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 for (int i = 0; i < fakeEntityAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.15f, UnityEngine.Random.Range(-4f, 0.75f));
-                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos, new Vector3(0.15f, 0.15f, 0.15f));
-                }
-                break;
-
-            /* HARD difficulty selected: Fish and Bubbles */
-            case GameDifficulty.HARD:
-                
-                // Spawn Fish
-                for (int i = 0; i < entityAmount; i++)
-                {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0, UnityEngine.Random.Range(-4f, 0.75f));
-                    Entity(fishSpawnArea, fishPrefab, randomPos, new Vector3(1, 1, 1));
-
-                }
-
-                //Spawn Bubbles
-                for (int i = 0; i < fakeEntityAmount; i++)
-                {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0, UnityEngine.Random.Range(-4f, 0.75f));
-                    Entity(bubbleSpawnArea, bubblePrefab, randomPos, new Vector3(0.5f, 0.5f, 0.5f));
+                    Entity(lilypadSpawnArea, lilypadPrefab, randomPos, new Vector3(0.15f, 0.15f, 0.15f) * entityScaling);
                 }
                 break;
             default:
@@ -366,25 +396,6 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                     Debug.LogError("Max guess limit reached. Ignoring guess change.");
                 }
             }
-        }
-    }
-
-    /// <summary>
-    /// [DEPRECATED]
-    /// Fades the specified entity into the scene.
-    /// </summary>
-    IEnumerator FadeEntityIn(GameObject entity)
-    {
-        float alphaValue = 1.0f; //The value the entity will fade to
-        float alphaTime = 2.25f; //The time it will take to complete the fade transition
-        float alpha = entity.GetComponent<SpriteRenderer>().material.color.a; //The current alpha value of the sprite
-
-        // Fades in the entity sprite over time
-        for (float a = 0f; a < 1.0f; a += Time.deltaTime / alphaTime)
-        {
-            Color color = new Color(1, 1, 1, Mathf.Lerp(alpha, alphaValue, a));
-            entity.GetComponent<SpriteRenderer>().material.color = color;
-            yield return null;
         }
     }
 
