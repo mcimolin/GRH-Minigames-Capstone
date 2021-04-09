@@ -14,7 +14,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
-    [SerializeField] private Slider opponentLevelSlider, timeSlider;
+    [SerializeField] private Slider opponentLevelSlider, timeSlider, objectSpeedSlider, objectScaleSlider, objectCountSlider;
 
     private string gameSelected;
 
@@ -158,11 +158,13 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         }
     }
 
+    //Set opponent level (counting game)
     public void SetOpponentLevel()
     {
         gameSettings.opponentLevel = (int)opponentLevelSlider.value;
     }
 
+    //Set time limit (counting game)
     public void SetTimeLimit()
     {
         gameSettings.timeLimit = (int)(timeSlider.value * 15);
@@ -172,6 +174,35 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     public void CharacterSelection()
     {
         gameSettings.selectedCharacter = characterSelector.value;
+    }
+
+    //Set Object Speed (counting game)
+    public void SetObjectSpeed()
+    {
+        gameSettings.entityMovementSpeed = (objectSpeedSlider.value / 2);
+    }
+
+    //Set object size (counting game)
+    public void SetObjectSize()
+    {
+        if (objectScaleSlider.value == 3)
+        {
+            gameSettings.entityScaling = 2f;
+        }
+        else if(objectScaleSlider.value == 2)
+        {
+            gameSettings.entityScaling = 1.5f;
+        }
+        else
+        {
+            gameSettings.entityScaling = 1;
+        }
+    }
+
+    //Set object count (Counting game)
+    public void SetObjectCount()
+    {
+        gameSettings.entityAmount = (int)objectCountSlider.value;
     }
 
     // Remove all but "Application.Quit();" before building as it will crash if left in during build

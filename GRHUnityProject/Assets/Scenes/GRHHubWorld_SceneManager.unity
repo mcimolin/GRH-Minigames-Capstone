@@ -1099,6 +1099,9 @@ MonoBehaviour:
   opponentLevel: 0
   timeLimit: 0
   displayOpponentCount: 0
+  entityAmount: 0
+  entityScaling: 0
+  entityMovementSpeed: 0
 --- !u!1 &284009201
 GameObject:
   m_ObjectHideFlags: 0
@@ -7700,6 +7703,9 @@ MonoBehaviour:
   hardButton: {fileID: 1030004616}
   opponentLevelSlider: {fileID: 811454486}
   timeSlider: {fileID: 1349824123}
+  objectSpeedSlider: {fileID: 0}
+  objectScaleSlider: {fileID: 0}
+  objectCountSlider: {fileID: 0}
 --- !u!1 &1545905701
 GameObject:
   m_ObjectHideFlags: 0
