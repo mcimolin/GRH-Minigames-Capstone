@@ -42,6 +42,11 @@ public class GRHCountingMG_Fish : GRHCountingMG_MovingEntity
     //The fish will also transition from visible to invisible, waiting a certain amount of time between state changes.
     void Update()
     {
+        //Are we still fading in?
+        if (fadingIn)
+        {
+            base.Update();
+        }
         //Is movement enabled?
         if (movementEnabled)
         {
@@ -98,6 +103,12 @@ public class GRHCountingMG_Fish : GRHCountingMG_MovingEntity
                         visibilityStateStartTime = Time.time;
                         visibilityStateWaitTime = Random.Range(minimumVisibilityTransitionTime, maximumVisibilityTransitionTime);
                         currentVisualState = VisibilityState.TransitioningToInvisible;
+
+                        //If the fish is still fading in, stop fading it in so it can fade out.
+                        if (fadingIn)
+                        {
+                            fadingIn = false;
+                        }
                     }
                     break;
 

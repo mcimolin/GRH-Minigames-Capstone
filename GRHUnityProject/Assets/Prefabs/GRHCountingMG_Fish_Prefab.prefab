@@ -137,6 +137,7 @@ MonoBehaviour:
   maximumMovementDistance: 5
   minimumWaitTime: 0.5
   maximumWaitTime: 1
+  initialFadeInTime: 0.5
   minimumVisibilityTransitionTime: 1
   maximumVisibilityTransitionTime: 2
   minimumVisibleTime: 7
