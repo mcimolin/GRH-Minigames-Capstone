@@ -50,7 +50,10 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     internal int amountOfEntitiesToSpawn = 30;
 
     // The modification of the entity scaling from the settings
-    internal float entityScaling = 1;
+    internal float entityScaling = 1.25f;
+
+    // The modification of the entity movement speed from the settings
+    internal float entityMovementSpeed = 1;
 
     //Checks to see if the game is currently playing.
     internal bool gameIsPlaying = false, gameEnd = false;
@@ -74,8 +77,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        addButton.interactable = false;
-        subtractButton.interactable = false;
+        LoadSettings();
 
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<GRHCountingMG_SoundManager>();
 
@@ -84,6 +86,72 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             soundManager.CountingGameMusic();
         }
 
+        // Sets the amount of spawnables that the player must guess
+        entityAmount = (int)UnityEngine.Random.Range((amountOfEntitiesToSpawn/2) / 1.75f, (amountOfEntitiesToSpawn/2) * 1.75f);
+        fakeEntityAmount = amountOfEntitiesToSpawn - entityAmount;
+
+        //Set the Time Left text to display how much time will be on the clock.
+        timeLeftText.text = $"Time Left: {gameDuration}";
+
+        for (int i = 0; i < AIObjects.Length; i++)
+        {
+            AIObjects[i].GetComponent<GRHCountingMG_AIController>().totalCount = entityAmount;
+        }
+
+        addButton.interactable = false;
+        subtractButton.interactable = false;
+
+        //Starts the Countdown timer for starting the game.
+        StartCoroutine(DelayForGameStart());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Equals) && gameIsPlaying)
+        {
+            PlayerGuess(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Minus) && gameIsPlaying)
+        {
+            PlayerGuess(-1);
+        }
+
+        // Checks to see if the game has been running longer than the set length for the game. Sets the game as ended if so.
+        if (currentTime >= gameDuration)
+        {
+            gameEnd = true;
+        }
+
+        
+        if (gameIsPlaying && !gameEnd) // If the game is currently being played and the game has not been set as ended, continue to progress the time of the game.
+        {
+            currentTime += Time.deltaTime;
+            timeLeftText.text = $"Time Left: {(int)(gameDuration - currentTime)}";
+        }
+        else if (gameEnd) // The game has been set as ended
+        {
+            StartCoroutine(EndGame());
+        }
+
+        //Updates the AI's guess displays if the option to display them is enabled.
+        if (displayAIGuesses)
+        {
+            for (int i = 0; i < AIObjects.Length; i++)
+            {
+                AIGuessTexts[i].text = $"{AIObjects[i].ai_Guess}";
+            }
+        }
+
+        playerGuessText.text = $"{playerGuess}";
+    }
+
+    /// <summary>
+    /// Load all required settings from the GRHGameSettings script
+    /// </summary>
+    internal void LoadSettings()
+    {
         // Gets the difficulty that was set for the minigame and stores it for use in this script.
         try
         {
@@ -131,65 +199,18 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         }
         catch
         {
-            Debug.LogError($"Parse Error: failed to load entity amount.");
+            Debug.LogError($"Parse Error: failed to load entity scaling.");
         }
 
-        // Sets the amount of spawnables that the player must guess
-        entityAmount = (int)UnityEngine.Random.Range((amountOfEntitiesToSpawn/2) / 1.75f, (amountOfEntitiesToSpawn/2) * 1.75f);
-        fakeEntityAmount = amountOfEntitiesToSpawn - entityAmount;
-
-        //Set the Time Left text to display how much time will be on the clock.
-        timeLeftText.text = $"Time Left: {gameDuration}";
-
-        for (int i = 0; i < AIObjects.Length; i++)
+        // Gets the entity movement speed setting for the minigame to store it for use in this script
+        try
         {
-            AIObjects[i].GetComponent<GRHCountingMG_AIController>().totalCount = entityAmount;
+            entityMovementSpeed = GRHGameSettings.gameSettings.entityMovementSpeed;
         }
-
-        //Starts the Countdown timer for starting the game.
-        StartCoroutine(DelayForGameStart());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Equals) && gameIsPlaying)
+        catch
         {
-            PlayerGuess(1);
+            Debug.LogError($"Parse Error: failed to load entity movement speed.");
         }
-
-        if (Input.GetKeyDown(KeyCode.Minus) && gameIsPlaying)
-        {
-            PlayerGuess(-1);
-        }
-
-        // Checks to see if the game has been running longer than the set length for the game. Sets the game as ended if so.
-        if (currentTime >= gameDuration)
-        {
-            gameEnd = true;
-        }
-
-        
-        if (gameIsPlaying && !gameEnd) // If the game is currently being played and the game has not been set as ended, continue to progress the time of the game.
-        {
-            currentTime += Time.deltaTime;
-            timeLeftText.text = $"Time Left: {(int)(gameDuration - currentTime)}";
-        }
-        else if (gameEnd) // The game has been set as ended
-        {
-            StartCoroutine(EndGame());
-        }
-
-        //Updates the AI's guess displays if the option to display them is enabled.
-        if (displayAIGuesses)
-        {
-            for (int i = 0; i < AIObjects.Length; i++)
-            {
-                AIGuessTexts[i].text = $"{AIObjects[i].ai_Guess}";
-            }
-        }
-
-        playerGuessText.text = $"{playerGuess}";
     }
 
     /// <summary>
@@ -326,9 +347,9 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         if (entityObj.GetComponent<GRHCountingMG_MovingEntity>())
         {
             entityObjects.Add(entityObj);
+            entityObj.GetComponent<GRHCountingMG_MovingEntity>().SetMovementSpeed(entityMovementSpeed);
             entityObj.GetComponent<GRHCountingMG_MovingEntity>().Initialize();
         }
-
     }
 
     /// <summary>
