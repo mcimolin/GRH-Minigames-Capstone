@@ -7,25 +7,57 @@ public class GRHCountingMG_MovingEntity : MonoBehaviour
     //Setup - Joseph
     //Base moving entity class to extend the other behaviours off of. This class handles destination determination and shared variables, as well as enabling and disabling movement.
     [SerializeField]
-    protected float speed, leftBound, rightBound, upperBound, lowerBound, minimumMovementDistance, maximumMovementDistance, minimumWaitTime, maximumWaitTime;
-    protected bool movementEnabled;
+    protected float speed, leftBound, rightBound, upperBound, lowerBound, minimumMovementDistance, maximumMovementDistance, minimumWaitTime, maximumWaitTime, initialFadeInTime;
+    protected bool movementEnabled, fadingIn;
 
     protected Vector3 destinationPoint;
-    protected float waitTime, waitStartTime;
+    protected float waitTime, waitStartTime, fadeInProgress, fadeStartTime;
     protected Camera mainCam;
     protected SpriteRenderer sprite;
+    protected Animator animator;
 
     //Initialize script to be called from game manager's start function.
     internal virtual void Initialize()
     {
-        //Get the sprite renderer.
+        //Get the sprite renderer. Set variables for the fade in.
         sprite = GetComponent<SpriteRenderer>();
+        sprite.color = new Color(1f, 1f, 1f, 0f);
+        fadingIn = true;
+        fadeStartTime = Time.time;
 
         //Set up the game object for initial use.
         DetermineDestination();
+
+        //Get the animator. Set the playback time randomly for variation.
+        animator = GetComponent<Animator>();
+        animator.Play(0, -1, Random.Range(0f, 1f));
     }
-    
-    //Entity movement will be done in the update method in the extended classes, so no Update() function here.
+
+    //Entity movement will be done in the update method in the extended classes, so no movement code is in here.
+    //Rather, this update will handle fade in at the game start. The children will call base.Update() until they're done fading in, at which point they'll stop calling this.
+    protected void Update()
+    {
+        if (fadingIn)
+        {
+            //Determine the fading in progress.
+            fadeInProgress = (Time.time - fadeStartTime) / initialFadeInTime;
+
+            //Cap it to 1.
+            if (fadeInProgress > 1f)
+            {
+                fadeInProgress = 1f;
+            }
+
+            //Set the sprite's alpha value.
+            sprite.color = new Color(1f, 1f, 1f, fadeInProgress);
+
+            //Finally, if the alpha is 1, set fadingIn to false.
+            if (fadeInProgress == 1f)
+            {
+                fadingIn = false;
+            }
+        }
+    }
 
     //Determine the next destination to move towards.
     protected void DetermineDestination()
@@ -83,5 +115,11 @@ public class GRHCountingMG_MovingEntity : MonoBehaviour
     internal virtual void DisableMovement()
     {
         movementEnabled = false;
+    }
+
+    //Set the movement speed of the entity.
+    internal void SetMovementSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 }

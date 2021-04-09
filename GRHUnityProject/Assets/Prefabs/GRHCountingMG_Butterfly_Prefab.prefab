@@ -137,3 +137,4 @@ MonoBehaviour:
   maximumMovementDistance: 9
   minimumWaitTime: 1
   maximumWaitTime: 2
+  initialFadeInTime: 0.5

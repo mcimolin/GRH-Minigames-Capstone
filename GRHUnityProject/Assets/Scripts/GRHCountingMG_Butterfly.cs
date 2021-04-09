@@ -17,12 +17,20 @@ public class GRHCountingMG_Butterfly : GRHCountingMG_MovingEntity
 
         //Set the butterfly to the moving state.
         currentState = ButterflyState.Moving;
+
+        //Set the animation to a random time for variety.
+        
     }
 
     //Basically, the butterfly will move from their current position to the current destination, at their speed, if movement is enabled.
     //Once they reach that point, they'll wait a bit, and then they'll determine a new destination.
     void Update()
     {
+        //Are we still fading in?
+        if (fadingIn)
+        {
+            base.Update();
+        }
         //Is movement enabled?
         if (movementEnabled)
         {
