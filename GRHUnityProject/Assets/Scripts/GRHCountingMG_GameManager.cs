@@ -34,6 +34,9 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // The Add and Subtract buttons for the player's guess input
     [SerializeField] Button addButton = null, subtractButton = null;
 
+    // The Fade panel for when scene is loaded and unloaded
+    [SerializeField] internal GRHLoadingScreen fadingPanel;
+
     // The AI's guess textboxes to display their current guess
     [SerializeField] internal Text[] AIGuessTexts;
 
@@ -77,14 +80,11 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        fadingPanel = GameObject.FindGameObjectWithTag("LoadingScreen").GetComponent<GRHLoadingScreen>();
+
         LoadSettings();
 
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<GRHCountingMG_SoundManager>();
-
-        if (!soundManager.IsCountingGameMusicPlaying())
-        {
-            soundManager.CountingGameMusic();
-        }
 
         // Sets the amount of spawnables that the player must guess
         entityAmount = (int)UnityEngine.Random.Range((amountOfEntitiesToSpawn/2) / 1.75f, (amountOfEntitiesToSpawn/2) * 1.75f);
@@ -279,7 +279,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 // Spawn Fish
                 for (int i = 0; i < entityAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0, UnityEngine.Random.Range(-4f, 0.75f));
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.25f, UnityEngine.Random.Range(-4f, 0.75f));
                     Entity(fishSpawnArea, fishPrefab, randomPos, new Vector3(1, 1, 1) * entityScaling);
 
                 }
@@ -321,7 +321,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 // Spawn Lilypads
                 for (int i = 0; i < fakeEntityAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.15f, UnityEngine.Random.Range(-4f, 0.75f));
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.25f, UnityEngine.Random.Range(-4f, 0.75f));
                     Entity(lilypadSpawnArea, lilypadPrefab, randomPos, new Vector3(0.15f, 0.15f, 0.15f) * entityScaling);
                 }
                 break;
@@ -425,7 +425,13 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     /// </summary>
     IEnumerator DelayForGameStart()
     {
-        yield return new WaitForSeconds(0.75f);
+
+        if (!soundManager.IsCountingGameMusicPlaying())
+        {
+            soundManager.CountingGameMusic();
+        }
+
+        yield return new WaitForSeconds(1.5f);
 
         gameStartPanel.SetActive(true);
         startGameText.text = "3";
@@ -487,15 +493,27 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         gameEndPanel.SetActive(true);
     }
 
+    IEnumerator LoadScene(string scene, bool stopMusic)
+    {
+        StartCoroutine(fadingPanel.LoadScene(scene));
+
+        if (stopMusic)
+        {
+            yield return new WaitForSeconds(0.75f);
+            if (soundManager.countingMG_Audio[0].isPlaying)
+            {
+                soundManager.StopCountingGameMusic();
+            }
+        }
+    }
+
     public void PlayAgain()
     {
-        //soundManager.StopCountingGameMusic();
-        SceneManager.LoadScene("GRHCountingMG_Scene");
+        StartCoroutine(LoadScene("GRHCountingMG_Scene", false));
     }
 
     public void ExitMinigame()
     {
-        soundManager.StopCountingGameMusic();
-        SceneManager.LoadScene("GRHHubWorld_SceneManager");
+        StartCoroutine(LoadScene("GRHHubWorld_SceneManager", true));
     }
 }
