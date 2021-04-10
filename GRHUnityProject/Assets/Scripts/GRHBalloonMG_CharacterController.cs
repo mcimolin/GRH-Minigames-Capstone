@@ -92,7 +92,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                     randomPosition = UnityEngine.Random.Range(0, 4);
                 } while (positions[randomPosition].transform.childCount != 0 && catchNum < 25);
 
-                if (catchNum == 10)
+                if (catchNum == 25)
                 {
                     Debug.LogError("Error setting a random position: Could not find any free positions available.");
                 }
@@ -137,7 +137,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                     randomPosition = UnityEngine.Random.Range(startPosition, 4);
                 } while (positions[randomPosition].transform.childCount != 0 && catchNum < 25);
 
-                if (catchNum == 10)
+                if (catchNum == 25)
                 {
                     Debug.LogError("Error setting a random position: Could not find any free positions available.");
                 }

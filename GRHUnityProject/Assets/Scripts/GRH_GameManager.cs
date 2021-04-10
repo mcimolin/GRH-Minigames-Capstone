@@ -16,7 +16,7 @@ public class GRH_GameManager : MonoBehaviour
     {
 
     }
-    
+
     //Show the player UI, if there is one.
     protected void ShowPlayerUI()
     {

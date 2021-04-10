@@ -43,6 +43,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     GRHBalloonMG_AnimationController animationController;
     GRHBalloonMG_SoundManager soundManager;
 
+    GRHLoadingScreen loadingScreen;
+
     //Game scene initialization.
     void Start()
     {
@@ -55,6 +57,9 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         //Set the AI Controller. [Added by Bryce]
         aiController = GetComponent<GRHBalloonMG_AIController>();
+
+        //Gets the loading screen object script
+        loadingScreen = GameObject.FindGameObjectWithTag("LoadingScreen").GetComponent<GRHLoadingScreen>();
 
         //Object initialization is called here to prevent object racing. We check for objects that aren't necessarily required, such as the camera controller.
         if (mainCamera.GetComponent<GRHCameraController>())
@@ -103,14 +108,13 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         }
 
         //Start the music for the game.
-        soundManager.BalloonMGGameMusic();
+        if (!soundManager.balloonMG_Audio[1].isPlaying)
+        {
+            soundManager.BalloonMGGameMusic();
+        }
 
         //After initialization, set the game state to the introduction, and start the main camera movements, if we have a main camera controller.
         currentGameState = BalloonPopGameStates.Introduction;
-        if (mainCamera.GetComponent<GRHCameraController>())
-        {
-            mainCamera.GetComponent<GRHCameraController>().BeginInitialMovements();
-        }
 
         //Hide the player UI.
         HidePlayerUI();
@@ -144,6 +148,14 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         label.GetComponentInChildren<Image>().sprite = img;
         label.GetComponentInChildren<Text>().text = msg;
         label.GetComponentInChildren<Text>().color = color;
+    }
+
+    internal void StartGame()
+    {
+        if (mainCamera.GetComponent<GRHCameraController>())
+        {
+            mainCamera.GetComponent<GRHCameraController>().BeginInitialMovements();
+        }
     }
 
     //Game advancement method.
@@ -701,15 +713,32 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //Loads the scene again if the player wants to play again
     public void PlayAgain()
     {
-        SceneManager.LoadScene("GRHBalloonMG_Scene");
+        StartCoroutine(LoadScene("GRHBalloonMG_Scene", false));
     }
 
     //Sends the user back to the hub world when the game ends
     public void QuitGame()
     {
+        if (pauseGamePanel.activeInHierarchy)
+        {
+            pauseGamePanel.SetActive(false);
+        }
         Time.timeScale = 1;
         isPaused = false;
-        soundManager.balloonMG_Audio[1].Stop();
-        SceneManager.LoadScene("GRHHubWorld_SceneManager");
+        StartCoroutine(LoadScene("GRHHubWorld_SceneManager", true));
+    }
+
+    IEnumerator LoadScene(string scene, bool stopMusic)
+    {
+        StartCoroutine(loadingScreen.LoadScene(scene));
+
+        if (stopMusic)
+        {
+            yield return new WaitForSeconds(1);
+            if (soundManager.balloonMG_Audio[1].isPlaying)
+            {
+                soundManager.balloonMG_Audio[1].Stop();
+            }
+        }
     }
 }

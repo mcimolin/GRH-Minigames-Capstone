@@ -59,8 +59,8 @@ public class GRHGameSettings : MonoBehaviour
         opponentLevel = 0;
         timeLimit = 30;
         displayOpponentCount = true;
-        entityAmount = 20;
-        entityScaling = 1.5f;
+        entityAmount = 10;
+        entityScaling = 1f;
         entityMovementSpeed = 0.5f;
     }
 }

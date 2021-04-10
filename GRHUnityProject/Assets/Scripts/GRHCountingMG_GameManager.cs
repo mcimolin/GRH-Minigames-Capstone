@@ -35,7 +35,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     [SerializeField] Button addButton = null, subtractButton = null;
 
     // The Fade panel for when scene is loaded and unloaded
-    [SerializeField] internal GRHLoadingScreen fadingPanel;
+    [SerializeField] internal GRHLoadingScreen loadingScreen;
 
     // The AI's guess textboxes to display their current guess
     [SerializeField] internal Text[] AIGuessTexts;
@@ -50,7 +50,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     internal float gameDuration = 30, currentTime = 0;
 
     // The total amount of entities that will be spawned into the scene (split between the real and fake)
-    internal int amountOfEntitiesToSpawn = 30;
+    internal int amountOfEntitiesToSpawn = 10;
 
     // The modification of the entity scaling from the settings
     internal float entityScaling = 1.25f;
@@ -80,7 +80,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fadingPanel = GameObject.FindGameObjectWithTag("LoadingScreen").GetComponent<GRHLoadingScreen>();
+        loadingScreen = GameObject.FindGameObjectWithTag("LoadingScreen").GetComponent<GRHLoadingScreen>();
 
         LoadSettings();
 
@@ -100,6 +100,11 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
         addButton.interactable = false;
         subtractButton.interactable = false;
+
+        if (!soundManager.IsCountingGameMusicPlaying())
+        {
+            soundManager.CountingGameMusic();
+        }
 
         //Starts the Countdown timer for starting the game.
         StartCoroutine(DelayForGameStart());
@@ -356,27 +361,9 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     /// Starts the game.
     /// Set's all variables required to begin the playing of the game.
     /// </summary>
-    internal void AdvanceGame()
+    internal void StartGame()
     {
-        gameIsPlaying = true;
-        currentTime = 0;
-        addButton.interactable = true;
-        subtractButton.interactable = true;
-
-        SpawnEntities();
-
-        for (int i = 0; i < entityObjects.Count; i++)
-        {
-            if (entityObjects[i].GetComponent<GRHCountingMG_MovingEntity>())
-            {
-                entityObjects[i].GetComponent<GRHCountingMG_MovingEntity>().EnableMovement();
-            }
-        }
-
-        for (int i = 0; i < AIObjects.Length; i++)
-        {
-            AIObjects[i].GetComponent<GRHCountingMG_AIController>().canGuess = true;
-        }
+        StartCoroutine(DelayForGameStart());
     }
 
     /// <summary>
@@ -425,14 +412,6 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     /// </summary>
     IEnumerator DelayForGameStart()
     {
-
-        if (!soundManager.IsCountingGameMusicPlaying())
-        {
-            soundManager.CountingGameMusic();
-        }
-
-        yield return new WaitForSeconds(1.5f);
-
         gameStartPanel.SetActive(true);
         startGameText.text = "3";
         yield return new WaitForSeconds(1);
@@ -449,8 +428,25 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         gameStartPanel.SetActive(false);
         startGameText.text = "";
 
-        // Begins the game
-        AdvanceGame();
+        gameIsPlaying = true;
+        currentTime = 0;
+        addButton.interactable = true;
+        subtractButton.interactable = true;
+
+        SpawnEntities();
+
+        for (int i = 0; i < entityObjects.Count; i++)
+        {
+            if (entityObjects[i].GetComponent<GRHCountingMG_MovingEntity>())
+            {
+                entityObjects[i].GetComponent<GRHCountingMG_MovingEntity>().EnableMovement();
+            }
+        }
+
+        for (int i = 0; i < AIObjects.Length; i++)
+        {
+            AIObjects[i].GetComponent<GRHCountingMG_AIController>().canGuess = true;
+        }
     }
 
     /// <summary>
@@ -495,11 +491,11 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     IEnumerator LoadScene(string scene, bool stopMusic)
     {
-        StartCoroutine(fadingPanel.LoadScene(scene));
+        StartCoroutine(loadingScreen.LoadScene(scene));
 
         if (stopMusic)
         {
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(1);
             if (soundManager.countingMG_Audio[0].isPlaying)
             {
                 soundManager.StopCountingGameMusic();
