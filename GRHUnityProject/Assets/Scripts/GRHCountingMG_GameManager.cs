@@ -347,8 +347,8 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         if (entityObj.GetComponent<GRHCountingMG_MovingEntity>())
         {
             entityObjects.Add(entityObj);
-            entityObj.GetComponent<GRHCountingMG_MovingEntity>().SetMovementSpeed(entityMovementSpeed);
             entityObj.GetComponent<GRHCountingMG_MovingEntity>().Initialize();
+            entityObj.GetComponent<GRHCountingMG_MovingEntity>().SetMovementSpeed(entityMovementSpeed);
         }
     }
 

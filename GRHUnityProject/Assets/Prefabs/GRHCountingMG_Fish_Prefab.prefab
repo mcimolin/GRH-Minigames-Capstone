@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  leftBound: -8
-  rightBound: 8
-  upperBound: 12
-  lowerBound: 4
+  leftBound: -4
+  rightBound: 5
+  upperBound: 11
+  lowerBound: 6
   minimumMovementDistance: 3
   maximumMovementDistance: 5
   minimumWaitTime: 0.5
