@@ -6,7 +6,6 @@ TagManager:
   tags:
   - GameSettings
   - SoundManager
-  - LoadingScreen
   layers:
   - Default
   - TransparentFX

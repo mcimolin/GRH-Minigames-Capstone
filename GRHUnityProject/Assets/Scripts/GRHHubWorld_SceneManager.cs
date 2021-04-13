@@ -2,7 +2,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using System.Collections;
 
 public class GRHHubWorld_SceneManager : MonoBehaviour
 {
@@ -16,7 +15,6 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
     [SerializeField] private Slider opponentLevelSlider, timeSlider, objectSpeedSlider, objectScaleSlider, objectCountSlider;
-    [SerializeField] private GRHLoadingScreen loadingScreen;
 
     private string gameSelected;
 
@@ -29,7 +27,6 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     {
         gameSettings = FindObjectOfType<GRHGameSettings>();
         soundManager = FindObjectOfType<GRHBalloonMG_SoundManager>();
-        loadingScreen = GameObject.FindGameObjectWithTag("LoadingScreen").GetComponent<GRHLoadingScreen>();
         difficultySettingPanelBalloonGame.SetActive(false);
         difficultySettingPanelCountingGame.SetActive(false);
         creditsPanel.SetActive(false);
@@ -87,22 +84,13 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     public void SelectDifficultySetting(string gameDifficulty)
     {
         gameSettings.gameDifficulty = gameDifficulty;
+        soundManager.balloonMG_Audio[0].Stop();
+        SceneManager.LoadScene(gameSelected);
 
-        StartCoroutine(LoadMinigame(gameSelected, true));
-    }
-
-    IEnumerator LoadMinigame(string scene, bool stopMusic)
-    {
-        StartCoroutine(loadingScreen.LoadScene(scene));
-
-        if (stopMusic)
-        {
-            yield return new WaitForSeconds(1);
-            if (soundManager.balloonMG_Audio[0].isPlaying)
-            {
-                soundManager.balloonMG_Audio[0].Stop();
-            }
-        }
+        Debug.Log("Game Loaded: " + gameSelected);
+        Debug.Log("Difficulty: " + gameDifficulty);
+        Debug.Log("Player Character: " + gameSettings.selectedCharacter);
+        Debug.Log("Show pump count: " + gameSettings.showPumpCount);
     }
 
     //Sets whether the amount of pumps left are displayed on the balloon (Balloon Game)
@@ -201,7 +189,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         {
             gameSettings.entityScaling = 2f;
         }
-        else if (objectScaleSlider.value == 2)
+        else if(objectScaleSlider.value == 2)
         {
             gameSettings.entityScaling = 1.5f;
         }
