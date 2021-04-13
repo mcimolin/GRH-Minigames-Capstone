@@ -121,5 +121,8 @@ public class GRHCountingMG_MovingEntity : MonoBehaviour
     internal void SetMovementSpeed(float newSpeed)
     {
         speed = newSpeed;
+
+        //Set the animator speed based on the entity's speed. 1.5 speed is baseline.
+        animator.speed = speed / 1.5f;
     }
 }
