@@ -50,7 +50,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
             ignoreCharacter = UnityEngine.Random.Range(0, 5);
         } while (ignoreCharacter == playerCharacter);
 
-        
+
         if (setRandomPositions) //Random positions selected, spawn all character's in random positions.
         {
             SetRandomPositions();
@@ -152,7 +152,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                     characters[i].transform.parent = positions[randomPosition].transform;
                     characters[i].transform.position = positions[randomPosition].transform.position;
                 }
-                    
+
 
             }
         }

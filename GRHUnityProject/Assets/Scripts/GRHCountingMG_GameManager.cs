@@ -25,8 +25,8 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // The text display of how much time is left for the minigame;
     [SerializeField] Text timeLeftText = null, startGameText = null, playerGuessText;
 
-    // The Game Ending panel
-    [SerializeField] GameObject gameStartPanel = null, gameEndPanel = null;
+    // The Game Start, Pause, and End display panels
+    [SerializeField] GameObject gameStartPanel = null, gamePausePanel = null, gameEndPanel = null;
 
     // The win condition display text
     [SerializeField] Text gameEndWinCondition = null;
@@ -64,12 +64,13 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     // Toggleable option to display the AI guesses while the game is playing.
     internal bool displayAIGuesses = true;
 
+    internal bool isPaused = false;
+
     // The amount of objects to spawn into the game for the player to guess, and the player's current guess amount.
     int entityAmount = 0, fakeEntityAmount = 0, playerGuess = 0;
 
     //The array that holds all entities for enabling/disabling their movement
     internal List<GameObject> entityObjects = null;
-
 
     private void Awake()
     {
@@ -87,40 +88,61 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<GRHCountingMG_SoundManager>();
 
         // Sets the amount of spawnables that the player must guess
-        entityAmount = (int)UnityEngine.Random.Range((amountOfEntitiesToSpawn/2) / 1.75f, (amountOfEntitiesToSpawn/2) * 1.75f);
+        entityAmount = (int)UnityEngine.Random.Range((amountOfEntitiesToSpawn / 2) / 1.75f, (amountOfEntitiesToSpawn / 2) * 1.75f);
         fakeEntityAmount = amountOfEntitiesToSpawn - entityAmount;
 
         //Set the Time Left text to display how much time will be on the clock.
         timeLeftText.text = $"Time Left: {gameDuration}";
 
+        //Pass the amount of real entities to the AI's
         for (int i = 0; i < AIObjects.Length; i++)
         {
             AIObjects[i].GetComponent<GRHCountingMG_AIController>().totalCount = entityAmount;
         }
 
+        //Set the guess modifier buttons to non-interactable
         addButton.interactable = false;
         subtractButton.interactable = false;
 
+        // If the game is not being replayed (music is not already playing), then start the background music
         if (!soundManager.IsCountingGameMusicPlaying())
         {
             soundManager.CountingGameMusic();
+            soundManager.countingMG_Audio[0].volume = 0.25f;
         }
-
-        //Starts the Countdown timer for starting the game.
-        StartCoroutine(DelayForGameStart());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Equals) && gameIsPlaying)
+        // If the player presses either of the '+' buttons, increment the score (only if the game is currently playing)
+        if ((Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus)) && gameIsPlaying)
         {
             PlayerGuess(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Minus) && gameIsPlaying)
+        // If the player presses either of the '-' buttons, decrement the score (only if the game is currently playing)
+        if ((Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus)) && gameIsPlaying)
         {
             PlayerGuess(-1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gameIsPlaying)
+        {
+            if (isPaused == true)
+            {
+                gamePausePanel.SetActive(false);
+                soundManager.countingMG_Audio[0].volume = 0.25f;
+                isPaused = false;
+                Time.timeScale = 1;
+            }
+            else
+            {
+                gamePausePanel.SetActive(true);
+                soundManager.countingMG_Audio[0].volume = 0.05f;
+                isPaused = true;
+                Time.timeScale = 0;
+            }
         }
 
         // Checks to see if the game has been running longer than the set length for the game. Sets the game as ended if so.
@@ -129,7 +151,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
             gameEnd = true;
         }
 
-        
+
         if (gameIsPlaying && !gameEnd) // If the game is currently being played and the game has not been set as ended, continue to progress the time of the game.
         {
             currentTime += Time.deltaTime;
@@ -227,19 +249,19 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     {
         Vector3 randomPos;
 
+        List<Vector3> entityPositionsList = new List<Vector3>(); // Holds a list of the entity positions. Used to stop entities spawning on one another
+
         switch (gameDifficulty)
         {
             /* EASY difficulty selected: Butterflies & Flowers */
             case GameDifficulty.EASY:
-                
+
                 // Spawn Butterflies
                 for (int i = 0; i < entityAmount; i++)
                 {
                     randomPos = new Vector3(UnityEngine.Random.Range(-11.0f, 11.0f), UnityEngine.Random.Range(-1f, 3f), 0);
                     Entity(butterflySpawnArea, butterflyPrefab, randomPos, new Vector3(0.75f, 0.75f, 0.75f) * entityScaling);
                 }
-
-                List<Vector3> entityPositionsList = new List<Vector3>(); // Holds a list of the entity positions. Used to stop entities spawning on one another
 
                 // Spawn Flowers
                 for (int i = 0; i < fakeEntityAmount; i++)
@@ -249,30 +271,23 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                     bool similarPositioning = false;
                     do
                     {
-                        randomPos = new Vector3(UnityEngine.Random.Range(-11.0f, 11.0f), 0.5f, UnityEngine.Random.Range(-2f, 5f));
+                        randomPos = new Vector3(UnityEngine.Random.Range(-11.0f, 11.0f), 0.5f * entityScaling, UnityEngine.Random.Range(-2f, 5f));
                         catchNum += 1;
 
                         if (entityPositionsList.Count != 0)
                         {
                             for (int x = 0; x < entityPositionsList.Count; x++)
                             {
-                                if (Vector3.Distance(randomPos, entityPositionsList[x]) < 1)
+                                if (Vector3.Distance(randomPos, entityPositionsList[x]) <= 0.5f)
                                 {
                                     similarPositioning = true;
                                 }
                             }
                         }
-                    } while (((randomPos.x <= 9.5f && randomPos.x >= -7.75f && randomPos.z <= 3.5f && randomPos.z >= -2) || similarPositioning) && catchNum < 15);
+                    } while (((randomPos.x <= 9.5f && randomPos.x >= -7.75f && randomPos.z <= 3.5f && randomPos.z >= -2) || similarPositioning) && catchNum < 25);
 
-                    // Spawns entity if viable position was found
-                    if (catchNum != 20)
-                    {
-                        Entity(flowerSpawnArea, flowerPrefab, randomPos, new Vector3(0.8f, 0.8f, 0.8f) * entityScaling);
-                    }
-                    else
-                    {
-                        Debug.LogError("Entity Spawn Error: Did not spawn object.");
-                    }
+                    entityPositionsList.Add(randomPos);
+                    Entity(flowerSpawnArea, flowerPrefab, randomPos, new Vector3(0.8f, 0.8f, 0.8f) * entityScaling);
 
                 }
                 break;
@@ -280,11 +295,11 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
             /* MEDIUM difficulty selected: Fish and Bubbles */
             case GameDifficulty.MEDIUM:
-                
+
                 // Spawn Fish
                 for (int i = 0; i < entityAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.25f, UnityEngine.Random.Range(-4f, 0.75f));
+                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.3f * entityScaling, UnityEngine.Random.Range(-4f, 0.75f));
                     Entity(fishSpawnArea, fishPrefab, randomPos, new Vector3(1, 1, 1) * entityScaling);
 
                 }
@@ -292,7 +307,26 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 //Spawn Bubbles
                 for (int i = 0; i < fakeEntityAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0, UnityEngine.Random.Range(-4f, 0.75f));
+                    int catchNum = 0;
+                    bool similarPositioning = false;
+                    do
+                    {
+                        randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.15f * entityScaling, UnityEngine.Random.Range(-4f, 0.75f));
+                        catchNum += 1;
+
+                        if (entityPositionsList.Count != 0)
+                        {
+                            for (int x = 0; x < entityPositionsList.Count; x++)
+                            {
+                                if (Vector3.Distance(randomPos, entityPositionsList[x]) <= 0.5f)
+                                {
+                                    similarPositioning = true;
+                                }
+                            }
+                        }
+                    } while (similarPositioning && catchNum < 25);
+
+                    entityPositionsList.Add(randomPos);
                     Entity(bubbleSpawnArea, bubblePrefab, randomPos, new Vector3(0.5f, 0.5f, 0.5f) * entityScaling);
                 }
                 break;
@@ -310,7 +344,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                     {
                         randomPos = new Vector3(UnityEngine.Random.Range(-9.0f, 9.0f), 0.5f, UnityEngine.Random.Range(-8f, 5f));
                         catchNum += 1;
-                    } while (randomPos.x <= 9.5f && randomPos.x >= -7.75f && randomPos.z <= 3.5f && randomPos.z >= -4 && catchNum < 15);
+                    } while (randomPos.x <= 9.5f && randomPos.x >= -7.75f && randomPos.z <= 3.5f && randomPos.z >= -4 && catchNum < 20);
 
                     // Spawns entity if viable position was found
                     if (catchNum != 20)
@@ -326,13 +360,33 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 // Spawn Lilypads
                 for (int i = 0; i < fakeEntityAmount; i++)
                 {
-                    randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.25f, UnityEngine.Random.Range(-4f, 0.75f));
+                    int catchNum = 0;
+                    bool similarPositioning = false;
+
+                    do
+                    {
+                        randomPos = new Vector3(UnityEngine.Random.Range(-4.75f, 6.0f), 0.5f * entityScaling, UnityEngine.Random.Range(-4f, 0.75f));
+                        catchNum += 1;
+
+                        if (entityPositionsList.Count != 0)
+                        {
+                            for (int x = 0; x < entityPositionsList.Count; x++)
+                            {
+                                if (Vector3.Distance(randomPos, entityPositionsList[x]) <= 0.5f)
+                                {
+                                    similarPositioning = true;
+                                }
+                            }
+                        }
+                    } while (similarPositioning && catchNum < 25);
+
+                    entityPositionsList.Add(randomPos);
                     Entity(lilypadSpawnArea, lilypadPrefab, randomPos, new Vector3(0.15f, 0.15f, 0.15f) * entityScaling);
                 }
                 break;
             default:
                 break;
-        } 
+        }
     }
 
     /// <summary>
@@ -358,8 +412,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Starts the game.
-    /// Set's all variables required to begin the playing of the game.
+    /// Starts the game (called after loading screen is complete)
     /// </summary>
     internal void StartGame()
     {
@@ -374,7 +427,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
     public void PlayerGuess(int value)
     {
         if (playerGuess == 0) // Player's current guess is zero. Confirms that player will not have a guess lower than zero.
-        { 
+        {
             if (value > 0) // Player inputs a positive guess
             {
                 playerGuess += value;
@@ -415,7 +468,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         gameStartPanel.SetActive(true);
         startGameText.text = "3";
         yield return new WaitForSeconds(1);
-        
+
         startGameText.text = "2";
         yield return new WaitForSeconds(1);
 
@@ -480,7 +533,7 @@ public class GRHCountingMG_GameManager : MonoBehaviour
         else
         {
             // Set the player's win status as 'Lose'
-            gameEndWinCondition.text = "You Lose";
+            gameEndWinCondition.text = "You Lose...";
         }
 
         //Wait for a short amount of time after game ends before displaying panel.
@@ -501,6 +554,14 @@ public class GRHCountingMG_GameManager : MonoBehaviour
                 soundManager.StopCountingGameMusic();
             }
         }
+    }
+
+    public void ResumeGame()
+    {
+        gamePausePanel.SetActive(false);
+        soundManager.countingMG_Audio[0].volume = 0.25f;
+        isPaused = false;
+        Time.timeScale = 1;
     }
 
     public void PlayAgain()

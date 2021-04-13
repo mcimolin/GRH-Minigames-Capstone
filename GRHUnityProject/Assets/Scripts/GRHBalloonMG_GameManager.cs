@@ -51,7 +51,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Get the main camera / animation controller.
         mainCamera = Camera.main;
         animationController = FindObjectOfType<GRHBalloonMG_AnimationController>();
-        
+
         //Set the sound manager.
         soundManager = FindObjectOfType<GRHBalloonMG_SoundManager>();
 
@@ -104,7 +104,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         if (!FindObjectOfType<GRHGameSettings>().showPumpCount)
         {
-           balloonPumpsLeftText.enabled = false;
+            balloonPumpsLeftText.enabled = false;
         }
 
         //Start the music for the game.
@@ -364,7 +364,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             //We are. Knocks out the current player
             KnockOutCurrentPlayer();
-            
+
             //Pops the balloon and resets current pumps.
             StartCoroutine(DoBalloonPopAnimation(numberOfPumps));
             currentBalloonPumps = 0;
@@ -400,13 +400,13 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             pumps -= 1;
             soundManager.PumpSound();
             yield return new WaitForSeconds(0.9f);
-            
+
             if (pumps != 0)
             {
                 pumps -= 1;
                 soundManager.PumpSound();
                 yield return new WaitForSeconds(0.9f);
-                
+
                 if (pumps != 0)
                 {
                     soundManager.PumpSound();
@@ -488,7 +488,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             //It has. That means the character currently at the pump needs to be taken away as a single movement. Determine the character to be moved.
             //We can find this by whose turn it currently is.
-            switch(currentGameState)
+            switch (currentGameState)
             {
                 case BalloonPopGameStates.PlayerTurn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.Player;
@@ -527,11 +527,11 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //Now, we call EndGame.
             EndGame();
-        } 
+        }
         else
         {
             //Determine the first target and their destination.
-            switch(currentGameState)
+            switch (currentGameState)
             {
                 case BalloonPopGameStates.PlayerTurn:
                     //If we're in the player state, and the player was knocked out, it would be picked up in the HasGameEnded check earlier.
@@ -551,7 +551,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                     {
                         //AI 1 is still active. Return them to their normal location.
                         destination1 = GRHBalloonMG_AnimationController.AnimationLocation.AI1Location;
-                    } else
+                    }
+                    else
                     {
                         //AI 1 was knocked out. Put them off the screen.
                         destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
@@ -608,7 +609,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             }
 
             //Now, using our new game state, determine the second target.
-            switch(currentGameState)
+            switch (currentGameState)
             {
                 case BalloonPopGameStates.PlayerTurn:
                     target2 = GRHBalloonMG_AnimationController.AnimationObject.Player;
@@ -648,7 +649,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             if (currentGameState == BalloonPopGameStates.PlayerTurn)
             {
                 ShowPlayerUI();
-            } else
+            }
+            else
             {
                 AdvanceGame();
             }

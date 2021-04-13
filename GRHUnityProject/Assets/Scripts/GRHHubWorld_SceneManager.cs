@@ -201,7 +201,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         {
             gameSettings.entityScaling = 2f;
         }
-        else if(objectScaleSlider.value == 2)
+        else if (objectScaleSlider.value == 2)
         {
             gameSettings.entityScaling = 1.5f;
         }
