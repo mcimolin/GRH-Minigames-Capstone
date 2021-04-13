@@ -7,17 +7,23 @@ using UnityEngine.UI;
 // Initial Framework: Bryce
 public class GRHBalloonMG_CharacterController : MonoBehaviour
 {
+    //The Counting Minigame's GameManager script
+    [SerializeField] GRHCountingMG_GameManager gm;
+
     //These are the positions in which the characters will be standing.
     [SerializeField] GameObject[] positions;
 
-    //This array will hold the characters gameobjects to be transferred over to the positions
-    [SerializeField] GameObject[] characters, labels;
+    //These arrays will hold the characters gameobjects to be transferred over to the positions and their labels
+    [SerializeField] internal GameObject[] characters, labels;
 
     //Holds the sprite images of the CPU icon and Player Icon.
     [SerializeField] Sprite cpuLabelImage, playerLabelImage;
 
     //Set's the toggleable option of random spawns or set spawns.
     [SerializeField] bool setRandomPositions = false;
+
+    //The camera located in the scene
+    [SerializeField] Camera mainCam;
 
     //The player's selected character (defaults to 0: Cotton Candy)
     int playerCharacter = 0;
@@ -28,6 +34,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Gets the player's selected character model and stores it for use in this script.
         try
         {
             playerCharacter = GRHGameSettings.gameSettings.selectedCharacter;
@@ -58,6 +65,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     void SetBasePositions()
     {
         //Sets the player's character to the far left side.
+        characters[playerCharacter].transform.Rotate(27, 0, 0);
         characters[playerCharacter].transform.parent = positions[0].transform;
         characters[playerCharacter].transform.position = positions[0].transform.position;
         characters[playerCharacter].GetComponentInChildren<Image>();
@@ -70,6 +78,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     void SetRandomPositions()
     {
         int randomPosition;
+        int aiIndex = 0;
 
         for (int i = 0; i < characters.Length; i++)
         {
@@ -96,9 +105,13 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                     }
                     else
                     {
-                        SetLabel(labels[i], cpuLabelImage, "CPU", Color.blue);
+                        SetLabel(labels[i], cpuLabelImage, "?", Color.blue);
+                        gm.AIGuessTexts[aiIndex] = labels[i].GetComponentInChildren<Text>();
+                        labels[i].GetComponentInChildren<Text>().fontSize = 50;
+                        aiIndex += 1;
                     }
 
+                    characters[i].transform.Rotate(27, 0, 0);
                     characters[i].transform.parent = positions[randomPosition].transform;
                     characters[i].transform.position = positions[randomPosition].transform.position;
                 }
@@ -110,6 +123,7 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
     void SetRandomPositions(int startPosition)
     {
         int randomPosition;
+        int aiIndex = 0; //The index for setting which AI is where.
 
         for (int i = 0; i < characters.Length; i++)
         {
@@ -129,8 +143,12 @@ public class GRHBalloonMG_CharacterController : MonoBehaviour
                 }
                 else
                 {
-                    SetLabel(labels[i], cpuLabelImage, "CPU", Color.blue);
+                    SetLabel(labels[i], cpuLabelImage, "?", Color.blue);
+                    gm.AIGuessTexts[aiIndex] = labels[i].GetComponentInChildren<Text>();
+                    labels[i].GetComponentInChildren<Text>().fontSize = 50;
+                    aiIndex += 1;
 
+                    characters[i].transform.Rotate(27, 0, 0);
                     characters[i].transform.parent = positions[randomPosition].transform;
                     characters[i].transform.position = positions[randomPosition].transform.position;
                 }

@@ -14,6 +14,7 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
+    [SerializeField] private Slider opponentLevelSlider, timeSlider, objectSpeedSlider, objectScaleSlider, objectCountSlider;
 
     private string gameSelected;
 
@@ -105,6 +106,19 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         }
     }
 
+    //Sets weather the opponents counts are displayed above their heads (Counting Game)
+    public void ToggleOpponentCounts()
+    {
+        if (!gameSettings.displayOpponentCount)
+        {
+            gameSettings.displayOpponentCount = true;
+        }
+        else
+        {
+            gameSettings.displayOpponentCount = false;
+        }
+    }
+
     //Sets tpump count amount for the Balloon Minigame
     public void SetPumpCount()
     {
@@ -144,10 +158,51 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         }
     }
 
+    //Set opponent level (counting game)
+    public void SetOpponentLevel()
+    {
+        gameSettings.opponentLevel = (int)opponentLevelSlider.value;
+    }
+
+    //Set time limit (counting game)
+    public void SetTimeLimit()
+    {
+        gameSettings.timeLimit = (int)(timeSlider.value * 15);
+    }
+
     // Sets the player's character preference [Added by Bryce]
     public void CharacterSelection()
     {
         gameSettings.selectedCharacter = characterSelector.value;
+    }
+
+    //Set Object Speed (counting game)
+    public void SetObjectSpeed()
+    {
+        gameSettings.entityMovementSpeed = (objectSpeedSlider.value / 2);
+    }
+
+    //Set object size (counting game)
+    public void SetObjectSize()
+    {
+        if (objectScaleSlider.value == 3)
+        {
+            gameSettings.entityScaling = 2f;
+        }
+        else if(objectScaleSlider.value == 2)
+        {
+            gameSettings.entityScaling = 1.5f;
+        }
+        else
+        {
+            gameSettings.entityScaling = 1;
+        }
+    }
+
+    //Set object count (Counting game)
+    public void SetObjectCount()
+    {
+        gameSettings.entityAmount = (int)objectCountSlider.value;
     }
 
     // Remove all but "Application.Quit();" before building as it will crash if left in during build

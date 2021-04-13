@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameSettings
+  - SoundManager
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: TheHand
     uniqueID: 2129660249
+    locked: 0
+  - name: Entities
+    uniqueID: 2945734417
     locked: 0
