@@ -17,6 +17,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     [SerializeField] ParticleSystem confettiParticle;
     [SerializeField] GameObject pauseGamePanel;
     private bool isPaused;
+    private bool isPlaying;
 
     //The array for whether a player is still in the game or not. Locations are as follows:
     //0 - Player / 1 - AI 1 / 2 - AI 2 / 3 - AI 3
@@ -43,18 +44,24 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     GRHBalloonMG_AnimationController animationController;
     GRHBalloonMG_SoundManager soundManager;
 
+    GRHLoadingScreen loadingScreen;
+
     //Game scene initialization.
     void Start()
     {
         //Get the main camera / animation controller.
         mainCamera = Camera.main;
         animationController = FindObjectOfType<GRHBalloonMG_AnimationController>();
-        
+        isPlaying = false;
+
         //Set the sound manager.
         soundManager = FindObjectOfType<GRHBalloonMG_SoundManager>();
 
         //Set the AI Controller. [Added by Bryce]
         aiController = GetComponent<GRHBalloonMG_AIController>();
+
+        //Gets the loading screen object script
+        loadingScreen = GameObject.FindGameObjectWithTag("LoadingScreen").GetComponent<GRHLoadingScreen>();
 
         //Object initialization is called here to prevent object racing. We check for objects that aren't necessarily required, such as the camera controller.
         if (mainCamera.GetComponent<GRHCameraController>())
@@ -99,18 +106,17 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
         if (!FindObjectOfType<GRHGameSettings>().showPumpCount)
         {
-           balloonPumpsLeftText.enabled = false;
+            balloonPumpsLeftText.enabled = false;
         }
 
         //Start the music for the game.
-        soundManager.BalloonMGGameMusic();
+        if (!soundManager.balloonMG_Audio[1].isPlaying)
+        {
+            soundManager.BalloonMGGameMusic();
+        }
 
         //After initialization, set the game state to the introduction, and start the main camera movements, if we have a main camera controller.
         currentGameState = BalloonPopGameStates.Introduction;
-        if (mainCamera.GetComponent<GRHCameraController>())
-        {
-            mainCamera.GetComponent<GRHCameraController>().BeginInitialMovements();
-        }
 
         //Hide the player UI.
         HidePlayerUI();
@@ -119,7 +125,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     // [Added by Adam] Press escape to pause and again to resume game
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isPlaying)
         {
             if (isPaused == true)
             {
@@ -144,6 +150,14 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         label.GetComponentInChildren<Image>().sprite = img;
         label.GetComponentInChildren<Text>().text = msg;
         label.GetComponentInChildren<Text>().color = color;
+    }
+
+    internal void StartGame()
+    {
+        if (mainCamera.GetComponent<GRHCameraController>())
+        {
+            mainCamera.GetComponent<GRHCameraController>().BeginInitialMovements();
+        }
     }
 
     //Game advancement method.
@@ -352,7 +366,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             //We are. Knocks out the current player
             KnockOutCurrentPlayer();
-            
+
             //Pops the balloon and resets current pumps.
             StartCoroutine(DoBalloonPopAnimation(numberOfPumps));
             currentBalloonPumps = 0;
@@ -388,13 +402,13 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             pumps -= 1;
             soundManager.PumpSound();
             yield return new WaitForSeconds(0.9f);
-            
+
             if (pumps != 0)
             {
                 pumps -= 1;
                 soundManager.PumpSound();
                 yield return new WaitForSeconds(0.9f);
-                
+
                 if (pumps != 0)
                 {
                     soundManager.PumpSound();
@@ -476,7 +490,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         {
             //It has. That means the character currently at the pump needs to be taken away as a single movement. Determine the character to be moved.
             //We can find this by whose turn it currently is.
-            switch(currentGameState)
+            switch (currentGameState)
             {
                 case BalloonPopGameStates.PlayerTurn:
                     target1 = GRHBalloonMG_AnimationController.AnimationObject.Player;
@@ -515,11 +529,11 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
 
             //Now, we call EndGame.
             EndGame();
-        } 
+        }
         else
         {
             //Determine the first target and their destination.
-            switch(currentGameState)
+            switch (currentGameState)
             {
                 case BalloonPopGameStates.PlayerTurn:
                     //If we're in the player state, and the player was knocked out, it would be picked up in the HasGameEnded check earlier.
@@ -539,7 +553,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
                     {
                         //AI 1 is still active. Return them to their normal location.
                         destination1 = GRHBalloonMG_AnimationController.AnimationLocation.AI1Location;
-                    } else
+                    }
+                    else
                     {
                         //AI 1 was knocked out. Put them off the screen.
                         destination1 = GRHBalloonMG_AnimationController.AnimationLocation.StartingLocation;
@@ -596,7 +611,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             }
 
             //Now, using our new game state, determine the second target.
-            switch(currentGameState)
+            switch (currentGameState)
             {
                 case BalloonPopGameStates.PlayerTurn:
                     target2 = GRHBalloonMG_AnimationController.AnimationObject.Player;
@@ -636,7 +651,8 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
             if (currentGameState == BalloonPopGameStates.PlayerTurn)
             {
                 ShowPlayerUI();
-            } else
+            }
+            else
             {
                 AdvanceGame();
             }
@@ -653,6 +669,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Set the proper game state, and show the player UI.
         currentGameState = BalloonPopGameStates.PlayerTurn;
         ShowPlayerUI();
+        isPlaying = true;
     }
 
     //Sets the active AI's in the scene (Max 3 out of the 4 characters)
@@ -701,15 +718,35 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //Loads the scene again if the player wants to play again
     public void PlayAgain()
     {
-        SceneManager.LoadScene("GRHBalloonMG_Scene");
+        StartCoroutine(LoadScene("GRHBalloonMG_Scene", false));
     }
 
     //Sends the user back to the hub world when the game ends
     public void QuitGame()
     {
-        Time.timeScale = 1;
+        StartCoroutine(LoadScene("GRHHubWorld_SceneManager", true));
+    }
+
+    IEnumerator LoadScene(string scene, bool stopMusic)
+    {
+        isPlaying = false;
         isPaused = false;
-        soundManager.balloonMG_Audio[1].Stop();
-        SceneManager.LoadScene("GRHHubWorld_SceneManager");
+        Time.timeScale = 1;
+
+        if (pauseGamePanel.activeInHierarchy)
+        {
+            pauseGamePanel.SetActive(false);
+        }
+
+        StartCoroutine(loadingScreen.LoadScene(scene));
+
+        if (stopMusic)
+        {
+            yield return new WaitForSeconds(1);
+            if (soundManager.balloonMG_Audio[1].isPlaying)
+            {
+                soundManager.balloonMG_Audio[1].Stop();
+            }
+        }
     }
 }

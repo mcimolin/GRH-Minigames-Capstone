@@ -56,11 +56,11 @@ public class GRHGameSettings : MonoBehaviour
         showPumpCount = true;
         pumpCount = 15;
         selectedCharacter = 0;
-        opponentLevel = 0;
+        opponentLevel = 1;
         timeLimit = 30;
         displayOpponentCount = true;
-        entityAmount = 20;
-        entityScaling = 1.5f;
+        entityAmount = 10;
+        entityScaling = 1f;
         entityMovementSpeed = 0.5f;
     }
 }

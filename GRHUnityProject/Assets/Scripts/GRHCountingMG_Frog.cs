@@ -25,9 +25,6 @@ public class GRHCountingMG_Frog : GRHCountingMG_MovingEntity
         //Start by calling the base initialize method, which will determine a destination and enable movement.
         base.Initialize();
 
-        //Get the animator for toggling jump animations.
-        animator = GetComponent<Animator>();
-
         currentState = FrogState.Waiting;
 
         waitStartTime = Time.time;
@@ -85,15 +82,28 @@ public class GRHCountingMG_Frog : GRHCountingMG_MovingEntity
                     break;
 
                 case FrogState.Jumping:
-                    //First, determine if the jump will reach the end point this frame or not. We need to use the X and Z values, ignoring Y, as it will be in the air.
+                    
+                    /*//First, determine if the jump will reach the end point this frame or not. We need to use the X and Z values, ignoring Y, as it will be in the air.
                     groundedPosition = new Vector2(transform.position.x, transform.position.z);
                     Vector2 targetPosition = new Vector2(jumpEndPoint.x, jumpEndPoint.z);
 
                     remainingDistance = (groundedPosition - targetPosition).magnitude;
+                    */
 
-                    if (remainingDistance <= speed * Time.deltaTime)
+                    //Calculate our progress through the jump. The animation for the jump is 1 second, so the calculation is simply based on speed.
+                    //Hard difficulty gives a speed of 1.5, which would be our baseline. Therefore, we need to divide our movement progress by a value determined by that.
+                    movementProgress = (Time.time - jumpStartTime) / (1.5f / speed);
+
+                    //Cap the progress to 1.
+                    if (movementProgress > 1)
                     {
-                        //We will reach it. We can simply set the frog's position to the jump's end point.
+                        movementProgress = 1;
+                    }
+
+                    //Are we at the end point?
+                    if (movementProgress == 1)
+                    {
+                        //We are. We can simply set the frog's position to the jump's end point.
                         transform.position = jumpEndPoint;
 
                         //Now, are we at our final destination or not?
@@ -110,16 +120,7 @@ public class GRHCountingMG_Frog : GRHCountingMG_MovingEntity
                         animator.SetTrigger("JumpToggle");
                     } else
                     {
-                        //We won't reach it. Calculate our progress through the jump. The animation for the jump is 1 second, so the calculation is simple.
-                        movementProgress = Time.time - jumpStartTime;
-
-                        //Cap the progress to 1.
-                        if (movementProgress > 1)
-                        {
-                            movementProgress = 1;
-                        }
-
-                        //Determine the new X and Z positions through linear interpolation.
+                        //We aren't. Determine the new X and Z positions through linear interpolation.
                         newXposition = (1 - movementProgress) * jumpStartPoint.x + movementProgress * jumpEndPoint.x;
                         newZposition = (1 - movementProgress) * jumpStartPoint.z + movementProgress * jumpEndPoint.z;
 
