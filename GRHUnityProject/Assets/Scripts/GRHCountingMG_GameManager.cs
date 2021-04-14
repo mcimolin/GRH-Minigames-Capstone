@@ -546,6 +546,20 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     IEnumerator LoadScene(string scene, bool stopMusic)
     {
+        gameIsPlaying = false;
+        isPaused = false;
+        Time.timeScale = 1;
+
+        if (gamePausePanel.activeSelf)
+        {
+            gamePausePanel.SetActive(false);
+        }
+
+        if (gameEndPanel.activeSelf)
+        {
+            gameEndPanel.SetActive(false);
+        }
+
         StartCoroutine(loadingScreen.LoadScene(scene));
 
         if (stopMusic)
@@ -568,31 +582,11 @@ public class GRHCountingMG_GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        if (gamePausePanel.activeSelf)
-        {
-            gamePausePanel.SetActive(false);
-        }
-
-        if (gameEndPanel.activeSelf)
-        {
-            gameEndPanel.SetActive(false);
-        }
-
         StartCoroutine(LoadScene("GRHCountingMG_Scene", false));
     }
 
     public void ExitMinigame()
     {
-        if (gamePausePanel.activeSelf)
-        {
-            gamePausePanel.SetActive(false);
-        }
-
-        if (gameEndPanel.activeSelf)
-        {
-            gameEndPanel.SetActive(false);
-        }
-
         StartCoroutine(LoadScene("GRHHubWorld_SceneManager", true));
     }
 }

@@ -17,6 +17,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     [SerializeField] ParticleSystem confettiParticle;
     [SerializeField] GameObject pauseGamePanel;
     private bool isPaused;
+    private bool isPlaying;
 
     //The array for whether a player is still in the game or not. Locations are as follows:
     //0 - Player / 1 - AI 1 / 2 - AI 2 / 3 - AI 3
@@ -51,6 +52,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Get the main camera / animation controller.
         mainCamera = Camera.main;
         animationController = FindObjectOfType<GRHBalloonMG_AnimationController>();
+        isPlaying = false;
 
         //Set the sound manager.
         soundManager = FindObjectOfType<GRHBalloonMG_SoundManager>();
@@ -123,7 +125,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     // [Added by Adam] Press escape to pause and again to resume game
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isPlaying)
         {
             if (isPaused == true)
             {
@@ -667,6 +669,7 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
         //Set the proper game state, and show the player UI.
         currentGameState = BalloonPopGameStates.PlayerTurn;
         ShowPlayerUI();
+        isPlaying = true;
     }
 
     //Sets the active AI's in the scene (Max 3 out of the 4 characters)
@@ -721,17 +724,20 @@ public class GRHBalloonMG_GameManager : GRH_GameManager
     //Sends the user back to the hub world when the game ends
     public void QuitGame()
     {
-        if (pauseGamePanel.activeInHierarchy)
-        {
-            pauseGamePanel.SetActive(false);
-        }
-        Time.timeScale = 1;
-        isPaused = false;
         StartCoroutine(LoadScene("GRHHubWorld_SceneManager", true));
     }
 
     IEnumerator LoadScene(string scene, bool stopMusic)
     {
+        isPlaying = false;
+        isPaused = false;
+        Time.timeScale = 1;
+
+        if (pauseGamePanel.activeInHierarchy)
+        {
+            pauseGamePanel.SetActive(false);
+        }
+
         StartCoroutine(loadingScreen.LoadScene(scene));
 
         if (stopMusic)
