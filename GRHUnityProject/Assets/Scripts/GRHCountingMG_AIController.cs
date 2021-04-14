@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GRHCountingMG_AIController : MonoBehaviour
 {
-    // Initial framework - Adam
+    // Initial framework -- Adam
 
     public int totalCount;
     [Space(8)]
