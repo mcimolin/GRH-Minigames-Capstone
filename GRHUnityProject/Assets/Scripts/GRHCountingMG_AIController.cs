@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GRHCountingMG_AIController : MonoBehaviour
 {
-    // Initial framework - Adam
+    // Initial framework -- Adam
 
     public int totalCount;
     [Space(8)]
@@ -40,7 +40,6 @@ public class GRHCountingMG_AIController : MonoBehaviour
         if (ai_Guess < totalCount)
         {
             int ran = Random.Range(1, 101);
-            //Debug.Log(ran);
             if (ran >= 1 && ran <= percentChance)
             {
                 ai_Guess += 1;
@@ -51,10 +50,27 @@ public class GRHCountingMG_AIController : MonoBehaviour
         if (ai_Guess > totalCount)
         {
             int ran = Random.Range(1, 101);
-            //Debug.Log(ran);
             if (ran >= 1 && ran <= percentChance)
             {
                 ai_Guess -= 1;
+            }
+        }
+
+        // If AI's count is equal to the total count on screen, 90% chance to go up or down by 1 or a 10% chance to "forget" count and restart at 0
+        if (ai_Guess == totalCount)
+        {
+            int ran = Random.Range(1, 101);
+            if (ran >= 1 && ran <= 45)
+            {
+                ai_Guess += 1;
+            }
+            else if (ran > 45 && ran <= 90)
+            {
+                ai_Guess -= 1;
+            }
+            else
+            {
+                ai_Guess = 0;
             }
         }
     }
