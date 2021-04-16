@@ -53,6 +53,11 @@ public class GRHGameSettings : MonoBehaviour
 
     private void Start()
     {
+        SetDefaults();
+    }
+
+    public void SetDefaults()
+    {
         showPumpCount = true;
         pumpCount = 15;
         selectedCharacter = 0;

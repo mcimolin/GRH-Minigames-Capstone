@@ -46,6 +46,9 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
         //Sets the defaults for balloon minigame difficulty panel
         pumpCount.text = gameSettings.pumpCount.ToString();
         soundManager.HubWorldGameMusic();
+
+        //Sets the default settings for the minigames
+        gameSettings.SetDefaults();
     }
 
     // Button to start balloon game
@@ -60,13 +63,6 @@ public class GRHHubWorld_SceneManager : MonoBehaviour
     {
         difficultySettingPanelCountingGame.SetActive(true);
         gameSelected = "GRHCountingMG_Scene";
-    }
-
-    // Button to start space game
-    public void StartSpaceGame()
-    {
-        difficultySettingPanelBalloonGame.SetActive(true);
-        gameSelected = "GRHSpaceMG_Scene";
     }
 
     // "X" button to close the difficulty panel
