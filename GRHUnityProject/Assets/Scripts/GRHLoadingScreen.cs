@@ -41,13 +41,14 @@ public class GRHLoadingScreen : MonoBehaviour
         loadingBackground.SetActive(true);
         Color newColor;
 
-        for (float a = 0f; a < 1.0f; a += Time.deltaTime / alphaTime)
+        for (float a = 0f; a <= 1.0f; a += Time.deltaTime / alphaTime)
         {
-            newColor = new Color(1, 1, 1, Mathf.Lerp(0, 1, a));
+            newColor = new Color(1, 1, 1, Mathf.Lerp(0, 1, a)); 
+            Color textColor = new Color(loadingText.GetComponent<Text>().color.r, loadingText.GetComponent<Text>().color.g, loadingText.GetComponent<Text>().color.b, Mathf.Lerp(1, 0, a));
 
             loadingBackground.GetComponent<Image>().color = newColor;
             loadingIcon.GetComponent<Image>().color = newColor;
-            loadingText.GetComponent<Text>().color = newColor;
+            loadingText.GetComponent<Text>().color = textColor;
 
             yield return null;
         }
@@ -62,13 +63,14 @@ public class GRHLoadingScreen : MonoBehaviour
     public IEnumerator FadeOut(string scene)
     {
         yield return new WaitForSeconds(0.75f);
-        for (float a = 0f; a < 1.0f; a += Time.deltaTime / alphaTime)
+        for (float a = 0f; a <= 1.0f; a += Time.deltaTime / alphaTime)
         {
             Color newColor = new Color(1, 1, 1, Mathf.Lerp(1, 0, a));
+            Color textColor = new Color(loadingText.GetComponent<Text>().color.r, loadingText.GetComponent<Text>().color.g, loadingText.GetComponent<Text>().color.b, Mathf.Lerp(1, 0, a));
 
             loadingBackground.GetComponent<Image>().color = newColor;
             loadingIcon.GetComponent<Image>().color = newColor;
-            loadingText.GetComponent<Text>().color = newColor;
+            loadingText.GetComponent<Text>().color = textColor;
 
             yield return null;
         }
