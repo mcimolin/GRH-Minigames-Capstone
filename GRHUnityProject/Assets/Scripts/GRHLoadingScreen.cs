@@ -26,10 +26,11 @@ public class GRHLoadingScreen : MonoBehaviour
         }
 
         Color color = new Color(1, 1, 1, 0);
+        Color textColor = new Color(loadingText.GetComponent<Text>().color.r, loadingText.GetComponent<Text>().color.g, 0);
 
         loadingBackground.GetComponent<Image>().color = color;
         loadingIcon.GetComponent<Image>().color = color;
-        loadingText.GetComponent<Text>().color = color;
+        loadingText.GetComponent<Text>().color = textColor;
 
         alphaTime = 0.5f;
 
@@ -44,7 +45,7 @@ public class GRHLoadingScreen : MonoBehaviour
         for (float a = 0f; a <= 1.0f; a += Time.deltaTime / alphaTime)
         {
             newColor = new Color(1, 1, 1, Mathf.Lerp(0, 1, a)); 
-            Color textColor = new Color(loadingText.GetComponent<Text>().color.r, loadingText.GetComponent<Text>().color.g, loadingText.GetComponent<Text>().color.b, Mathf.Lerp(1, 0, a));
+            Color textColor = new Color(loadingText.GetComponent<Text>().color.r, loadingText.GetComponent<Text>().color.g, loadingText.GetComponent<Text>().color.b, Mathf.Lerp(0, 1, a));
 
             loadingBackground.GetComponent<Image>().color = newColor;
             loadingIcon.GetComponent<Image>().color = newColor;
